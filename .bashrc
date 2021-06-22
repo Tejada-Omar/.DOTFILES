@@ -35,6 +35,6 @@ PS1='\W \$ '
 # PS1='\[\e[00;34m\]λ \W \[\e[0m\]'
 
 # Run neofetch if a display server is not running
-[ -n "$DISPLAY" ] && neofetch
+# [ -n "$DISPLAY" ] && neofetch
 
 eval "$(starship init bash)"
