@@ -10,10 +10,14 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'tpope/vim-fugitive'
 Plug 'tmsvg/pear-tree'
 
-" Visual Plugins
+" Visual
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'norcalli/nvim-colorizer.lua'
+
+" Statusbar
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
 
@@ -24,6 +28,26 @@ set termguicolors
 " Sets up nvim-colorizer
 " Creates an autocmd for 'FileType *' to highlight every filetype
 lua require'colorizer'.setup()
+
+lua << EOF
+require('lualine').setup {
+    options = {
+        icons_enabled = false,
+        theme = 'ayu_mirage'
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'filename'},
+        lualine_c = {'branch'},
+        lualine_x = {'filetype', 'progress'},
+        lualine_y = {'diff'},
+        lualine_z = {'location'},
+    },
+    inactive_sections = {},
+    extensions = {'fugitive'}
+}
+EOF
+set noshowmode
 
 " vim-plug open window in horizontal split
 let g:plug_window='leftabove new'
