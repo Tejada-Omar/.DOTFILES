@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export EDITOR=nvim
+export PAGER=bat
 export BAT_THEME="ansi"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
@@ -37,4 +38,4 @@ PS1='\W \$ '
 # Run neofetch if a display server is not running
 # [ -n "$DISPLAY" ] && neofetch
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
