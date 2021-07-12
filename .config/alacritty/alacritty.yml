@@ -31,37 +31,37 @@ font:
 bell:
   animation: EaseOutSine
   duration: 100
-  color: '#37365c'
+  color: '#434c5e'
 
 # Colors
 colors:
   # Default colors
   primary:
-    background: '#2f2E4F'
-    foreground: '#ECBDF6'
+    background: '#2e3440'
+    foreground: '#eceff4'
 
   # Normal colors
   normal:
-    black:    '#2C282E'
-    red:      '#E15555'
-    green:    '#1DFF79'
-    yellow:   '#E38B4E'
-    blue:     '#689BFF'
-    magenta:  '#D35DFF'
-    cyan:     '#4BD4C3'
-    white:    '#707880'
+    black:    '#2c282e'
+    red:      '#e15555'
+    green:    '#34c12c'
+    yellow:   '#e38b4e'
+    blue:     '#63b5ff'
+    magenta:  '#d35dff'
+    cyan:     '#85ffe0'
+    white:    '#c5cbd5'
 
   # Bright colors
   bright:
     black:    '#3C3741'
     red:      '#E44646'
-    green:    '#00FF9E'
+    green:    '#20e04b'
     yellow:   '#F7BE4E'
-    blue:     '#6F9EDD'
-    magenta:  '#D000FF'
-    cyan:     '#4BFFDC'
-    white:    '#C5C8C6'
+    blue:     '#689bff'
+    magenta:  '#d000ff'
+    cyan:     '#85ffc8'
+    white:    '#d8dee8'
 
 # Apply Settings without relaunching
 live_config_reload: true
-background_opacity: 0.8
+background_opacity: 0.6
