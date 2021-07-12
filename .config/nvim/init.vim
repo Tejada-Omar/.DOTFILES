@@ -78,18 +78,18 @@ autocmd FileType markdown,gitcommit setlocal spell
 autocmd FileType mardown,gitcommit setlocal complete+=kspell
 
 " Vanilla nvim mappings
-imap jk <Esc>
-imap <C-s> :nohlsearch<CR>
+inoremap jk <Esc>
+nnoremap <C-s> :nohlsearch<CR>
 
 " Plugin mappings
-nmap <A-p> <Plug>MarkdownPreviewToggle
-nmap <A-g> :Goyo<CR>
+nnoremap <A-p> <Plug>MarkdownPreviewToggle
+nnoremap <A-g> :Goyo<CR>
 
 " Turns on all mouse functionality
 set mouse=a
 
 set expandtab
-set tabstop
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
