@@ -6,6 +6,12 @@ Plug 'junegunn/vim-plug'
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neovim/nvim-lspconfig'
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Quality of Life
 Plug 'tpope/vim-fugitive'
@@ -63,6 +69,29 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+" Telescope config
+lua <<EOF
+local actions = require('telescope.actions')
+require'telescope'.setup {
+    defaults = {
+        prompt_prefix = " ",
+        selection_caret = "  ",
+        entry_prefix = " ",
+        sorting_strategy = "ascending",
+        mappings = {
+            i = {
+                ["<leader><cr>"] = actions.file_edit
+            }
+        }
+    },
+    pickers = {
+        live_grep = {
+            grep_open_files = true
+        }
+    }
+}
+EOF
+
 " vim-plug open window in horizontal split
 let g:plug_window='leftabove new'
 
@@ -98,6 +127,13 @@ nnoremap <C-s> :nohlsearch<CR>
 " Plugin mappings
 nnoremap <A-p> <Plug>MarkdownPreviewToggle
 nnoremap <A-g> :Goyo<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope git_files<cr>
+nnoremap <leader>fl <cmd>Telescope live_grep<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ft <cmd>Telescope treesitter<cr>
 
 " Turns on all mouse functionality
 set mouse=a
