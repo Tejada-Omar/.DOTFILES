@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Quality of Life
 Plug 'tpope/vim-fugitive'
@@ -48,6 +49,19 @@ require('lualine').setup {
 }
 EOF
 set noshowmode
+
+" Treesitter setup
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    -- Modules and its options go here
+    highlight = {
+        enable = true,
+        addtional_vim_regex_highlighting = false,
+    }, 
+    incremental_selection = {enable = true},
+    textobjects = {enable = true},
+}
+EOF
 
 " vim-plug open window in horizontal split
 let g:plug_window='leftabove new'
