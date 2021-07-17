@@ -13,7 +13,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export READER=zathura
 
 # Commands I forget
-alias ls='exa'
+alias ls='exa --icons'
+alias exa='exa --icons'
 alias vim='nvim'
 alias find='fd'
 
@@ -38,4 +39,4 @@ PS1='\W \$ '
 # Run neofetch if a display server is not running
 # [ -n "$DISPLAY" ] && neofetch
 
-# eval "$(starship init bash)"
+eval "$(starship init bash)"
