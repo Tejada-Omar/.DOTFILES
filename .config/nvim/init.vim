@@ -16,6 +16,7 @@ Plug 'nvim-telescope/telescope.nvim'
 " Quality of Life
 Plug 'tpope/vim-fugitive'
 Plug 'tmsvg/pear-tree'
+Plug 'b3nj5m1n/kommentary', {'branch': 'main'}
 
 " Visual
 Plug 'junegunn/goyo.vim'
