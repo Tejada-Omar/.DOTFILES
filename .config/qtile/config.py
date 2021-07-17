@@ -62,6 +62,7 @@ keys = [
 
     # Toggle between different layouts as defined below
     Key([mod], "space", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod, "control"], "space", lazy.window.toggle_floating()),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
     # Qtile controls
@@ -107,6 +108,10 @@ layouts = [
         border_on_single = True
     ),
     layout.Max(**layout_theme),
+    layout.Zoomy(
+        **layout_theme,
+        columnwidth = 181
+    ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -117,7 +122,6 @@ layouts = [
     # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -220,7 +224,7 @@ mouse = [
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
@@ -242,4 +246,4 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
-wmname = "QTile"
+wmname = "qtile"
