@@ -31,6 +31,7 @@ alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|
 alias notetemplate='pandoc --toc --number-section'
 # Have filename end with .tar.gz preferably
 alias archive='tar -czvf'
+alias cdf='cd $(fzf | xargs dirname)'
 
 # PS1='[\u@\h \W]\$ '
 PS1='\W \$ '
