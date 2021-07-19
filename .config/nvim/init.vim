@@ -119,7 +119,7 @@ set number relativenumber
 " Enable spell-check
 autocmd FileType markdown,gitcommit setlocal spell
 " Enable dictionary auto-completion
-autocmd FileType mardown,gitcommit setlocal complete+=kspell
+autocmd FileType markdown,gitcommit setlocal complete+=kspell
 
 " Vanilla nvim mappings
 inoremap jk <Esc>
