@@ -32,6 +32,7 @@ alias notetemplate='pandoc --toc --number-section'
 # Have filename end with .tar.gz preferably
 alias archive='tar -czvf'
 alias cdf='cd $(fzf | xargs dirname)'
+alias reflectorupdate='reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
 # PS1='[\u@\h \W]\$ '
 PS1='\W \$ '
