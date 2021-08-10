@@ -64,6 +64,7 @@ keys = [
     Key([mod], "space", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "control"], "space", lazy.window.toggle_floating()),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "f", lazy.window.toggle_fullscreen()),
 
     # Qtile controls
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
@@ -71,9 +72,9 @@ keys = [
     Key([mod], "r", lazy.spawn("dmenu_run")),
 
     # Volume controls
-    Key([mod], "F1", lazy.spawn("amixer -q -c 1 set Master toggle")),
-    Key([mod], "F2", lazy.spawn("amixer -q -c 1 set Master 5%-")),
-    Key([mod], "F3", lazy.spawn("amixer -q -c 1 set Master 5%+")),
+    Key([mod], "F1", lazy.spawn("amixer -q set Master toggle")),
+    Key([mod], "F2", lazy.spawn("amixer -q set Master 5%-")),
+    Key([mod], "F3", lazy.spawn("amixer -q set Master 5%+")),
 
     # Backlight
     Key([mod], "F4", lazy.spawn("xbacklight -5")),
@@ -83,6 +84,9 @@ keys = [
     Key([mod], "F6", lazy.spawn("playerctl previous")),
     Key([mod], "F7", lazy.spawn("playerctl play-pause")),
     Key([mod], "F8", lazy.spawn("playerctl next")),
+
+    # Visual
+    Key([mod], "F9", lazy.spawn("picom-trans -ct")),
 
     # Run Shortcuts
     Key([mod, "shift"], "e", lazy.spawn("EditConfig.sh")),
@@ -107,10 +111,9 @@ layouts = [
         border_normal_stack = "#3b4252",
         border_on_single = True
     ),
-    layout.Max(**layout_theme),
     layout.Zoomy(
         **layout_theme,
-        columnwidth = 181
+        columnwidth = 190
     ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -118,10 +121,12 @@ layouts = [
     # layout.Matrix(),
     # layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
+    # layout.Max(),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
+    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -229,7 +234,6 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-main = None  # WARNING: this is deprecated and will be removed soon
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
