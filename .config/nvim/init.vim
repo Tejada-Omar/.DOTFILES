@@ -144,6 +144,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Sets textwidth to 90 in specified filetypes
 au BufReadPost,BufNewFile *.md,*.txt setlocal textwidth=90
