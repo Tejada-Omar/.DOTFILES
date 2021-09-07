@@ -72,24 +72,27 @@ keys = [
     Key([mod], "r", lazy.spawn("dmenu_run")),
 
     # Volume controls
-    Key([mod], "F1", lazy.spawn("amixer -q set Master toggle")),
-    Key([mod], "F2", lazy.spawn("amixer -q set Master 5%-")),
-    Key([mod], "F3", lazy.spawn("amixer -q set Master 5%+")),
+    Key([mod], "F10", lazy.spawn("amixer -q set Master toggle")),
+    Key([mod], "F11", lazy.spawn("amixer -q set Master 5%-")),
+    Key([mod], "F12", lazy.spawn("amixer -q set Master 5%+")),
 
     # Backlight
-    Key([mod], "F4", lazy.spawn("xbacklight -5")),
-    Key([mod], "F5", lazy.spawn("xbacklight +5")),
+    Key([mod], "F1", lazy.spawn("xbacklight -5")),
+    Key([mod], "F2", lazy.spawn("xbacklight +5")),
 
     # Player Manager
-    Key([mod], "F6", lazy.spawn("playerctl previous")),
-    Key([mod], "F7", lazy.spawn("playerctl play-pause")),
-    Key([mod], "F8", lazy.spawn("playerctl next")),
+    Key([mod], "F7", lazy.spawn("playerctl previous")),
+    Key([mod], "F8", lazy.spawn("playerctl play-pause")),
+    Key([mod], "F9", lazy.spawn("playerctl next")),
 
     # Visual
-    Key([mod], "F9", lazy.spawn("picom-trans -ct")),
+    Key([mod], "F3", lazy.spawn("picom-trans -ct")),
+    Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
+    Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
 
     # Run Shortcuts
     Key([mod, "shift"], "e", lazy.spawn("EditConfig.sh")),
+    Key([mod, "shift"], "q", lazy.spawn("Shutdown.sh")),
 ]
 
 group_names = ["WWW", "CODE", "SYS", "DOC", "CHAT", "MUS", "VID", "MISC"]
