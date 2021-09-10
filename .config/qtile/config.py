@@ -92,7 +92,6 @@ keys = [
 
     # Run Shortcuts
     Key([mod, "shift"], "e", lazy.spawn("EditConfig.sh")),
-    Key([mod, "shift"], "q", lazy.spawn("Shutdown.sh")),
 ]
 
 group_names = ["WWW", "CODE", "SYS", "DOC", "CHAT", "MUS", "VID", "MISC"]
