@@ -10,6 +10,8 @@ bash-completion
 bat
 binutils
 bison
+bluez
+bluez-utils
 calibre
 cmatrix
 code
@@ -28,17 +30,23 @@ freezer-bin
 fzf
 gcc
 geckodriver
+gimp
 git
 grub
 gst-libav
 gst-plugins-bad
 gst-plugins-ugly
+heroku-cli
 htop
 hwinfo
 hyperfine
 imagemagick
+intel-ucode
 iwd
+laptop-mode-tools
 libqalculate
+libva-intel-driver
+libva-utils
 lightdm
 lightdm-webkit2-greeter
 lightdm-webkit2-theme-glorious
@@ -56,6 +64,7 @@ mtools
 mupdf-tools
 neofetch
 neovim
+net-tools
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
@@ -76,6 +85,7 @@ pipewire-alsa
 pipewire-pulse
 pkgconf
 playerctl
+postman-bin
 powertop
 python-iwlib
 python-pip
@@ -86,6 +96,7 @@ ranger
 reflector
 rhythmbox
 ripgrep
+scrot
 shellcheck
 sof-firmware
 starship
@@ -93,6 +104,7 @@ sudo
 tealdeer
 texinfo
 texlive-core
+tmux
 ttf-dejavu
 ttf-fira-code
 ttf-jetbrains-mono
@@ -100,6 +112,7 @@ ttf-nerd-fonts-symbols
 ttf-roboto
 ueberzug
 upower
+usbutils
 vim-plug
 wget
 xclip
