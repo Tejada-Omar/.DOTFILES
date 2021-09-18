@@ -28,7 +28,7 @@ alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
-alias notetemplate='pandoc --toc --number-section'
+alias notetemplate='pandoc --toc --number-section -V geometry:margin=2cm -V fontsize=12pt'
 # Have filename end with .tar.gz preferably
 alias archive='tar -czvf'
 alias cdf='cd $(fzf | xargs dirname)'
