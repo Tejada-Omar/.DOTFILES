@@ -97,10 +97,9 @@ EOF
 let g:plug_window='leftabove new'
 
 " Vimwiki set markdown
-let g:vimwiki_list=[{'path': '~/vimwiki/',
-                    \ 'syntax': 'markdown',
-                    \ 'ext': '.md'}]
-let g:vimwiki_global_ext=0
+let g:vimwiki_list=[{'path': '~/Documents/notes', 'syntax': 'markdown', 'ext': '.md'},
+    \ {'path': '~/Documents/school/HIST-200', 'syntax': 'markdown', 'ext': 'md'}]
+" let g:vimwiki_global_ext=0
 " set autowrite
 " set autowriteall
 
