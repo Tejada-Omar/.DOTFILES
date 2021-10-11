@@ -113,22 +113,21 @@ layouts = [
         border_normal_stack = "#3b4252",
         border_on_single = True
     ),
-    layout.Zoomy(
-        **layout_theme,
-        columnwidth = 190
-    ),
+    # layout.Zoomy(
+    #     **layout_theme,
+    #     columnwidth = 190
+    # ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
-    # layout.Max(),
+    layout.Max(),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
