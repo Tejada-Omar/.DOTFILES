@@ -13,8 +13,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export READER=zathura
 
 # Commands I forget
-alias ls='exa --icons'
-alias exa='exa --icons'
+alias ls='exa --no-icons'
+alias exa='exa --no-icons'
 alias vim='nvim'
 alias find='fd'
 
@@ -31,7 +31,8 @@ alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|
 alias notetemplate='pandoc --toc --number-section -V geometry:margin=2cm -V fontsize=12pt'
 # Have filename end with .tar.gz preferably
 alias archive='tar -czvf'
-alias cdf='cd $(fzf | xargs dirname)'
+alias cdf='cd $(fd -H -t f . '/home/omar' | fzf | xargs dirname)'
+alias cdd='cd $(fd -H -t d . '/home/omar' | fzf)'
 alias reflectorupdate='reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
 # PS1='[\u@\h \W]\$ '
