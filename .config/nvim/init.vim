@@ -3,10 +3,18 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Overhauls
 Plug 'junegunn/vim-plug'
-Plug 'vimwiki/vimwiki'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
+
+" Autocomplete
+Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
+Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
+Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+
+" Writing
+Plug 'lervag/vimtex'
+Plug 'vimwiki/vimwiki'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -28,6 +36,97 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
+
+" Language server setup
+set completeopt=menu,menuone,noselect
+lua << EOF
+    local cmp = require'cmp'
+    cmp.setup({
+        mapping = {
+            ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.close(),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        },
+        sources = {
+            {name = 'nvim_lsp'},
+            {name = 'buffer'}
+        }
+    })
+
+    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = {
+            spacing = 1
+        },
+        signs = false,
+        underline = true
+    })
+
+    require('lspconfig').pyright.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').texlab.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').cssls.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').html.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').jsonls.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').sumneko_lua.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').bashls.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').tsserver.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+
+    local function goto_definition(split_cmd)
+        local util = vim.lsp.util
+        local log = require("vim.lsp.log") 
+        local api = vim.api
+
+        local handler = function(_, result, ctx)
+            if result == nil or vim.tbl_isempty(result) then 
+                local _ = log.info() and log.info(ctx.method, "No location found") 
+                return nil 
+            end
+
+        if split_cmd then 
+            vim.cmd(split_cmd) 
+        end
+
+        if vim.tbl_islist(result) then
+            util.jump_to_location(result[1])
+
+            if #result > 1 then 
+                util.set_qflist(util.locations_to_items(result))
+                api.nvim_command("copen") 
+                api.nvim_command("wincmd p") 
+            end 
+        else
+            util.jump_to_location(result) end end
+
+        return handler 
+    end
+
+    vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
+EOF
 
 " Required for colorizer
 " Enables true-color (does not check to see if valid option)
@@ -135,6 +234,16 @@ nnoremap <leader>fl <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>Telescope treesitter<cr>
 
+" LSP mappings
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.buf.goto_prev()<CR>
+nnoremap <silent> <C-p> <cmd>lua vim.lsp.buf.goto_next()<CR>
+
 " Turns on all mouse functionality
 set mouse=a
 
@@ -147,7 +256,7 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Sets textwidth to 90 in specified filetypes
-au BufReadPost,BufNewFile *.md,*.txt setlocal textwidth=90
+au BufReadPost,BufNewFile *.md,*.txt,*.tex setlocal textwidth=80
 
 " Enters Terminal-mode automatically on :terminal
 autocmd TermOpen * startinsert
@@ -164,11 +273,17 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 let g:goyo_width=90
-"
+
 " See ':help cterm-colors'
 let g:limelight_conceal_ctermfg='gray'
 " See ':help gui-colors'
 let g:limelight_conceal_guifg='#a1a1a1'
 
+highlight Pmenu guifg=#2e3440 guibg=#63b5ff
+
 " Limelight will not overrule hlsearch
 let g:limelight_priority=-1
+
+" vimtex settings
+let g:vimtex_view_method='zathura'
+let g:vimtex_view_use_temp_files=1
