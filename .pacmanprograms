@@ -7,6 +7,7 @@ autoconf
 automake
 base
 bash-completion
+bash-language-server
 bat
 binutils
 bison
@@ -53,6 +54,7 @@ lightdm-webkit2-theme-glorious
 linux
 linux-firmware
 linux-lts
+lua-language-server
 lxappearance-gtk3
 m4
 make
@@ -87,6 +89,7 @@ pkgconf
 playerctl
 postman-bin
 powertop
+pyright
 python-iwlib
 python-pip
 python-selenium
@@ -103,6 +106,7 @@ starship
 sudo
 tealdeer
 texinfo
+texlab
 texlive-core
 tmux
 ttf-dejavu
@@ -110,13 +114,19 @@ ttf-fira-code
 ttf-jetbrains-mono
 ttf-nerd-fonts-symbols
 ttf-roboto
+typescript
 ueberzug
+unzip
 upower
 usbutils
 vim-plug
+vscode-css-languageserver
+vscode-html-languageserver
+vscode-json-languageserver
 wget
 xclip
 xdg-user-dirs
+xdotool
 xorg-server
 xorg-xinit
 xorg-xinput
@@ -124,3 +134,4 @@ xorg-xwininfo
 youtube-dl
 zathura
 zathura-pdf-mupdf
+zip
