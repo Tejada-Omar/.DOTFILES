@@ -27,6 +27,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'b3nj5m1n/kommentary', {'branch': 'main'}
 
 " Visual
+Plug 'folke/tokyonight.nvim', {'branch': 'main'}
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -132,6 +133,12 @@ EOF
 " Enables true-color (does not check to see if valid option)
 set termguicolors
 
+" Tokyonight customization
+let g:tokyonight_style='night'
+let g:tokyonight_terminal_colors='false'
+let g:tokyonight_lualine_bold='true'
+colorscheme tokyonight
+
 " Sets up nvim-colorizer
 " Creates an autocmd for 'FileType *' to highlight every filetype
 lua require'colorizer'.setup()
@@ -140,7 +147,7 @@ lua << EOF
 require('lualine').setup {
     options = {
         icons_enabled = false,
-        theme = 'ayu_mirage'
+        theme = 'tokyonight'
     },
     sections = {
         lualine_a = {'mode'},
@@ -275,11 +282,9 @@ autocmd! User GoyoLeave Limelight!
 let g:goyo_width=90
 
 " See ':help cterm-colors'
-let g:limelight_conceal_ctermfg='gray'
+" let g:limelight_conceal_ctermfg='gray'
 " See ':help gui-colors'
-let g:limelight_conceal_guifg='#a1a1a1'
-
-highlight Pmenu guifg=#2e3440 guibg=#63b5ff
+" let g:limelight_conceal_guifg='#a1a1a1'
 
 " Limelight will not overrule hlsearch
 let g:limelight_priority=-1
