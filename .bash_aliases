@@ -2,6 +2,15 @@
 # Dotfiles management
 alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
 
+# Redirect to better commands
+alias ls='exa'
+
+# Command shortcuts
+alias pa='pacman'
+alias pac='sudo pacman'
+alias sy='systemctl'
+alias sys='sudo systemctl'
+
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
 alias notetemplate='pandoc --toc --number-section -V geometry:margin=2cm -V fontsize=12pt'
