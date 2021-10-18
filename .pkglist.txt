@@ -45,6 +45,7 @@ intel-ucode
 iwd
 laptop-mode-tools
 libqalculate
+libreoffice-fresh
 libva-intel-driver
 libva-utils
 lightdm
@@ -83,6 +84,7 @@ paru
 patch
 pavucontrol
 pcmanfm-gtk3
+perl-rename
 picom-git
 piper
 pipewire
