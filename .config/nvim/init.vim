@@ -255,15 +255,13 @@ nnoremap <silent> <C-p> <cmd>lua vim.lsp.buf.goto_next()<CR>
 set mouse=a
 
 set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 " Sets textwidth to 90 in specified filetypes
 au BufReadPost,BufNewFile *.md,*.txt,*.tex setlocal textwidth=80
+set cc=81
 
 " Enters Terminal-mode automatically on :terminal
 autocmd TermOpen * startinsert
