@@ -10,6 +10,8 @@ alias pa='pacman'
 alias pac='sudo pacman'
 alias sy='systemctl'
 alias sys='sudo systemctl'
+alias za='zathura --fork'
+alias fzh="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
