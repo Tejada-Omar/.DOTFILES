@@ -6,12 +6,13 @@ alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
 alias ls='exa'
 
 # Command shortcuts
-alias pa='pacman'
-alias pac='sudo pacman'
-alias sy='systemctl'
-alias sys='sudo systemctl'
-alias za='zathura --fork'
-alias fzh="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias n='nvim'
+alias p='pacman'
+alias pa='sudo pacman'
+alias s='systemctl'
+alias sy='sudo systemctl'
+alias z='zathura --fork'
+alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
@@ -20,3 +21,8 @@ alias archive='tar -czvf'
 alias cdf='cd $(fd -H -t f . '/home/omar' | fzf | xargs dirname)'
 alias cdd='cd $(fd -H -t d . '/home/omar' | fzf)'
 alias reflectorupdate='reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
+
+# Functions for positional arguments
+startnotes() {
+  head -n 5 "$1/notes.md" > ./notes.md
+}
