@@ -86,15 +86,18 @@ for i in groups:
     keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
     keys.append(Key([mod, "shift"], i.name, lazy.window.togroup(i.name)))
 
+palette = Colors()
+
 layout_theme = {"border_width": 2,
                 "margin": 10,
                 "border_focus": "#b2beb5",
-                # "border_normal": "#b2beb5"
+                "border_normal": palette.DARK
                 }
 
 layouts = [
     layout.Columns(
         **layout_theme,
+        border_focus_stack = palette.SECONDARY,
     ),
     # layout.Zoomy(
     #     **layout_theme,
@@ -112,7 +115,6 @@ layouts = [
     # layout.VerticalTile(),
 ]
 
-palette = Colors()
 widget_defaults = dict(
     font='Fira Code',
     fontsize=13,
@@ -187,13 +189,22 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirmreset'),  # gitk
-    Match(wm_class='makebranch'),  # gitk
-    Match(wm_class='maketag'),  # gitk
-    Match(wm_class='ssh-askpass'),  # ssh-askpass
-    Match(title='branchdialog'),  # gitk
-    Match(title='pinentry'),  # GPG key password entry
+    # *layout.Floating.default_float_rules,
+    # Match(wm_type='utility'),
+    Match(wm_type='notification'),
+    Match(wm_type='toolbar'),
+    Match(wm_type='splash'),
+    Match(wm_type='dialog'),
+    Match(wm_class='file_progress'),
+    Match(wm_class='confirm'),
+    Match(wm_class='dialog'),
+    Match(wm_class='download'),
+    Match(wm_class='error'),
+    Match(wm_class='notification'),
+    Match(wm_class='splash'),
+    Match(wm_class='toolbar'),
+    Match(func=lambda c: c.has_fixed_size()),
+    Match(func=lambda c: c.has_fixed_ratio())
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
