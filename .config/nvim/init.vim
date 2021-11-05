@@ -96,6 +96,10 @@ lua << EOF
         capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
         on_attach = on_attach
     }
+    require('lspconfig').java_language_server.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
 
     local function goto_definition(split_cmd)
         local util = vim.lsp.util
@@ -220,6 +224,12 @@ set number relativenumber
 "     autocmd BufEnter,FocusGained,InsertLeave    * set relativenumber
 "     autocmd BufLeave,FocusLost,InsertEnter      * set norelativenumber
 " augroup END
+
+" Allow folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+highlight Folded guibg=NONE guifg=#565f89
+set fillchars=fold:\ 
 
 " Enable spell-check
 autocmd FileType markdown,gitcommit setlocal spell
