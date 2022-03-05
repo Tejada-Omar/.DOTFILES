@@ -160,7 +160,7 @@ screens = [
                     padding = 0,
                 ),
                 widget.Clock(
-                    format='%a %I:%M %p',
+                    format='%m/%d %a %-I:%M %p',
                     padding = 10
                 )
             ],
