@@ -5,11 +5,16 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'glacambre/firenvim', { 'do': { -> firenvim#install(0) } }
 
 " Autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
 Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
 Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+
+" Snippets
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 " Writing
 Plug 'lervag/vimtex'
@@ -50,9 +55,15 @@ lua << EOF
             ['<C-e>'] = cmp.mapping.close(),
             ['<CR>'] = cmp.mapping.confirm({ select = true }),
         },
+        snippet = {
+          expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+          end
+        },
         sources = {
             {name = 'nvim_lsp'},
-            {name = 'buffer'}
+            {name = 'buffer'},
+            {name = 'vsnip'}
         }
     })
 
@@ -208,16 +219,13 @@ let g:plug_window='leftabove new'
 
 " Vimwiki set markdown
 let g:vimwiki_list=[{'path': '~/Documents/notes', 'syntax': 'markdown', 'ext': '.md'},
-    \ {'path': '~/Documents/school/HIST-200', 'syntax': 'markdown', 'ext': 'md'}]
+    \ {'path': '~/Documents/school/2022-WINTER/GEOG-254/', 'syntax': 'markdown', 'ext': 'md'}]
 " let g:vimwiki_global_ext=0
-" set autowrite
-" set autowriteall
 
-" This combined with next augroup has changes the numbering schemes
-" Turns on hybrid mode by itself
 set number relativenumber
 
-" Hybrid in normal mode, normal in insert mode
+" Hybrid in normal mode, normal in insert mode when combined with
+" relativenumber in previous line
 " Comment out to not break Goyo
 " augroup numbertoggle
 "     autocmd!
@@ -257,6 +265,7 @@ nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> ge <cmd>lua vim.diagnostic.open_float()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <C-n> <cmd>lua vim.lsp.buf.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.buf.goto_next()<CR>
@@ -264,10 +273,25 @@ nnoremap <silent> <C-p> <cmd>lua vim.lsp.buf.goto_next()<CR>
 " Turns on all mouse functionality
 set mouse=a
 
+" General settings
 set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+
+" Toggle vimwiki and markdown filetype
+let s:is_markdown=0
+function ToggleMarkdown()
+  if s:is_markdown
+    setlocal filetype=markdown
+  else
+    setlocal filetype=vimwiki
+  endif
+
+  let s:is_markdown = !s:is_markdown
+endfunction
+command! TM call ToggleMarkdown()
+nnoremap <silent> <leader>m :TM<CR>
 
 " Sets textwidth to 90 in specified filetypes
 au BufReadPost,BufNewFile *.md,*.txt,*.tex setlocal textwidth=80
@@ -282,6 +306,12 @@ tnoremap <leader><Esc> <C-\><C-n>
 " Puts netrw in tree mode by default
 let g:netrw_liststyle=3
 let g:netrw_banner=0
+let g:netrw_keepdir=0
+
+" netrw mappings
+nnoremap <leader>ee :Explore<CR>
+nnoremap <leader>eh :Hexplore<CR>
+nnoremap <leader>ev :Vexplore<CR>
 
 " Enables Goyo integration with Limelight
 autocmd! User GoyoEnter Limelight
@@ -289,14 +319,31 @@ autocmd! User GoyoLeave Limelight!
 
 let g:goyo_width=90
 
-" See ':help cterm-colors'
-" let g:limelight_conceal_ctermfg='gray'
-" See ':help gui-colors'
-" let g:limelight_conceal_guifg='#a1a1a1'
-
 " Limelight will not overrule hlsearch
 let g:limelight_priority=-1
 
 " vimtex settings
 let g:vimtex_view_method='zathura'
 let g:vimtex_view_use_temp_files=1
+
+" pear-tree settings
+augroup latex_pairs
+  autocmd!
+  autocmd FileType tex,markdown,vimwiki let b:pear_tree_pairs = {
+        \ '(': {'closer': ')'},
+        \ '[': {'closer': ']'},
+        \ '{': {'closer': '}'},
+        \ "'": {'closer': "'"},
+        \ '"': {'closer': '"'},
+        \ '$': {'closer': '$'},
+        \ }
+augroup END
+let g:pear_tree_smart_openers=1
+let g:pear_tree_smart_closers=1
+let g:pear_tree_smart_backspace=1
+
+" vsnip settings
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'   : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'   : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'   : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'   : '<S-Tab>'
