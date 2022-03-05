@@ -13,7 +13,6 @@ binutils
 bison
 bluez
 bluez-utils
-calibre
 cmatrix
 discord
 dosfstools
@@ -43,7 +42,9 @@ hyperfine
 imagemagick
 intel-ucode
 iwd
+jdk-openjdk
 laptop-mode-tools
+lib32-vulkan-intel
 libqalculate
 libreoffice-fresh
 libva-intel-driver
@@ -108,12 +109,15 @@ scrot
 shellcheck
 sof-firmware
 starship
+steam
 sudo
 tealdeer
 tela-icon-theme
 texinfo
 texlab
 texlive-core
+timeshift
+tk
 tmux
 ttf-dejavu
 ttf-fira-code
@@ -129,7 +133,9 @@ vim-plug
 vscode-css-languageserver
 vscode-html-languageserver
 vscode-json-languageserver
+vulkan-tools
 wget
+wqy-zenhei
 xclip
 xdg-user-dirs
 xdotool
