@@ -1,8 +1,8 @@
 # Terminal Emulator Settings
 window:
   padding:
-    x: 15
-    y: 15
+    x: 20
+    y: 20
   dynamic_title: true
   scrolling:
     history: 20
@@ -10,22 +10,22 @@ window:
 # Font
 font:
   normal:
-    family: JetBrains Mono
+    family: Fira Code
     style: Regular
 
   bold:
-    family: JetBrains Mono
+    family: Fira Code
     style: Bold
 
   italic:
-    family: JetBrains Mono
+    family: Fira Code
     style: Italic
 
   bold_italic:
-    family: JetBrains Mono
+    family: Fira Code
     style: Bold Italic
 
-  size: 9
+  size: 8.4
 
 # Bell
 bell:
@@ -37,31 +37,35 @@ bell:
 colors:
   # Default colors
   primary:
-    background: '#2e3440'
-    foreground: '#eceff4'
+    background: '#1a1b26'
+    foreground: '#c0caf5'
 
   # Normal colors
   normal:
-    black:    '#2c282e'
-    red:      '#e15555'
-    green:    '#34c12c'
-    yellow:   '#e38b4e'
-    blue:     '#63b5ff'
-    magenta:  '#d35dff'
-    cyan:     '#85ffe0'
-    white:    '#c5cbd5'
+    black:    '#15161E'
+    red:      '#f7768e'
+    green:    '#9ece6a'
+    yellow:   '#e0ad68'
+    blue:     '#7aa2f7'
+    magenta:  '#bb9af7'
+    cyan:     '#7dcfff'
+    white:    '#a9b1d6'
 
   # Bright colors
   bright:
-    black:    '#3C3741'
-    red:      '#E44646'
-    green:    '#20e04b'
-    yellow:   '#F7BE4E'
-    blue:     '#689bff'
-    magenta:  '#d000ff'
-    cyan:     '#85ffc8'
-    white:    '#d8dee8'
+    black:    '#414868'
+    red:      '#f7768e'
+    green:    '#9ece6a'
+    yellow:   '#e0ad68'
+    blue:     '#7aa2f7'
+    magenta:  '#bb9af7'
+    cyan:     '#7dcfff'
+    white:    '#c0caf5'
+
+  indexed_colors:
+    - { index: 16, color: '#ff9e64'}
+    - { index: 17, color: '#db4b4b'}
 
 # Apply Settings without relaunching
 live_config_reload: true
-background_opacity: 0.6
+window.opacity: 1.0

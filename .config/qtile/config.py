@@ -1,23 +1,13 @@
 from typing import List  # noqa: F401
-
 from libqtile import bar, layout, widget, extension
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from colors import Colors
 
 mod = "mod4"
 mod1 = "mod1"
 terminal = guess_terminal()
-
-colors = [["#2e3440", "#2e3440"],
-          ["#4c556a", "#4c556a"],
-          ["#85E3FF", "#85E3FF"],
-          ["#434c5e", "#434c5e"],
-          ["#3b4252", "#3b4252"],
-          ["#85E3FF", "#85E3FF"],
-          ["#6EB5FF", "#6EB5FF"],
-          ["#eceff4", "#eceff4"],
-          ["#d8dee9", "#d8dee9"]]
 
 keys = [
     # Switch between windows
@@ -69,7 +59,7 @@ keys = [
     # Qtile controls
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("dmenu_run")),
+    Key([mod], "r", lazy.spawn("dmenu_run -x 10 -y 10 -z 1900")),
 
     # Volume controls
     Key([mod], "F10", lazy.spawn("amixer -q set Master toggle")),
@@ -89,36 +79,31 @@ keys = [
     Key([mod], "F3", lazy.spawn("picom-trans -ct")),
     Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
     Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
-
-    # Run Shortcuts
-    Key([mod, "shift"], "e", lazy.spawn("EditConfig.sh")),
 ]
 
-group_names = ["WWW", "CODE", "SYS", "DOC", "CHAT", "MUS", "VID", "MISC"]
-groups = [Group(name) for name in group_names]
-for i, name in enumerate(group_names, 1):
-    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))
-    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
+groups = [Group(i) for i in '123456789']
+for i in groups:
+    keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
+    keys.append(Key([mod, "shift"], i.name, lazy.window.togroup(i.name)))
 
-layout_theme = {"border_width": 3,
-                "margin": 8,
-                "border_focus": "#85E3FF",
-                "border_normal": "#3b4252"
+palette = Colors()
+
+layout_theme = {"border_width": 2,
+                "margin": 10,
+                "border_focus": "#b2beb5",
+                "border_normal": palette.DARK
                 }
 
 layouts = [
     layout.Columns(
         **layout_theme,
-        border_focus_stack = "#e15555",
-        border_normal_stack = "#3b4252",
-        border_on_single = True
+        border_focus_stack = palette.SECONDARY,
     ),
-    layout.Zoomy(
-        **layout_theme,
-        columnwidth = 190
-    ),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
+    # layout.Zoomy(
+    #     **layout_theme,
+    #     columnwidth = 190
+    # ),
+    layout.Stack(**layout_theme, num_stacks=1),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(**layout_theme),
@@ -128,14 +113,14 @@ layouts = [
     # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
-    font='JetBrains Mono Bold',
+    font='Fira Code',
     fontsize=13,
-    padding=8,
-    background = colors[2]
+    padding=7,
+    foreground = palette.WHITE,
+    background = palette.DARK
 )
 extension_defaults = widget_defaults.copy()
 
@@ -143,84 +128,47 @@ screens = [
     Screen(
         top = bar.Bar(
             [
-                widget.Spacer(8, background = colors[0]),
                 widget.GroupBox(
-                    margin_y = 4,
+                    padding_x = 6,
                     margin_x = 0,
-                    padding_y = 5,
-                    padding_x = 12,
-                    borderwidth = 3,
-                    active = colors[2],
-                    inactive = colors[7],
-                    rounded = False,
-                    highlight_color = colors[3],
-                    highlight_method = "line",
-                    this_current_screen_border = colors[2],
-                    this_screen_border = colors[2],
-                    foreground = colors[2],
-                    background = colors[0]
+                    borderwidth = 0,
+                    active = palette.WHITE,
+                    inactive = palette.WHITE,
+                    rounded = True,
+                    highlight_color = palette.DARK,
+                    highlight_method = "block",
+                    this_current_screen_border = palette.SECONDARY,
+                    block_highlight_text_color = palette.WHITE,
+                    hide_unused = True
                 ),
-                widget.Sep(linewidth = 0, padding = 6, background = colors[0]),
-                widget.Sep(linewidth = 0, padding = 6, background = colors[4]),
-                widget.WindowName(background = colors[4], foreground = colors[2]),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#5e81ac", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.Spacer(),
+                widget.WindowName(
+                    format = '{name}',
+                    width = bar.CALCULATED
                 ),
-                widget.Sep(linewidth = 0, padding = 6, foreground = colors[2], background = colors[4]),
-                widget.Systray(padding = 6, foreground = colors[2], background = colors[4]),
-                widget.Spacer(8, background = colors[4]),
-                widget.Sep(linewidth = 0, padding = 12, foreground = colors[2], background = colors[0]),
-                widget.TextBox(
-                    text = "Wifi: ",
-                    padding = 0,
-                    foreground = colors[2],
-                    background = colors[0]
-                ),
-                widget.Wlan(
-                    update_interval = "5",
-                    format = "{essid} ",
-                    background = colors[0],
-                    padding = 0
-                ),
-                widget.Sep(linewidth = 0, padding = 6, background = colors[0]),
-                widget.TextBox(
-                    text = "Volume:",
-                    padding = 0,
-                    foreground = colors[2],
-                    background = colors[0],
+                widget.Spacer(),
+                widget.Systray(),
+                widget.Battery(
+                    format = '{char} {percent:2.0%}',
+                    low_percentage = 0.3,
+                    low_foreground = '#e15555',
+                    padding = 7
                 ),
                 widget.Volume(
                     cardid = 1,
-                    padding = 6,
-                    background = colors[0]
-                ),
-                widget.Sep(linewidth = 0, padding = 6, background = colors [0]),
-                widget.TextBox(
-                    text = "Battery:",
-                    foreground = colors[2],
+                    theme_path = '/usr/share/icons/Tela-dark/24/actions/',
                     padding = 0,
-                    background = colors[0]
                 ),
-                widget.Battery(
-                    format = "{char} {percent:2.0%}",
-                    low_percentage = 0.3,
-                    low_foreground = "e15555",
-                    background = colors[0]
-                ),
-                widget.Sep(linewidth = 0, padding = 6, foreground = colors[2], background = colors [0]),
-                widget.Sep(linewidth = 0, padding = 3, foreground = colors[2], background = colors [2]),
                 widget.Clock(
-                    format='%A %B %d %I:%M %p',
-                    foreground = colors[0],
-                    background = colors[2]
+                    format='%m/%d %a %-I:%M %p',
+                    padding = 10
                 )
             ],
-            24,
+            26,
+            margin = [10, 10, 0, 10],
+            opacity = 1
         ),
-        wallpaper = "~/Pictures/Wallpapers/Ponyo.jpg",
+        wallpaper = "~/Pictures/Wallpapers/rocky.jpg",
         wallpaper_mode = "fill",
     ),
 ]
@@ -241,13 +189,22 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirmreset'),  # gitk
-    Match(wm_class='makebranch'),  # gitk
-    Match(wm_class='maketag'),  # gitk
-    Match(wm_class='ssh-askpass'),  # ssh-askpass
-    Match(title='branchdialog'),  # gitk
-    Match(title='pinentry'),  # GPG key password entry
+    # *layout.Floating.default_float_rules,
+    # Match(wm_type='utility'),
+    Match(wm_type='notification'),
+    Match(wm_type='toolbar'),
+    Match(wm_type='splash'),
+    Match(wm_type='dialog'),
+    Match(wm_class='file_progress'),
+    Match(wm_class='confirm'),
+    Match(wm_class='dialog'),
+    Match(wm_class='download'),
+    Match(wm_class='error'),
+    Match(wm_class='notification'),
+    Match(wm_class='splash'),
+    Match(wm_class='toolbar'),
+    Match(func=lambda c: c.has_fixed_size()),
+    Match(func=lambda c: c.has_fixed_ratio())
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

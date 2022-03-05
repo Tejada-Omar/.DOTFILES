@@ -1,44 +1,23 @@
 #!/bin/bash
-
 export EDITOR=nvim
 export PAGER=bat
-export BAT_THEME="ansi"
-export RANGER_LOAD_DEFAULT_RC=FALSE
+export READER=zathura
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export AMD_VULKAN_ICD=RADV
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 # Use bat as a colorizing pager for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export READER=zathura
 
-# Commands I forget
-alias ls='exa --icons'
-alias exa='exa --icons'
-alias vim='nvim'
-alias find='fd'
+# Use fd as backend for fzf
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
 
-# Setting colours
-alias less='less --RAW-CONTROL-CHARS'
-alias grep='grep --color=auto'
-alias diff='diff --color=auto'
-alias pactree='pactree -c'
-
-alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
-
-# One-liner shortcuts
-alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
-alias notetemplate='pandoc --toc --number-section -V geometry:margin=2cm -V fontsize=12pt'
-# Have filename end with .tar.gz preferably
-alias archive='tar -czvf'
-alias cdf='cd $(fzf | xargs dirname)'
-alias reflectorupdate='reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
-
-# PS1='[\u@\h \W]\$ '
 PS1='\W \$ '
-# PS1='\[\e[00;34m\]λ \W \[\e[0m\]'
-
-# Run neofetch if a display server is not running
-# [ -n "$DISPLAY" ] && neofetch
+PROMPT_COMMAND='echo -ne "\033]0;$(history | tail -n1 | cut -c 8-)\007"'
 
 eval "$(starship init bash)"
+
+source ~/.bash_aliases
