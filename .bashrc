@@ -6,6 +6,7 @@ export READER=zathura
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export AMD_VULKAN_ICD=RADV
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # Use bat as a colorizing pager for man
