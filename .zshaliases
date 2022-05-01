@@ -22,7 +22,6 @@ alias archive='tar -czvf'
 alias cdf='cd $(fd -H -t f . '/home/omar' | fzf | xargs dirname)'
 alias cdd='cd $(fd -H -t d . '/home/omar' | fzf)'
 alias reflectorupdate='reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
-alias onew='alacritty --working-directory $(pwd) &'
 alias keychron='sudo systemctl start keychron'
 
 # Functions for positional arguments
