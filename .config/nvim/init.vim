@@ -158,6 +158,7 @@ colorscheme tokyonight
 " Creates an autocmd for 'FileType *' to highlight every filetype
 lua require'colorizer'.setup()
 
+" Options for lualine
 lua << EOF
 require('lualine').setup {
     options = {
