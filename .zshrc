@@ -7,10 +7,11 @@ bindkey -v
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored _approximate
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' menu select=2
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**'
+zstyle ':completion:*' menu select=5
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle :compinstall filename '/home/omar/.zshrc'
 
 autoload -Uz compinit
@@ -38,6 +39,10 @@ zle -N down-line-or-beginning-search
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+# Change window title based on last command
+change_window_title() {echo -ne "\033]0;$(history | tail -n1 | cut -c 8-)\007";}
+add-zsh-hook precmd change_window_title
 
 # Starship prompt
 eval "$(starship init zsh)"
