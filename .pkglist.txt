@@ -9,12 +9,14 @@ base
 bash-completion
 bash-language-server
 bat
+biber
 binutils
 bison
 bluez
 bluez-utils
 cmatrix
 discord
+discord-chat-exporter-cli
 dosfstools
 efibootmgr
 exa
@@ -27,6 +29,7 @@ flex
 freezer-bin
 fzf
 gcc
+gcc-fortran
 geckodriver
 gimp
 git
@@ -76,6 +79,7 @@ nvidia
 nvidia-lts
 nvidia-prime
 nvidia-settings
+obs-studio
 openssh
 os-prober
 otf-font-awesome
@@ -101,6 +105,7 @@ python-pip
 python-selenium
 qalculate-gtk
 qtile
+r
 ranger
 reflector
 rhythmbox
@@ -108,6 +113,7 @@ ripgrep
 scrot
 shellcheck
 sof-firmware
+spotify
 starship
 steam
 sudo
@@ -115,7 +121,18 @@ tealdeer
 tela-icon-theme
 texinfo
 texlab
+texlive-bibtexextra
 texlive-core
+texlive-fontsextra
+texlive-formatsextra
+texlive-games
+texlive-humanities
+texlive-latexextra
+texlive-music
+texlive-pictures
+texlive-pstricks
+texlive-publishers
+texlive-science
 timeshift
 tk
 tmux
@@ -129,6 +146,7 @@ ueberzug
 unzip
 upower
 usbutils
+vi
 vim-plug
 vscode-css-languageserver
 vscode-html-languageserver
@@ -147,3 +165,5 @@ youtube-dl
 zathura
 zathura-pdf-mupdf
 zip
+zsh
+zsh-completions
