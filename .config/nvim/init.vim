@@ -5,12 +5,12 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'glacambre/firenvim', { 'do': { -> firenvim#install(0) } }
 
 " Autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
 Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
 Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+Plug 'udalov/kotlin-vim'
 
 " Snippets
 Plug 'hrsh7th/vim-vsnip'
@@ -108,6 +108,10 @@ lua << EOF
         on_attach = on_attach
     }
     require('lspconfig').java_language_server.setup {
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = on_attach
+    }
+    require('lspconfig').kotlin_language_server.setup {
         capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
         on_attach = on_attach
     }
