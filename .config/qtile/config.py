@@ -1,5 +1,6 @@
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, extension
+from libqtile import hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -60,6 +61,7 @@ keys = [
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("dmenu_run -x 10 -y 10 -z 1900")),
+    Key([mod], "m", lazy.spawn(["sh", "-c", "xclip -sel clip -o | xargs -r mpv"])),
 
     # Volume controls
     Key([mod], "F10", lazy.spawn("amixer -q set Master toggle")),
@@ -80,6 +82,13 @@ keys = [
     Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
     Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
 ]
+
+@hook.subscribe.client_new
+def disable_floating(window):
+    rules = [ Match(wm_class="mpv") ]
+    if any(window.match(rule) for rule in rules):
+        window.togroup(qtile.current_group.name)
+        window.cmd_disable_floating()
 
 groups = [Group(i) for i in '123456789']
 for i in groups:
