@@ -14,5 +14,6 @@ export MOZ_DISABLE_RDD_SANDBOX=1
 # Use bat as a colorizing pager for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always'"
 
-# Use fd as backend for fzf
-export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
+# fzf settings
+export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
+export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize -r 40: --color=always {}'"
