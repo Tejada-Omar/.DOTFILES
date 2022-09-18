@@ -4,13 +4,16 @@ call plug#begin('~/.config/nvim/plugged')
 " Overhauls
 Plug 'junegunn/vim-plug'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'neovim/nvim-lspconfig'
-Plug 'glacambre/firenvim', { 'do': { -> firenvim#install(0) } }
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " Autocomplete
-Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
-Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
-Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'udalov/kotlin-vim'
 
 " Snippets
 Plug 'hrsh7th/vim-vsnip'
@@ -30,12 +33,14 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tmsvg/pear-tree'
 Plug 'b3nj5m1n/kommentary', {'branch': 'main'}
+Plug 'mcauley-penney/tidy.nvim'
 
 " Visual
 Plug 'folke/tokyonight.nvim', {'branch': 'main'}
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Statusbar
 Plug 'hoob3rt/lualine.nvim'
@@ -45,103 +50,112 @@ call plug#end()
 
 " Language server setup
 set completeopt=menu,menuone,noselect
+
 lua << EOF
-    local cmp = require'cmp'
-    cmp.setup({
-        mapping = {
-            ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.close(),
-            ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        },
-        snippet = {
-          expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-          end
-        },
-        sources = {
-            {name = 'nvim_lsp'},
-            {name = 'buffer'},
-            {name = 'vsnip'}
-        }
-    })
 
-    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = {
-            spacing = 1
-        },
-        signs = false,
-        underline = true
-    })
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]: sub(col, col):match("%s") == nil
+  end
 
-    require('lspconfig').pyright.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').texlab.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').cssls.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').html.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').jsonls.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').sumneko_lua.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').bashls.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').tsserver.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-    require('lspconfig').java_language_server.setup {
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
+  local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+  end
 
-    local function goto_definition(split_cmd)
-        local util = vim.lsp.util
-        local log = require("vim.lsp.log") 
-        local api = vim.api
-
-        local handler = function(_, result, ctx)
-            if result == nil or vim.tbl_isempty(result) then 
-                local _ = log.info() and log.info(ctx.method, "No location found") 
-                return nil 
-            end
-
-        if split_cmd then 
-            vim.cmd(split_cmd) 
-        end
-
-        if vim.tbl_islist(result) then
-            util.jump_to_location(result[1])
-
-            if #result > 1 then 
-                util.set_qflist(util.locations_to_items(result))
-                api.nvim_command("copen") 
-                api.nvim_command("wincmd p") 
-            end 
+  local cmp = require'cmp'
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif vim.fn["vsnip#available"](1) == 1 then
+          feedkey("<Plug>(vsnip-expand-or-jump", "")
+        elseif has_words_before() then
+          cmp.complete()
         else
-            util.jump_to_location(result) end end
+          fallback()
+        end
+      end, {"i", "s"}),
+      ["<S-Tab>"] = cmp.mapping(function()
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+          feedkey("<Plug>(vsnip-jump-prev)", "")
+        end
+      end, {"i", "s"}),
+    },
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end
+    },
+    sources = {
+      {name = 'nvim_lsp'},
+      {name = 'vsnip'}
+    }, {
+      {name = 'buffer'},
+    }
+  })
 
-        return handler 
-    end
+  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+      spacing = 1
+    },
+    signs = false,
+    underline = true
+  })
 
-    vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local language_servers = {"pyright", "texlab", "cssls", "html", "jsonls",
+                            "sumneko_lua", "bashls", "tsserver", 
+                            "java_language_server", "kotlin_language_server"}
+  for i, server in ipairs(language_servers) do
+    require('lspconfig')[server].setup {
+      capabilities = capabilities,
+      on_attach = on_attach
+    }
+  end
+
+  -- local function goto_definition(split_cmd)
+  --   local util = vim.lsp.util
+  --   local log = require("vim.lsp.log") 
+  --   local api = vim.api
+
+  --   local handler = function(_, result, ctx)
+  --     if result == nil or vim.tbl_isempty(result) then 
+  --       local _ = log.info() and log.info(ctx.method, "No location found") 
+  --       return nil 
+  --     end
+
+  --   if split_cmd then 
+  --     vim.cmd(split_cmd) 
+  --   end
+
+  --   if vim.tbl_islist(result) then
+  --     util.jump_to_location(result[1])
+
+  --     if #result > 1 then 
+  --       util.set_qflist(util.locations_to_items(result))
+  --       api.nvim_command("copen") 
+  --       api.nvim_command("wincmd p") 
+  --     end 
+  --   else
+  --     util.jump_to_location(result) end end
+
+  --   return handler 
+  -- end
+
+  -- vim.lsp.handlers["textDocument/definition"] = goto_definition('split')
 EOF
 
 " Required for colorizer
@@ -158,22 +172,24 @@ colorscheme tokyonight
 " Creates an autocmd for 'FileType *' to highlight every filetype
 lua require'colorizer'.setup()
 
+" Options for lualine
 lua << EOF
 require('lualine').setup {
-    options = {
-        icons_enabled = false,
-        theme = 'tokyonight'
-    },
-    sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'filename'},
-        lualine_c = {'branch'},
-        lualine_x = {'filetype', 'progress'},
-        lualine_y = {'diff'},
-        lualine_z = {'location'},
-    },
-    inactive_sections = {},
-    extensions = {'fugitive'}
+  options = {
+    icons_enabled = false,
+    globalstatus = true,
+    theme = 'tokyonight'
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'filename'},
+    lualine_c = {'branch'},
+    lualine_x = {'filetype', 'progress'},
+    lualine_y = {'diff'},
+    lualine_z = {'location'},
+  },
+  inactive_sections = {},
+  extensions = {'fugitive'}
 }
 EOF
 set noshowmode
@@ -181,13 +197,39 @@ set noshowmode
 " Treesitter setup
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    -- Modules and its options go here
-    highlight = {
-        enable = true,
-        addtional_vim_regex_highlighting = false,
-    }, 
-    incremental_selection = {enable = true},
-    textobjects = {enable = true},
+  -- Modules and its options go here
+  highlight = {
+    enable = true,
+    addtional_vim_regex_highlighting = false,
+  }, 
+  incremental_selection = {enable = true},
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.outer",
+      },
+      selection_modes = {
+        ['@parameter.outer'] = 'v',
+        ['@function.outer'] = 'V',
+        ['@class.outer'] = '<c-v>',
+      },
+      include_surrounding_whitespace = false,
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ['<leader>a'] = "@parameter.inner",
+      },
+      swap_previous = {
+        ['<leader>A'] = "@parameter.inner",
+      }
+    },
+  }
 }
 EOF
 
@@ -195,22 +237,22 @@ EOF
 lua <<EOF
 local actions = require('telescope.actions')
 require'telescope'.setup {
-    defaults = {
-        prompt_prefix = " ",
-        selection_caret = "  ",
-        entry_prefix = " ",
-        sorting_strategy = "ascending",
-        mappings = {
-            i = {
-                ["<leader><cr>"] = actions.file_edit
-            }
-        }
-    },
-    pickers = {
-        live_grep = {
-            grep_open_files = true
-        }
+  defaults = {
+    prompt_prefix = " ",
+    selection_caret = "  ",
+    entry_prefix = " ",
+    sorting_strategy = "ascending",
+    mappings = {
+      i = {
+        ["<leader><cr>"] = actions.file_edit
+      }
     }
+  },
+  pickers = {
+    live_grep = {
+      grep_open_files = true
+    }
+  }
 }
 EOF
 
@@ -219,8 +261,9 @@ let g:plug_window='leftabove new'
 
 " Vimwiki set markdown
 let g:vimwiki_list=[{'path': '~/Documents/notes', 'syntax': 'markdown', 'ext': '.md'},
-    \ {'path': '~/Documents/school/2022-WINTER/GEOG-254/', 'syntax': 'markdown', 'ext': 'md'}]
+  \ {'path': '~/Documents/school/2022-WINTER/GEOG-254/', 'syntax': 'markdown', 'ext': 'md'}]
 " let g:vimwiki_global_ext=0
+let g:vimwiki_folding="custom"
 
 set number relativenumber
 
@@ -293,7 +336,7 @@ endfunction
 command! TM call ToggleMarkdown()
 nnoremap <silent> <leader>m :TM<CR>
 
-" Sets textwidth to 90 in specified filetypes
+" Sets textwidth to 80 in specified filetypes
 au BufReadPost,BufNewFile *.md,*.txt,*.tex setlocal textwidth=80
 set cc=81
 
@@ -314,8 +357,19 @@ nnoremap <leader>eh :Hexplore<CR>
 nnoremap <leader>ev :Vexplore<CR>
 
 " Enables Goyo integration with Limelight
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+function! s:goyo_enter()
+  lua require('lualine').hide()
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  lua require('lualine').hide({unhide=true})
+  highlight Folded guibg=NONE guifg=#565f89
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 let g:goyo_width=90
 
@@ -343,7 +397,7 @@ let g:pear_tree_smart_closers=1
 let g:pear_tree_smart_backspace=1
 
 " vsnip settings
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'   : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'   : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'   : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'   : '<S-Tab>'
+imap <expr> <Tab>   vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'

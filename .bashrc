@@ -18,6 +18,6 @@ export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --co
 PS1='\W \$ '
 PROMPT_COMMAND='echo -ne "\033]0;$(history | tail -n1 | cut -c 8-)\007"'
 
-eval "$(starship init bash)"
+echo "In Bash"
 
 source ~/.bash_aliases
