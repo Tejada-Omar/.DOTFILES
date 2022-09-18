@@ -1,7 +1,7 @@
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, extension
 from libqtile import hook, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, ScratchPad, Screen, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from colors import Colors
@@ -60,13 +60,14 @@ keys = [
     # Qtile controls
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("dmenu_run -x 10 -y 10 -z 1900")),
+    Key([mod], "r", lazy.spawn("dmenu_run -x 5 -y 5 -z 1910")),
+    Key([mod], "a", lazy.spawn("/home/omar/Scripts/dmenu/wiki-search")),
     Key([mod], "m", lazy.spawn(["sh", "-c", "xclip -sel clip -o | xargs -r mpv"])),
 
     # Volume controls
     Key([mod], "F10", lazy.spawn("amixer -q set Master toggle")),
-    Key([mod], "F11", lazy.spawn("amixer -q set Master 5%-")),
-    Key([mod], "F12", lazy.spawn("amixer -q set Master 5%+")),
+    Key([mod], "F11", lazy.spawn("amixer -q set Master 1%-")),
+    Key([mod], "F12", lazy.spawn("amixer -q set Master 1%+")),
 
     # Backlight
     Key([mod], "F1", lazy.spawn("xbacklight -5")),
@@ -81,6 +82,9 @@ keys = [
     Key([mod], "F3", lazy.spawn("picom-trans -ct")),
     Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
     Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
+    
+    # Toggle scratchpads
+    Key([mod, mod1], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
 ]
 
 @hook.subscribe.client_new
@@ -95,10 +99,20 @@ for i in groups:
     keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
     keys.append(Key([mod, "shift"], i.name, lazy.window.togroup(i.name)))
 
+scratchpad_theme = {"width": 0.5,
+        "height": 0.65,
+        "x": 0.26,
+        "y": 0.15,
+        "opacity": 1
+        }
+groups.append(ScratchPad("scratchpad", [
+    DropDown("term", "alacritty", **scratchpad_theme),
+], single=True))
+
 palette = Colors()
 
 layout_theme = {"border_width": 2,
-                "margin": 10,
+                "margin": 5,
                 "border_focus": "#b2beb5",
                 "border_normal": palette.DARK
                 }
@@ -150,6 +164,22 @@ screens = [
                     block_highlight_text_color = palette.WHITE,
                     hide_unused = True
                 ),
+                widget.Sep(
+                    size_percent = 60,
+                    foreground = '#a1a1a1',
+                    padding = 3,
+                ),
+                widget.TaskList(
+                    parse_text = lambda x: "",
+                    borderwidth = 0,
+                    title_width_method = 'uniform',
+                    max_title_width = 25,
+                    icon_size = 16,
+                    margin_x = 1,
+                    margin_y = 2,
+                    padding_x = 7.3,
+                    padding_y = 5
+                ),
                 widget.Spacer(),
                 widget.WindowName(
                     format = '{name}',
@@ -165,7 +195,7 @@ screens = [
                 ),
                 widget.Volume(
                     cardid = 1,
-                    theme_path = '/usr/share/icons/Tela-dark/24/actions/',
+                    theme_path = '/usr/share/icons/Tela-dark/22@2x/panel/',
                     padding = 0,
                 ),
                 widget.Clock(
@@ -174,7 +204,7 @@ screens = [
                 )
             ],
             26,
-            margin = [10, 10, 0, 10],
+            margin = [5, 5, 0, 5],
             opacity = 1
         ),
         wallpaper = "~/Pictures/Wallpapers/rocky.jpg",
@@ -218,4 +248,4 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
-wmname = "qtile"
+wmname = "LG3D" # For Java
