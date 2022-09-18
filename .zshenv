@@ -1,5 +1,6 @@
 #!/bin/zsh
 # Preferences
+export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=bat
 export READER=zathura

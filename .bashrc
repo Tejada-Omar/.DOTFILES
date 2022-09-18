@@ -19,6 +19,5 @@ PS1='\W \$ '
 PROMPT_COMMAND='echo -ne "\033]0;$(history | tail -n1 | cut -c 8-)\007"'
 
 echo "In Bash"
-eval "$(starship init bash)"
 
 source ~/.bash_aliases
