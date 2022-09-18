@@ -14,17 +14,50 @@ alias open='xdg-open'
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
-alias cdf='cd $(fd -H -t f . '/home/omar' | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" | xargs dirname)'
-alias cdfa='cd $(fd -H -t f . '/home/omar' '/etc' '/usr' | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" | xargs dirname)'
-alias cdd='cd $(fd -H -t d . '/home/omar' | fzf --preview "exa -lF --no-permissions {}")'
-alias cdda='cd $(fd -H -t d . '/home/omar' '/etc' '/usr' | fzf --preview "exa -lF --no-permissions {}")'
+alias cdf='cd $(fd -H -t f . '/home/omar' | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin | xargs dirname)'
+alias cdfa='cd $(fd -H -t f . '/home/omar' '/etc' | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin | xargs dirname)'
+alias cdd='cd $(fd -H -t d . '/home/omar' | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin)'
+alias cdda='cd $(fd -H -t d . '/home/omar' '/etc' | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin)'
 alias reflectorupdate='reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 alias keychron='sudo systemctl start keychron'
 alias clipqrcode='xclip -sel clip -o | qrencode -t ansiutf8'
 alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
+# alias get-ip="ip address show | rg inet6 | head -n2 | tail -n1 | sed 's/^ *//g' | cut -d' ' -f2"
+alias get-ip="ip address show | rg inet6 | rg global | rg --pcre2 -o '(?<= )[0-9].*[0-9](?= )'"
 
 # Functions for positional arguments
 wcnopythondocs() {
   sed 's/^[ \t]*//g' "$1" | rg -v '^#' | wc -l
+}
+
+countdown() {
+  start="$(( $(date '+%s') + $1 ))"
+  while [ $start -ge $(date +%s) ]; do
+    time="$(( $start - $(date +%s )))"
+    printf '%s\033[K\r' "$(date -u -d "@$time" +%H:%M:%S)"
+    sleep 0.5
+  done
+  notify-send --app-name="Countdown" "Finished. ($(date -d@$1 -u +%H:%M:%S))"
+
+  stopwatch
+}
+
+stopwatch() {
+  if [ -t 0 ]; then
+    SAVED_STTY="$(stty --save)"
+    stty -echo -icanon -icrnl time 0 min 0 # -icrnl to properly catch Return key
+  fi
+
+  keypress=""
+  start=$(date +%s)
+  while [ -z "$keypress" ]; do
+    time="$(( $(date +%s) - $start ))"
+    printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+    keypress="$(cat -v)" # Use cat instead of read to catch spacebar
+    sleep 0.1
+  done
+
+  if [ -t 0 ]; then stty "$SAVED_STTY"; fi
+  notify-send --app-name="Stopwatch" "Finished. ($(date -d@$time -u +%H:%M:%S))"
 }
