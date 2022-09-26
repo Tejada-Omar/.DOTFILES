@@ -58,7 +58,8 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen()),
 
     # Qtile controls
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
+    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload config"),
+    Key([mod, mod1, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("dmenu_run -x 5 -y 5 -z 1910")),
     Key([mod], "a", lazy.spawn("/home/omar/Scripts/dmenu/wiki-search")),
@@ -246,6 +247,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(func=lambda c: c.has_fixed_ratio())
 ])
 auto_fullscreen = True
+auto_minimize = True
+reconfigure_screens = True
 focus_on_window_activation = "smart"
 
 wmname = "LG3D" # For Java
