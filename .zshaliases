@@ -25,39 +25,3 @@ alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=revers
 alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
 # alias get-ip="ip address show | rg inet6 | head -n2 | tail -n1 | sed 's/^ *//g' | cut -d' ' -f2"
 alias get-ip="ip address show | rg inet6 | rg global | rg --pcre2 -o '(?<= )[0-9].*[0-9](?= )'"
-
-# Functions for positional arguments
-wcnopythondocs() {
-  sed 's/^[ \t]*//g' "$1" | rg -v '^#' | wc -l
-}
-
-countdown() {
-  start="$(( $(date '+%s') + $1 ))"
-  while [ $start -ge $(date +%s) ]; do
-    time="$(( $start - $(date +%s )))"
-    printf '%s\033[K\r' "$(date -u -d "@$time" +%H:%M:%S)"
-    sleep 0.5
-  done
-  notify-send --app-name="Countdown" "Finished. ($(date -d@$1 -u +%H:%M:%S))"
-
-  stopwatch
-}
-
-stopwatch() {
-  if [ -t 0 ]; then
-    SAVED_STTY="$(stty --save)"
-    stty -echo -icanon -icrnl time 0 min 0 # -icrnl to properly catch Return key
-  fi
-
-  keypress=""
-  start=$(date +%s)
-  while [ -z "$keypress" ]; do
-    time="$(( $(date +%s) - $start ))"
-    printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
-    keypress="$(cat -v)" # Use cat instead of read to catch spacebar
-    sleep 0.1
-  done
-
-  if [ -t 0 ]; then stty "$SAVED_STTY"; fi
-  notify-send --app-name="Stopwatch" "Finished. ($(date -d@$time -u +%H:%M:%S))"
-}

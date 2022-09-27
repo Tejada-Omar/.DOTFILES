@@ -55,5 +55,6 @@ add-zsh-hook precmd change_window_title
 eval "$(starship init zsh)"
 
 source ~/.zshaliases
+source ~/.zshfunctions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
