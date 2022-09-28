@@ -33,3 +33,11 @@ stopwatch() {
   if [ -t 0 ]; then stty "$SAVED_STTY"; fi
   notify-send --app-name="Stopwatch" "Finished. ($(date -d@$time -u +%H:%M:%S))"
 }
+
+spot() {
+  if ! systemctl --user -q is-active spotifyd; then
+    spotifyd && spt
+  else
+    spt
+  fi
+}
