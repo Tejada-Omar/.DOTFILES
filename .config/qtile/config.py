@@ -208,7 +208,7 @@ screens = [
             margin = [5, 5, 0, 5],
             opacity = 1
         ),
-        wallpaper = "~/Pictures/Wallpapers/rocky.jpg",
+        wallpaper = "~/Pictures/Wallpapers/japanese-city-wispy.jpg",
         wallpaper_mode = "fill",
     ),
 ]
