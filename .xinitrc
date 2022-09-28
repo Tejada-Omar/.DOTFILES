@@ -33,5 +33,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xmodmap -e "keycode 115 = Super_L" -e "add mod4 = Super_L"
-picom --experimental-backends &
-exec qtile
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+xbanish -i all &
+picom &
+exec qtile start

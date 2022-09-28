@@ -8,7 +8,6 @@ android-studio
 arch-wiki-docs
 autoconf
 automake
-azure-cli
 base
 bash-completion
 bash-language-server
@@ -35,7 +34,6 @@ firefox
 firewalld
 flatpak
 flex
-freerdp
 fzf
 gamemode
 gcc
@@ -73,7 +71,7 @@ libva-intel-driver
 libva-utils
 libvirt
 lightdm
-lightdm-webkit2-theme-glorious
+lightdm-mini-greeter
 linux
 linux-firmware
 linux-lts
@@ -201,14 +199,15 @@ vulkan-tools
 wget
 wireplumber-docs
 wqy-zenhei
+xbanish
 xclip
 xdg-user-dirs
 xdotool
 xorg-server
+xorg-server-xephyr
 xorg-xinit
 xorg-xinput
 xorg-xwininfo
-xrdp
 yt-dlp
 zathura
 zip
