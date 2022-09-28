@@ -23,5 +23,5 @@ alias keychron='sudo systemctl start keychron'
 alias clipqrcode='xclip -sel clip -o | qrencode -t ansiutf8'
 alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
-# alias get-ip="ip address show | rg inet6 | head -n2 | tail -n1 | sed 's/^ *//g' | cut -d' ' -f2"
-alias get-ip="ip address show | rg inet6 | rg global | rg --pcre2 -o '(?<= )[0-9].*[0-9](?= )'"
+alias update-ip="curl ident.me > ~/Documents/notes/ssh/laptop.txt"
+alias update-ssh='sed -i "/phone$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/phone.txt)/;}" ~/.ssh/config'
