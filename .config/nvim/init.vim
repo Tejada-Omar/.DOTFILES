@@ -166,11 +166,17 @@ set termguicolors
 let g:tokyonight_style='night'
 let g:tokyonight_terminal_colors='false'
 let g:tokyonight_lualine_bold='true'
-colorscheme tokyonight
+colorscheme tokyonight-night
 
 " Sets up nvim-colorizer
 " Creates an autocmd for 'FileType *' to highlight every filetype
-lua require'colorizer'.setup()
+lua << EOF
+require'colorizer'.setup {
+  '*';
+  '!markdown';
+  '!vimwiki';
+}
+EOF
 
 " Options for lualine
 lua << EOF
@@ -261,6 +267,7 @@ let g:plug_window='leftabove new'
 
 " Vimwiki set markdown
 let g:vimwiki_list=[{'path': '~/Documents/notes', 'syntax': 'markdown', 'ext': '.md'},
+  \ {'path': '~/Documents/school/2022-FALL/PHIL-279', 'syntax': 'markdown', 'ext': 'md'},
   \ {'path': '~/Documents/school/2022-WINTER/GEOG-254/', 'syntax': 'markdown', 'ext': 'md'}]
 " let g:vimwiki_global_ext=0
 let g:vimwiki_folding="custom"
@@ -382,7 +389,7 @@ let g:vimtex_view_use_temp_files=1
 
 " pear-tree settings
 augroup latex_pairs
-  autocmd!
+  " autocmd!
   autocmd FileType tex,markdown,vimwiki let b:pear_tree_pairs = {
         \ '(': {'closer': ')'},
         \ '[': {'closer': ']'},
@@ -390,6 +397,7 @@ augroup latex_pairs
         \ "'": {'closer': "'"},
         \ '"': {'closer': '"'},
         \ '$': {'closer': '$'},
+        \ '*': {'closer': '*'},
         \ }
 augroup END
 let g:pear_tree_smart_openers=1
