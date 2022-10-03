@@ -125,14 +125,14 @@ layouts = [
     ),
     # layout.Zoomy(
     #     **layout_theme,
-    #     columnwidth = 190
+    #     columnwidth = 250
     # ),
-    layout.Stack(**layout_theme, num_stacks=1),
+    # layout.Stack(**layout_theme, num_stacks=1),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
-    # layout.Max(),
+    layout.Max(**layout_theme),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
