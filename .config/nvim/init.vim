@@ -163,9 +163,16 @@ EOF
 set termguicolors
 
 " Tokyonight customization
-let g:tokyonight_style='night'
-let g:tokyonight_terminal_colors='false'
-let g:tokyonight_lualine_bold='true'
+" let g:tokyonight_style='night'
+" let g:tokyonight_terminal_colors='false'
+" let g:tokyonight_lualine_bold='true'
+lua << EOF
+require'tokyonight'.setup({
+  style = "night",
+  terminal_colors = false,
+  lualine_bold = true
+})
+EOF
 colorscheme tokyonight-night
 
 " Sets up nvim-colorizer
@@ -293,10 +300,13 @@ set fillchars=fold:\
 autocmd FileType markdown,gitcommit setlocal spell
 " Enable dictionary auto-completion
 autocmd FileType markdown,gitcommit setlocal complete+=kspell
+" As of neovim 0.8 spellcheck uses treesitter to only check comments
+" set spell
 
 " Vanilla nvim mappings
 inoremap jk <Esc>
-nnoremap <C-s> :nohlsearch<CR>
+" Nvim provides default mapping <C-l> for nohlsearch
+" nnoremap <C-s> :nohlsearch<CR>
 
 " Plugin mappings
 nnoremap <A-p> <Plug>MarkdownPreviewToggle
@@ -321,7 +331,8 @@ nnoremap <silent> <C-n> <cmd>lua vim.lsp.buf.goto_prev()<CR>
 nnoremap <silent> <C-p> <cmd>lua vim.lsp.buf.goto_next()<CR>
 
 " Turns on all mouse functionality
-set mouse=a
+" Enabled by default as of neovim 0.8 mouse=nvi
+" set mouse=a
 
 " General settings
 set expandtab
@@ -409,3 +420,5 @@ imap <expr> <Tab>   vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 smap <expr> <Tab>   vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>'
 imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+
+lua vim.o.cmdheight = 0
