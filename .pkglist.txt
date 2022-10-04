@@ -106,6 +106,7 @@ nvidia
 nvidia-lts
 nvidia-prime
 nvidia-settings
+nvim-packer-git
 obs-studio
 opencl-nvidia
 openssh
@@ -173,6 +174,7 @@ texlive-science
 timeshift
 tk
 tmux
+transmission-gtk
 trash-cli
 ttf-arphic-uming
 ttf-dejavu
