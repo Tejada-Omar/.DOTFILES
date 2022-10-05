@@ -1,0 +1,34 @@
+diff --git a/config.def.h b/config.def.h
+index 1942a0b..9d69179 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -5,21 +5,21 @@ static int topbar = 1;                      /* -b  option; if 0, dmenu appears a
+ static int fuzzy = 1;                      /* -F  option; if 0, dmenu doesn't use fuzzy matching     */
+ /* -fn option overrides fonts[0]; default X11 font or font set */
+ static const char *fonts[] = {
+-	"monospace:size=10"
++   "Fira Code:pixelsize=13"
+ };
+-static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
++static const char *prompt      = "run: ";      /* -p  option; prompt to the left of input field */
+ static const char *colors[SchemeLast][2] = {
+ 	/*     fg         bg       */
+-	[SchemeNorm] = { "#bbbbbb", "#222222" },
+-	[SchemeSel] = { "#eeeeee", "#005577" },
+-	[SchemeSelHighlight] = { "#ffc978", "#005577" },
+-	[SchemeNormHighlight] = { "#ffc978", "#222222" },
+-	[SchemeOut] = { "#000000", "#00ffff" },
++	[SchemeNorm] = { "#ffffff", "#1a1b26" },
++	[SchemeSel] = { "#ffffff", "#3d59a1" },
++	[SchemeSelHighlight] = { "#c0caf5", "#3d59a1" },
++	[SchemeNormHighlight] = { "#c0caf5", "#1a1b26" },
++	[SchemeOut] = { "#414868", "#c0caf5" },
+ };
+ /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
+ static unsigned int lines      = 0;
+ /* -h option; minimum height of a menu line */
+-static unsigned int lineheight = 0;
++static unsigned int lineheight = 26;
+ static unsigned int min_lineheight = 8;
+ 
+ /*
