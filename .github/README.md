@@ -2,7 +2,7 @@
 
 ![Setup Picture](https://i.imgur.com/x7O1Jwx.png)
 
-# Details
+## Details
 
 - WM: Qtile
 - Shell: zsh
