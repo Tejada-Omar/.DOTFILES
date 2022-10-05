@@ -91,7 +91,6 @@ mtools
 mupdf-tools
 neofetch
 neovim
-neovim-plug
 net-tools
 nodejs
 nodejs-material-design-icons
