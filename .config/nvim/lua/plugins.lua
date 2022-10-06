@@ -111,4 +111,9 @@ return require('packer').startup(function(use)
    event = 'BufWritePre',
    config = function() require('tidy').setup() end
   }
+
+  use {
+    'kylechui/nvim-surround',
+    config = function() require('nvim-surround').setup() end
+  }
 end)
