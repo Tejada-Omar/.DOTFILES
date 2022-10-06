@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = function() require('plugins.treesitter') end
+    config = function() require('omar.plugins.treesitter') end
     },
     {'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter'},
     {'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter'}
@@ -18,15 +18,15 @@ return require('packer').startup(function(use)
     {
       'neovim/nvim-lspconfig',
       event = 'BufRead',
-      config = function() require('plugins.lsp.servers') end,
+      config = function() require('omar.plugins.lsp.servers') end,
       requires = {'hrsh7th/cmp-nvim-lsp'}
     },
     {
       'hrsh7th/nvim-cmp',
-      config = function() require('plugins.lsp.nvim-cmp') end,
+      config = function() require('omar.plugins.lsp.nvim-cmp') end,
       requires = {
         'L3MON4D3/LuaSnip',
-        config = function() require('plugins.lsp.luasnip') end,
+        config = function() require('omar.plugins.lsp.luasnip') end,
         requires = {'rafamadriz/friendly-snippets'}
       }
     },
@@ -40,32 +40,32 @@ return require('packer').startup(function(use)
     'windwp/nvim-autopairs',
     event = 'InsertCharPre',
     after = 'nvim-cmp',
-    config = function() require('plugins.autopairs') end
+    config = function() require('omar.plugins.autopairs') end
   }
 
   use {
     'folke/tokyonight.nvim',
-    config = function() require('plugins.tokyonight') end
+    config = function() require('omar.plugins.tokyonight') end
   }
 
   use {
     'nvim-lualine/lualine.nvim',
     after = 'tokyonight.nvim',
     requires = {'kyazdani42/nvim-web-devicons'},
-    config = function() require('plugins.lualine') end
+    config = function() require('omar.plugins.lualine') end
   }
 
   use {
     'lervag/vimtex',
     ft = 'tex',
-    config = function() require('plugins.vimtex') end
+    config = function() require('omar.plugins.vimtex') end
   }
 
   use {
     {
       'nvim-telescope/telescope.nvim',
       event = 'BufWinEnter',
-      config = function() require('plugins.telescope') end,
+      config = function() require('omar.plugins.telescope') end,
       requires = {'nvim-lua/plenary.nvim'}
     },
     {
@@ -79,19 +79,19 @@ return require('packer').startup(function(use)
   use {
       'numToStr/Comment.nvim',
       event = 'BufWinEnter',
-      config = function() require('plugins.comment') end,
+      config = function() require('omar.plugins.comment') end,
       requires = 'JoosepAlviste/nvim-ts-context-commentstring'
   }
 
   use {
     'norcalli/nvim-colorizer.lua',
     event = 'BufWinEnter',
-    config = function() require('plugins.colorizer') end
+    config = function() require('omar.plugins.colorizer') end
   }
 
   use {
     'vimwiki/vimwiki',
-    config = function() require('plugins.vimwiki') end
+    config = function() require('omar.plugins.vimwiki') end
   }
 
   use {
@@ -103,7 +103,7 @@ return require('packer').startup(function(use)
     'iamcco/markdown-preview.nvim',
     ft = {'markdown', 'vimwiki'},
     run = function() vim.fn['mkdp#util#install']() end,
-    config = function() require('plugins.markdown-preview') end
+    config = function() require('omar.plugins.markdown-preview') end
   }
 
   use {
