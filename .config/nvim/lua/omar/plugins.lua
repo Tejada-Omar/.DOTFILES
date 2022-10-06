@@ -116,4 +116,9 @@ return require('packer').startup(function(use)
     'kylechui/nvim-surround',
     config = function() require('nvim-surround').setup() end
   }
+
+  use {
+    'folke/which-key.nvim',
+    config = function() require('omar.plugins.which-key') end
+  }
 end)
