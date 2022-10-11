@@ -17,4 +17,4 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always'"
 
 # fzf settings
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
-export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize -r 40: --color=always {}'"
+export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize -r 40: --color=always {}' --border=none"
