@@ -2,6 +2,7 @@ require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
+    disable = {'latex'} -- For vimtex
   },
   incremental_selection = {enable = true},
   textobjects = {
@@ -34,7 +35,7 @@ require('nvim-treesitter.configs').setup {
   context_commentstring = {
     enable = true,
     enable_autocmd = false
-  }
+  },
 }
 
 vim.o.foldmethod = 'expr'

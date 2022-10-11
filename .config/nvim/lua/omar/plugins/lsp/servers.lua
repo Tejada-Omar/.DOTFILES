@@ -40,7 +40,7 @@ local on_attach = function(client, bufnr)
     {desc = 'Format a buffer using attached LSP'})
 end
 
-vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
+-- vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
 
 vim.diagnostic.config({
   virtual_text = {spacing = 1},
@@ -69,7 +69,6 @@ local language_servers = {
   'jsonls',
   'bashls',
   'tsserver',
-  'java_language_server',
   'kotlin_language_server'
 }
 

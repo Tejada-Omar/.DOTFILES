@@ -16,10 +16,18 @@ return require('packer').startup(function(use)
 
   use {
     {
+      'williamboman/mason.nvim',
+      config = function() require('mason').setup() end
+    },
+    {
+      'williamboman/mason-lspconfig.nvim',
+      config = function() require('mason-lspconfig').setup() end
+    },
+    {
       'neovim/nvim-lspconfig',
       event = 'BufRead',
       config = function() require('omar.plugins.lsp.servers') end,
-      requires = {'hrsh7th/cmp-nvim-lsp'}
+      requires = {'hrsh7th/cmp-nvim-lsp'},
     },
     {
       'hrsh7th/nvim-cmp',
@@ -120,5 +128,11 @@ return require('packer').startup(function(use)
   use {
     'folke/which-key.nvim',
     config = function() require('omar.plugins.which-key') end
+  }
+
+  use {
+    'akinsho/toggleterm.nvim',
+    tag = '*',
+    config = function() require('omar.plugins.toggleterm') end
   }
 end)
