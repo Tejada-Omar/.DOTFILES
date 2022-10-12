@@ -1,4 +1,7 @@
 return require('packer').startup(function(use)
+  use 'nanotee/luv-vimdocs'
+  use 'milisims/nvim-luaref'
+
   use {
     'nvim-lua/popup.nvim',
     requires = {'nvim-lua/plenary.nvim'}
@@ -42,25 +45,25 @@ return require('packer').startup(function(use)
     {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
     {'hrsh7th/cmp-path', after = 'nvim-cmp'},
     {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
+    {
+      'windwp/nvim-autopairs',
+      event = 'InsertCharPre',
+      after = 'nvim-cmp',
+      config = function() require('omar.plugins.autopairs') end
+    }
   }
 
   use {
-    'windwp/nvim-autopairs',
-    event = 'InsertCharPre',
-    after = 'nvim-cmp',
-    config = function() require('omar.plugins.autopairs') end
-  }
-
-  use {
-    'folke/tokyonight.nvim',
-    config = function() require('omar.plugins.tokyonight') end
-  }
-
-  use {
-    'nvim-lualine/lualine.nvim',
-    after = 'tokyonight.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'},
-    config = function() require('omar.plugins.lualine') end
+    {
+      'folke/tokyonight.nvim',
+      config = function() require('omar.plugins.tokyonight') end
+    },
+    {
+      'nvim-lualine/lualine.nvim',
+      after = 'tokyonight.nvim',
+      requires = {'kyazdani42/nvim-web-devicons'},
+      config = function() require('omar.plugins.lualine') end
+    }
   }
 
   use {
@@ -134,5 +137,17 @@ return require('packer').startup(function(use)
     'akinsho/toggleterm.nvim',
     tag = '*',
     config = function() require('omar.plugins.toggleterm') end
+  }
+
+  use {
+    'j-hui/fidget.nvim',
+    event = 'BufWinEnter',
+    config = function() require('fidget').setup() end
+  }
+
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require('omar.plugins.trouble') end
   }
 end)
