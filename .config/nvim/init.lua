@@ -1,5 +1,10 @@
-require('omar/settings')
-require('omar/keymaps')
-require('omar/autocmd')
-require('omar/plugins')
-require("omar/global")
+local load = function (mod)
+  package.loaded[mod] = nil
+  return require(mod)
+end
+
+load('omar/settings')
+load('omar/keymaps')
+load('omar/autocmd')
+load('omar/plugins')
+load("omar/global")
