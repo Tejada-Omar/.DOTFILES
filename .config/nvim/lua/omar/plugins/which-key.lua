@@ -1,5 +1,9 @@
 require('which-key').setup {
-  spelling = {enabled = true},
+  plugins = {
+    spelling = {
+      enabled = true,
+    }
+  },
   window = {
     border = 'double',
   }
