@@ -47,6 +47,9 @@ zle -N down-line-or-beginning-search
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+
 # Change window title based on last command
 change_window_title() {echo -ne "\033]0;$(history | tail -n1 | cut -c 8-)\007";}
 add-zsh-hook precmd change_window_title
