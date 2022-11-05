@@ -1,5 +1,5 @@
-require('colorizer').setup {
-  '*';
-  '!markdown';
-  '!vimwiki';
-}
+require("colorizer").setup({
+  "*",
+  "!markdown",
+  "!vimwiki",
+})
