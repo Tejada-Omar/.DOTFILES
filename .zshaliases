@@ -4,6 +4,7 @@ alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
 
 # Command shortcuts
 alias ls='exa'
+alias la='ls -a'
 alias n='nvim'
 alias p='pacman'
 alias pa='sudo pacman'
@@ -11,6 +12,12 @@ alias s='systemctl'
 alias sy='sudo systemctl'
 alias z='zathura --fork'
 alias open='xdg-open'
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gl='git log'
+alias gd='git diff'
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
@@ -25,3 +32,6 @@ alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=revers
 alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
 alias update-ip="curl ident.me > ~/Documents/notes/ssh/laptop.txt"
 alias update-ssh='sed -i "/phone$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/phone.txt)/;}" ~/.ssh/config'
+alias temp='cd $(mktemp -d)'
+# Tex package manager
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
