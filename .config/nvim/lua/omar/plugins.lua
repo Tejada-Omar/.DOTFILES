@@ -95,7 +95,6 @@ return require("packer").startup(function(use)
 
   use({
     "lervag/vimtex",
-    ft = { "tex", "vimwiki", "markdown" },
     config = function()
       require("omar.plugins.vimtex")
     end,
