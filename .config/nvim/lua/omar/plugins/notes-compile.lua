@@ -1,1 +1,1 @@
-require("notes-compile").setup()
+require('notes-compile').setup()

@@ -1,9 +1,9 @@
-require("nvim-treesitter.configs").setup({
+require('nvim-treesitter.configs').setup {
   auto_install = true,
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
-    disable = { "latex" }, -- For vimtex
+    disable = { 'latex' }, -- For vimtex
   },
   incremental_selection = { enable = true },
   textobjects = {
@@ -11,25 +11,25 @@ require("nvim-treesitter.configs").setup({
       enable = true,
       lookahead = true,
       keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.outer",
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.outer',
       },
       selection_modes = {
-        ["@parameter.outer"] = "v",
-        ["@function.outer"] = "V",
-        ["@class.outer"] = "<c-v>",
+        ['@parameter.outer'] = 'v',
+        ['@function.outer'] = 'V',
+        ['@class.outer'] = '<c-v>',
       },
       include_surrounding_whitespace = false,
     },
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        ['<leader>a'] = '@parameter.inner',
       },
       swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
+        ['<leader>A'] = '@parameter.inner',
       },
     },
   },
@@ -37,7 +37,7 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     enable_autocmd = false,
   },
-})
+}
 
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'

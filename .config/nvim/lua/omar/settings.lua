@@ -5,7 +5,7 @@ vim.o.scrolloff = 4
 vim.o.list = true
 vim.o.conceallevel = 2
 
-vim.o.fillchars = "fold: "
+vim.o.fillchars = 'fold: '
 vim.o.foldenable = false
 
 vim.o.expandtab = true
@@ -14,14 +14,14 @@ vim.o.softtabstop = -1
 vim.o.shiftwidth = 2
 
 vim.o.textwidth = 80
-vim.o.cc = "81"
+vim.o.cc = '81'
 
 vim.o.splitright = true
 vim.o.splitbelow = true
 
-vim.o.jumpoptions = "view"
+vim.o.jumpoptions = 'view'
 
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
 
-vim.opt.grepprg = "rg -i --vimgrep $*"
+vim.opt.grepprg = 'rg -i --vimgrep $*'

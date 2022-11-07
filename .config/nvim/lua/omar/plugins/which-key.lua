@@ -1,10 +1,10 @@
-require("which-key").setup({
+require('which-key').setup {
   plugins = {
     spelling = {
       enabled = true,
     },
   },
   window = {
-    border = "double",
+    border = 'double',
   },
-})
+}

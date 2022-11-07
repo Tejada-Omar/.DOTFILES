@@ -1,7 +1,7 @@
-vim.g.vimtex_view_method = "zathura"
+vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_view_use_temp_files = 1
 
-vim.g["vimtex_syntax_conceal"] = {
+vim.g['vimtex_syntax_conceal'] = {
   accents = 1,
   ligatures = 1,
   cites = 1,
@@ -16,20 +16,20 @@ vim.g["vimtex_syntax_conceal"] = {
   styles = 1,
 }
 
-vim.g["vimtex_toc_config"] = {
+vim.g['vimtex_toc_config'] = {
   mode = 2,
   fold_enable = 1,
   show_help = 0,
-  split_pos = "leftabove",
+  split_pos = 'leftabove',
   split_width = 10,
 }
 
-vim.fn["vimtex#imaps#add_map"]({
-  lhs = "t",
+vim.fn['vimtex#imaps#add_map'] {
+  lhs = 't',
   rhs = "vimtex#imaps#style_math('text')",
   expr = 1,
-  leader = "#",
-})
+  leader = '#',
+}
 
 --  " Add custom mapping: #rX -> \mathrm{X}
 --  call vimtex#imaps#add_map({
