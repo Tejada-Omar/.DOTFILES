@@ -13,10 +13,10 @@ require('null-ls').setup {
     formatting.shfmt.with {
       extra_args = { '-i', 2, '-ci', '-sr' },
     },
-    formatting.latexindent,
+    -- formatting.latexindent,
     diagnostics.eslint_d,
     diagnostics.actionlint,
-    diagnostics.commitlint,
+    -- diagnostics.commitlint,
     -- diagnostics.shellcheck,
     -- diagnostics.luacheck.with({
     --   extra_args = { "--globals", "vim", "--std", "luajit" },

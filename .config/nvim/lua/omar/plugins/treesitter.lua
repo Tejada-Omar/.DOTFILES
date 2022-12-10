@@ -13,8 +13,16 @@ require('nvim-treesitter.configs').setup {
       keymaps = {
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
+        ['ic'] = '@class.inner',
         ['ac'] = '@class.outer',
-        ['ic'] = '@class.outer',
+        ['iC'] = '@call.inner',
+        ['aC'] = '@call.outer',
+        ['il'] = '@loop.inner',
+        ['al'] = '@loop.outer',
+        ['ii'] = '@conditional.inner',
+        ['ai'] = '@conditional.outer',
+        ['iP'] = '@parameter.inner',
+        ['aP'] = '@parameter.outer',
       },
       selection_modes = {
         ['@parameter.outer'] = 'v',

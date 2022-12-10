@@ -6,5 +6,6 @@ require('which-key').setup {
   },
   window = {
     border = 'double',
+    position = 'bottom',
   },
 }

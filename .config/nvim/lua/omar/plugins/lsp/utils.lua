@@ -1,7 +1,7 @@
 local M = {}
 
 local format_augroup =
-  vim.api.nvim_create_augroup('FORMATTING', { clear = true })
+vim.api.nvim_create_augroup('FORMATTING', { clear = true })
 
 M.format_on_save = function(client, bufnr)
   if client.supports_method('textDocument/formatting') then
@@ -87,15 +87,10 @@ M.mappings = function(bufnr)
     vim.lsp.buf.code_action,
     { desc = 'Select an available code action', buffer = bufnr }
   )
-  vim.keymap.set(
-    'n',
-    'gr',
-    vim.lsp.buf.references,
-    {
-      desc = 'List all references to symbol in quickfix window',
-      buffer = bufnr,
-    }
-  )
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, {
+    desc = 'List all references to symbol in quickfix window',
+    buffer = bufnr,
+  })
   vim.keymap.set(
     'n',
     '<Space>f',

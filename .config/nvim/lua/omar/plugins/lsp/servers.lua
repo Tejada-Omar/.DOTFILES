@@ -27,7 +27,7 @@ vim.keymap.set(
 
 local on_attach = function(client, bufnr) utils.mappings(bufnr) end
 
--- vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
+vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
 
 vim.diagnostic.config {
   virtual_text = { spacing = 1 },
@@ -68,6 +68,7 @@ local language_servers = {
   'tsserver',
   'kotlin_language_server',
   'vimls',
+  'lemminx',
 }
 
 for _, server in pairs(language_servers) do
