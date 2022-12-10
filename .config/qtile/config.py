@@ -6,6 +6,9 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from colors import Colors
 
+from libqtile.command.client import InteractiveCommandClient
+c = InteractiveCommandClient()
+
 mod = "mod4"
 mod1 = "mod1"
 terminal = guess_terminal()
@@ -19,6 +22,9 @@ keys = [
     Key([mod1], "Tab", lazy.layout.next(),
         desc="Move window focus to other window"),
     Key([mod1, "shift"], "Tab", lazy.layout.previous()),
+
+    Key([mod, 'shift'], 'space', lazy.next_screen()),
+    # Key([mod, 'shift'], 'p', lazy.prev_screen()),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -61,8 +67,8 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload config"),
     Key([mod, mod1, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("dmenu_run -x 5 -y 5 -z 1910")),
-    Key([mod], "a", lazy.spawn("/home/omar/Scripts/dmenu/wiki-search")),
+    # Key([mod], "r", lazy.spawn("dmenu_run -x 5 -y 5 -z 1910")),
+    Key([mod], "r", lazy.spawn("rofi -show drun")),
     Key([mod], "m", lazy.spawn(["sh", "-c", "xclip -sel clip -o | xargs -r mpv"])),
 
     # Volume controls
@@ -95,6 +101,12 @@ def disable_floating(window):
         window.togroup(qtile.current_group.name)
         window.cmd_disable_floating()
 
+@hook.subscribe.client_new
+def enable_floating(window):
+    name = window.window.get_name()
+    if (name == 'Sudoku Solver' or name == 'Error' or name == 'Message'):
+        window.floating = True
+
 groups = [Group(i) for i in '123456789']
 for i in groups:
     keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
@@ -106,9 +118,9 @@ scratchpad_theme = {"width": 0.5,
         "y": 0.15,
         "opacity": 1
         }
-groups.append(ScratchPad("scratchpad", [
-    DropDown("term", "alacritty", **scratchpad_theme),
-], single=True))
+# groups.append(ScratchPad("scratchpad", [
+#     DropDown("term", "alacritty", **scratchpad_theme),
+# ], single=True))
 
 palette = Colors()
 
@@ -188,6 +200,75 @@ screens = [
                 ),
                 widget.Spacer(),
                 widget.Systray(),
+                widget.CurrentScreen(
+                    active_color = '#9ece6a',
+                    inactive_color = '#e15555'
+                ),
+                widget.Battery(
+                    format = '{char} {percent:2.0%}',
+                    low_percentage = 0.3,
+                    low_foreground = '#e15555',
+                    padding = 7
+                ),
+                widget.Volume(
+                    cardid = 1,
+                    theme_path = '/usr/share/icons/Tela-dark/22@2x/panel/',
+                    padding = 0,
+                ),
+                widget.Clock(
+                    format='%m/%d %a %-I:%M %p',
+                    padding = 10
+                )
+            ],
+            26,
+            margin = [5, 5, 0, 5],
+            opacity = 1
+        ),
+        wallpaper = "~/Pictures/Wallpapers/japanese-city-wispy.jpg",
+        wallpaper_mode = "fill",
+    ),
+    Screen(
+        top = bar.Bar(
+            [
+                widget.GroupBox(
+                    padding_x = 6,
+                    margin_x = 0,
+                    borderwidth = 0,
+                    active = palette.WHITE,
+                    inactive = palette.WHITE,
+                    rounded = True,
+                    highlight_color = palette.DARK,
+                    highlight_method = "block",
+                    this_current_screen_border = palette.SECONDARY,
+                    block_highlight_text_color = palette.WHITE,
+                    hide_unused = True
+                ),
+                widget.Sep(
+                    size_percent = 60,
+                    foreground = '#a1a1a1',
+                    padding = 3,
+                ),
+                widget.TaskList(
+                    parse_text = lambda x: "",
+                    borderwidth = 0,
+                    title_width_method = 'uniform',
+                    max_title_width = 25,
+                    icon_size = 16,
+                    margin_x = 1,
+                    margin_y = 2,
+                    padding_x = 7.3,
+                    padding_y = 5
+                ),
+                widget.Spacer(),
+                widget.WindowName(
+                    format = '{name}',
+                    width = bar.CALCULATED
+                ),
+                widget.Spacer(),
+                widget.CurrentScreen(
+                    active_color = '#9ece6a',
+                    inactive_color = '#e15555'
+                ),
                 widget.Battery(
                     format = '{char} {percent:2.0%}',
                     low_percentage = 0.3,
@@ -225,8 +306,8 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
+bring_front_click = 'floating_only'
+cursor_warp = True
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     # *layout.Floating.default_float_rules,
