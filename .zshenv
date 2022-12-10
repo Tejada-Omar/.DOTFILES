@@ -1,4 +1,7 @@
 #!/bin/zsh
+# Path
+export PATH="$PATH:$HOME/.local/bin"
+
 # Preferences
 export VISUAL=nvim
 export EDITOR=nvim
