@@ -4,7 +4,6 @@ from libqtile import hook, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, ScratchPad, Screen, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-from colors import Colors
 
 from libqtile.command.client import InteractiveCommandClient
 c = InteractiveCommandClient()
@@ -118,22 +117,29 @@ scratchpad_theme = {"width": 0.5,
         "y": 0.15,
         "opacity": 1
         }
-# groups.append(ScratchPad("scratchpad", [
-#     DropDown("term", "alacritty", **scratchpad_theme),
-# ], single=True))
+groups.append(ScratchPad("scratchpad", [
+    DropDown("term", "alacritty", **scratchpad_theme),
+], single=True))
 
-palette = Colors()
+palette = {
+        "BLACK": "#000000",
+        "DARK": "#1A1B26",
+        "WHITE": "#ffffff",
+        "PRIMARY": "#0074e4",
+        "SECONDARY": "#3D59A1"
+    }
 
-layout_theme = {"border_width": 2,
-                "margin": 5,
-                "border_focus": "#b2beb5",
-                "border_normal": palette.DARK
-                }
+layout_theme = {
+        "border_width": 2,
+        "margin": 5,
+        "border_focus": "#b2beb5",
+        "border_normal": palette["DARK"]
+    }
 
 layouts = [
     layout.Columns(
         **layout_theme,
-        border_focus_stack = palette.SECONDARY,
+        border_focus_stack = palette["SECONDARY"],
     ),
     # layout.Zoomy(
     #     **layout_theme,
@@ -155,8 +161,8 @@ widget_defaults = dict(
     font='Jetbrains Mono',
     fontsize=13,
     padding=7,
-    foreground = palette.WHITE,
-    background = palette.DARK
+    foreground = palette["WHITE"],
+    background = palette["DARK"]
 )
 extension_defaults = widget_defaults.copy()
 
@@ -168,13 +174,13 @@ screens = [
                     padding_x = 6,
                     margin_x = 0,
                     borderwidth = 0,
-                    active = palette.WHITE,
-                    inactive = palette.WHITE,
+                    active = palette["WHITE"],
+                    inactive = palette["WHITE"],
                     rounded = True,
-                    highlight_color = palette.DARK,
+                    highlight_color = palette["DARK"],
                     highlight_method = "block",
-                    this_current_screen_border = palette.SECONDARY,
-                    block_highlight_text_color = palette.WHITE,
+                    this_current_screen_border = palette["SECONDARY"],
+                    block_highlight_text_color = palette["WHITE"],
                     hide_unused = True
                 ),
                 widget.Sep(
@@ -234,13 +240,13 @@ screens = [
                     padding_x = 6,
                     margin_x = 0,
                     borderwidth = 0,
-                    active = palette.WHITE,
-                    inactive = palette.WHITE,
+                    active = palette["WHITE"],
+                    inactive = palette["WHITE"],
                     rounded = True,
-                    highlight_color = palette.DARK,
+                    highlight_color = palette["DARK"],
                     highlight_method = "block",
-                    this_current_screen_border = palette.SECONDARY,
-                    block_highlight_text_color = palette.WHITE,
+                    this_current_screen_border = palette["SECONDARY"],
+                    block_highlight_text_color = palette["WHITE"],
                     hide_unused = True
                 ),
                 widget.Sep(
