@@ -87,8 +87,8 @@ keys = [
 
     # Visual
     Key([mod], "F3", lazy.spawn("picom-trans -ct")),
-    Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
-    Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
+    Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
+    Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
 
     # Toggle scratchpads
     Key([mod, mod1], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
