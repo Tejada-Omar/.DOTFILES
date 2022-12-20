@@ -1,7 +1,7 @@
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, extension
 from libqtile import hook, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, ScratchPad, Screen, DropDown
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -88,9 +88,6 @@ keys = [
     Key([mod], "F3", lazy.spawn("picom-trans -ct")),
     Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
     Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
-
-    # Toggle scratchpads
-    Key([mod, mod1], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
 ]
 
 @hook.subscribe.client_new
@@ -110,16 +107,6 @@ groups = [Group(i) for i in '123456789']
 for i in groups:
     keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
     keys.append(Key([mod, "shift"], i.name, lazy.window.togroup(i.name)))
-
-scratchpad_theme = {"width": 0.5,
-        "height": 0.65,
-        "x": 0.26,
-        "y": 0.15,
-        "opacity": 1
-        }
-groups.append(ScratchPad("scratchpad", [
-    DropDown("term", "alacritty", **scratchpad_theme),
-], single=True))
 
 palette = {
         "BLACK": "#000000",
@@ -147,7 +134,7 @@ layouts = [
     # ),
     # layout.Stack(**layout_theme, num_stacks=1),
     # layout.Bsp(),
-    # layout.Matrix(),
+    # layout.Matrix(**layout_theme),
     # layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
     layout.Max(**layout_theme),
