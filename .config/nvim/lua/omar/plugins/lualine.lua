@@ -13,11 +13,11 @@ require('lualine').setup {
     lualine_x = {
       'filetype',
       'progress',
-      {
-        require('noice').api.statusline.mode.get,
-        cond = require('noice').api.statusline.mode.has,
-        color = { fg = '#ff9e64' },
-      },
+      -- {
+      --   require('noice').api.statusline.mode.get,
+      --   cond = require('noice').api.statusline.mode.has,
+      --   color = { fg = '#ff9e64' },
+      -- },
     },
     lualine_y = {
       'diff',

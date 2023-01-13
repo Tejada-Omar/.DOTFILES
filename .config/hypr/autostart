@@ -1,0 +1,14 @@
+#!/bin/sh
+export _JAVA_AWT_WM_NONREPARENTING=1
+export XCURSOR_SIZE=24
+
+config=$HOME/.config/hypr
+
+swww init && swww img "$HOME/Pictures/wallpapers/aesthetic-tokyo.jpg"
+
+dunst &
+waybar &
+import-gsettings &
+swayidle -w &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+# dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &

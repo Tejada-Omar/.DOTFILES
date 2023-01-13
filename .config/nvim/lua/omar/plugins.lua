@@ -1,9 +1,17 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data')
+      .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
+    fn.system {
+      'git',
+      'clone',
+      '--depth',
+      '1',
+      'https://github.com/wbthomason/packer.nvim',
+      install_path,
+    }
+    vim.cmd([[packadd packer.nvim]])
     return true
   end
   return false
@@ -24,13 +32,13 @@ return require('packer').startup(function(use)
     disable = true,
   }
 
-  use {
-    'folke/noice.nvim',
-    config = function() require('omar.plugins.noice') end,
-    requires = {
-      'MunifTanjim/nui.nvim',
-    },
-  }
+  -- use {
+  --   'folke/noice.nvim',
+  --   config = function() require('omar.plugins.noice') end,
+  --   requires = {
+  --     'MunifTanjim/nui.nvim',
+  --   },
+  -- }
 
   use {
     {
@@ -160,6 +168,19 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'nvim-neorg/neorg',
+    tag = '*',
+    run = ':Neorg sync-parsers',
+    -- ft = 'norg',
+    after = 'nvim-treesitter',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-neorg/neorg-telescope',
+    },
+    config = function() require('omar.plugins.neorg') end,
+  }
+
+  use {
     'iamcco/markdown-preview.nvim',
     ft = { 'markdown', 'vimwiki' },
     run = function() vim.fn['mkdp#util#install']() end,
@@ -251,14 +272,12 @@ return require('packer').startup(function(use)
 
   -- Local plugins
   use {
-    -- '~/Code/nvim-plugins/notes-compile',
-    'Tejada-Omar/notes-compile.nvim',
+    '~/Code/notes-compile.nvim',
+    -- 'Tejada-Omar/notes-compile.nvim',
     ft = { 'markdown', 'vimwiki' },
     requires = { 'nvim-lua/plenary.nvim' },
     config = function() require('notes-compile').setup() end,
   }
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+  if packer_bootstrap then require('packer').sync() end
 end)

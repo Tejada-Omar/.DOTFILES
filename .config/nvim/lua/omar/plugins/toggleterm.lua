@@ -30,6 +30,6 @@ vim.keymap.set(
 vim.keymap.set(
   'n',
   '<leader>tc',
-  '<cmd>ToggleTermToggleAll',
+  '<cmd>ToggleTermToggleAll<cr>',
   { desc = 'Toggle all terminals' }
 )
