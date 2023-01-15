@@ -1,0 +1,27 @@
+grace=10
+ignore-empty-password
+show-failed-attempts
+hide-keyboard-layout
+clock
+screenshots
+indicator-idle-visible
+font=Jetbrains Mono
+timestr=%T
+datestr=%x
+indicator-radius=250
+indicator-thickness=10
+ring-color=3d59a1
+ring-ver-color=1a2b32
+ring-wrong-color=2d202a
+ring-clear-color=2e2a2d
+key-hl-color=7aa2f7
+bs-hl-color=f7768e
+text-color=c0caf5
+text-caps-lock-color=c0caf5
+line-uses-inside
+separator-color=1a1b26
+inside-color=1a1b26
+inside-ver-color=e0ad68
+inside-wrong-color=db4b4b
+inside-clear-color=9ece6a
+effect-blur=9x7
