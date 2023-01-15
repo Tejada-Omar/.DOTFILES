@@ -169,7 +169,7 @@ return require('packer').startup(function(use)
 
   use {
     'nvim-neorg/neorg',
-    tag = '*',
+    -- tag = '*',
     run = ':Neorg sync-parsers',
     -- ft = 'norg',
     after = 'nvim-treesitter',

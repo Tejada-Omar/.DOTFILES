@@ -29,3 +29,31 @@ require('neorg').setup {
     ['core.integrations.telescope'] = {},
   },
 }
+
+vim.keymap.set(
+  'n',
+  '<leader>ns',
+  '<CMD>Telescope neorg insert_file_link<CR>',
+  { desc = 'Insert neorg file link' }
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>ns',
+  '<CMD>Telescope neorg find_linkable<CR>',
+  { desc = 'Find neorg linkable' }
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>nh',
+  '<CMD>Telescope neorg search_headings<CR>',
+  { desc = 'Search neorg headings' }
+)
+
+vim.keymap.set(
+  'n',
+  '<leader>nw',
+  '<CMD>Telescope neorg switch_workspace<CR>',
+  { desc = 'Switch neorg workspaces' }
+)
