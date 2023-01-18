@@ -14,6 +14,16 @@ vim.g['vimwiki_list'] = {
     syntax = 'markdown',
     ext = '.md',
   },
+  {
+    path = '~/Documents/school/2023-WINTER/CPSC-355',
+    syntax = 'markdown',
+    ext = '.md',
+  },
+  {
+    path = '~/Documents/school/2023-WINTER/PHIL-264',
+    syntax = 'markdown',
+    ext = '.md',
+  },
 }
 
 vim.g.vimwiki_folding = 'custom'

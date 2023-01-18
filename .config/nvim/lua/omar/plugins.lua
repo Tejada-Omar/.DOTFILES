@@ -236,6 +236,18 @@ return require('packer').startup(function(use)
     },
   }
 
+  use {
+    'nvim-neorg/neorg',
+    tag = '*',
+    -- run = ':Neorg sync-parsers',
+    after = 'nvim-treesitter',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-neorg/neorg-telescope',
+    },
+    config = function() require('omar.plugins.neorg') end,
+  }
+
   -- Local plugins
   use {
     '~/Code/nvim-plugins/notes-compile',
