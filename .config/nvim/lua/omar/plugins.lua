@@ -302,7 +302,7 @@ return require('packer').startup(function(use)
     -- 'Tejada-Omar/notes-compile.nvim',
     ft = { 'markdown', 'vimwiki' },
     requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('notes-compile').setup() end,
+    config = function() require('omar.plugins.notes-compile') end,
   }
 
   if packer_bootstrap then require('packer').sync() end

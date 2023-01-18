@@ -1,1 +1,3 @@
-require('notes-compile').setup()
+require('notes-compile').setup {
+  pandoc_integration = true,
+}
