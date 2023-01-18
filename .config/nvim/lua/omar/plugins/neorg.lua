@@ -36,6 +36,7 @@ require('neorg').setup {
   },
 }
 
+-- TODO: Use neorg builtins
 vim.keymap.set(
   'n',
   '<leader>ns',
