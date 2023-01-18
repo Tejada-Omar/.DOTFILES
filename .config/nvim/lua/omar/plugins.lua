@@ -241,6 +241,6 @@ return require('packer').startup(function(use)
     '~/Code/nvim-plugins/notes-compile',
     ft = { 'markdown', 'vimwiki' },
     requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('notes-compile').setup() end,
+    config = function() require('omar.plugins.notes-compile') end,
   }
 end)
