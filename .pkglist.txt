@@ -11,6 +11,7 @@ base
 base-devel
 bash-completion
 bat
+binutils
 biber
 bison
 bitwarden
@@ -145,6 +146,8 @@ radeontop
 ranger
 rbw
 reflector
+revanced-cli
+revanced-integrations
 ripgrep
 rustup
 sddm-git

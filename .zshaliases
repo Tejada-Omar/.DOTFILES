@@ -23,6 +23,7 @@ alias ta='tmux attach-session'
 alias tl='tmux list-sessions'
 alias tn='tmux new-session'
 alias tk='tmux kill-session'
+<<<<<<< HEAD
 alias u='sudo ufw'
 
 # One-liner shortcuts
