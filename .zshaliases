@@ -18,6 +18,11 @@ alias ga='git add'
 alias gc='git commit'
 alias gl='git log'
 alias gd='git diff'
+alias t='tmux'
+alias ta='tmux attach-session'
+alias tl='tmux list-sessions'
+alias tn='tmux new-session'
+alias tk='tmux kill-session'
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'

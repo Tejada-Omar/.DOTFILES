@@ -13,6 +13,7 @@ bash-completion
 bash-language-server
 bat
 binutils
+biber
 bison
 bitwarden
 bluez
@@ -91,7 +92,6 @@ mtools
 mupdf-tools
 neofetch
 neovim
-net-tools
 nodejs
 nodejs-material-design-icons
 nodejs-npm2arch
@@ -141,6 +141,8 @@ rbw
 rdesktop
 recode
 reflector
+revanced-cli
+revanced-integrations
 ripgrep
 scrot
 shellcheck
