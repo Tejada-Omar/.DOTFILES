@@ -21,7 +21,7 @@
     "on-click": "activate"
   },
   "clock": {
-    "format": "{:%R  %m/%d }",
+    "format": "{:%R   %m/%d  }",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
     "on-scroll": {
@@ -29,8 +29,8 @@
     }
   },
   "pulseaudio": {
-    "format": "<b>{volume}%</b> <big>{icon}</big>",
-    "format-muted": "<b>0%</b> <big></big>",
+    "format": "<b>{volume}% {icon}</b>",
+    "format-muted": "<b>0% </b>",
     // "format-bluetooth": "<b>{volume}% </b><big>{icon}</big> <big></big>",
     // "format-bluetooth": "<b>{volume}%</b> <big>{icon}</big>",
     // "format-bluetooth-muted": "<b>0%</b> <big></big>",
@@ -50,12 +50,12 @@
   },
   "network": {
     "format": "None",
-    "format-wifi": "",
-    "format-ethernet": "",
+    "format-wifi": " ",
+    "format-ethernet": " ",
     "format-disconnected": "Disconnected",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ifname} via {ipaddr}/{cidr} ",
+    "tooltip-format": "{ifname} via {gwaddr}  ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+    "tooltip-format-ethernet": "{ifname} via {ipaddr}/{cidr}  ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
   },
@@ -64,7 +64,7 @@
     //   "ATH-M50xBT",
     //   "Keychron K2"
     // ],
-    "format-connected": "<b>{num_connections} Connected</b> <big></big>",
+    "format-connected": "<b>{num_connections} Connected </b>",
     // "tooltip": false,
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
