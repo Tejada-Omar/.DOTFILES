@@ -42,7 +42,10 @@ lsp.sumneko_lua.setup {
     Lua = {
       runtime = { version = 'LuaJIT' },
       diagnostics = { globals = { 'vim' } },
-      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
       telemetry = { enable = false },
     },
   },
@@ -69,6 +72,7 @@ local language_servers = {
   'kotlin_language_server',
   'vimls',
   'lemminx',
+  'clangd',
 }
 
 for _, server in pairs(language_servers) do

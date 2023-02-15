@@ -27,6 +27,12 @@ require('neorg').setup {
     },
     ['core.integrations.nvim-cmp'] = {},
     ['core.integrations.telescope'] = {},
+    ['core.export'] = {},
+    ['core.export.markdown'] = {
+      config = {
+        extensions = 'all',
+      },
+    },
   },
 }
 

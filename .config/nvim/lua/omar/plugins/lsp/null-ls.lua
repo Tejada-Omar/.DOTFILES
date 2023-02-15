@@ -28,7 +28,7 @@ require('null-ls').setup {
     },
   },
   on_attach = function(client, bufnr)
-    utils.format_on_save(client, bufnr)
+    -- utils.format_on_save(client, bufnr)
     utils.mappings(bufnr)
   end,
 }

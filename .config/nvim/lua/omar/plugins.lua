@@ -32,13 +32,13 @@ return require('packer').startup(function(use)
     disable = true,
   }
 
-  -- use {
-  --   'folke/noice.nvim',
-  --   config = function() require('omar.plugins.noice') end,
-  --   requires = {
-  --     'MunifTanjim/nui.nvim',
-  --   },
-  -- }
+  use {
+    'folke/noice.nvim',
+    config = function() require('omar.plugins.noice') end,
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+  }
 
   use {
     {
@@ -137,7 +137,7 @@ return require('packer').startup(function(use)
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
-      after = 'telescope.nvim',
+      after = 'tele/scope.nvim',
       run = 'make',
       config = function() require('telescope').load_extension('fzf') end,
     },
@@ -239,8 +239,10 @@ return require('packer').startup(function(use)
 
   use {
     {
-      'jinh0/eyeliner.nvim',
+      '~/Code/eyeliner.nvim',
+      -- 'jinh0/eyeliner.nvim',
       config = function() require('omar.plugins.eyeliner') end,
+      disable = true
     },
     {
       'lukas-reineke/indent-blankline.nvim',
@@ -268,6 +270,18 @@ return require('packer').startup(function(use)
       requires = { 'nvim-lua/plenary.nvim' },
       config = function() require('omar.plugins.silicon') end,
     },
+  }
+
+  use {
+    'andweeb/presence.nvim',
+    config = function() require('presence').setup() end,
+  }
+
+  use {
+    {
+      'mfussenegger/nvim-dap',
+      run = ':helptags ALL'
+    }
   }
 
   -- Local plugins

@@ -12,10 +12,10 @@ local lazygit = Terminal:new {
     border = 'double',
   },
   on_open = function(term)
-    vim.cmd('startinsert')
+    -- vim.cmd('startinsert')
     vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = term.bufnr })
   end,
-  on_close = function(term) vim.cmd('startinsert') end,
+  -- on_close = function(term) vim.cmd('startinsert') end,
 }
 
 function _lazygit_toggle() lazygit:toggle() end
