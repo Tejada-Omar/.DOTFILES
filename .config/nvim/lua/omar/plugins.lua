@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
       after = 'nvim-treesitter',
     },
     { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' },
+    { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
   }
 
   use {
