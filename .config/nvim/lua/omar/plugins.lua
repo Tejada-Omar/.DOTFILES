@@ -84,9 +84,9 @@ return require('packer').startup(function(use)
       },
     },
     { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-path', after = 'nvim-cmp', disable = true },
-    { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path',         after = 'nvim-cmp', disable = true },
+    { 'hrsh7th/cmp-cmdline',      after = 'nvim-cmp' },
     {
       'windwp/nvim-autopairs',
       -- event = 'InsertCharPre',
@@ -137,7 +137,7 @@ return require('packer').startup(function(use)
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
-      after = 'tele/scope.nvim',
+      after = 'telescope.nvim',
       run = 'make',
       config = function() require('telescope').load_extension('fzf') end,
     },
@@ -160,11 +160,6 @@ return require('packer').startup(function(use)
       'kylechui/nvim-surround',
       config = function() require('nvim-surround').setup() end,
     },
-  }
-
-  use {
-    'vimwiki/vimwiki',
-    config = function() require('omar.plugins.vimwiki') end,
   }
 
   use {
@@ -242,7 +237,7 @@ return require('packer').startup(function(use)
       '~/Code/eyeliner.nvim',
       -- 'jinh0/eyeliner.nvim',
       config = function() require('omar.plugins.eyeliner') end,
-      disable = true
+      disable = true,
     },
     {
       'lukas-reineke/indent-blankline.nvim',
@@ -274,15 +269,29 @@ return require('packer').startup(function(use)
 
   use {
     'andweeb/presence.nvim',
-    config = function() require('presence').setup() end,
+    config = function() require('presence').setup { auto_enable = false } end,
   }
 
   use {
-    {
-      'mfussenegger/nvim-dap',
-      run = ':helptags ALL'
-    }
+    'epwalsh/obsidian.nvim',
+    config = function() require('omar.plugins.obsidian') end,
   }
+
+  use {
+    'vimwiki/vimwiki',
+    disable = true,
+    config = function() require('omar.plugins.vimwiki') end,
+  }
+
+  use {
+    'echasnovski/mini.nvim',
+    config = function() require('mini.align').setup() end,
+  }
+
+  -- use {
+  --   'mfussenegger/nvim-dap',
+  --   run = ':helptags ALL'
+  -- }
 
   -- Local plugins
   use {
