@@ -8,6 +8,7 @@ android-tools
 autoconf
 automake
 base
+base-devel
 bash-completion
 bat
 biber
@@ -50,6 +51,7 @@ greetd-wlgreet
 grim
 grub
 grub-btrfs
+heroic-games-launcher-bin
 htop
 hwinfo
 hyperfine
@@ -72,6 +74,7 @@ libreoffice-fresh
 libva-utils
 linux
 linux-firmware
+lutris
 lxappearance-gtk3
 ly
 m4
@@ -192,6 +195,7 @@ wayland-utils
 webcord
 wev
 which
+wine
 wireplumber
 wl-clipboard
 wlr-randr-git
