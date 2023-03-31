@@ -23,6 +23,7 @@ alias ta='tmux attach-session'
 alias tl='tmux list-sessions'
 alias tn='tmux new-session'
 alias tk='tmux kill-session'
+alias u='sudo ufw'
 
 # One-liner shortcuts
 alias reflectorupdate='sudo reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
