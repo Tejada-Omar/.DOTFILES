@@ -16,7 +16,9 @@ bison
 bitwarden
 bluez
 bluez-utils
+bt-dualboot
 btrfs-progs
+chntpw
 chromium
 code
 code-marketplace
@@ -134,7 +136,7 @@ pipewire-jack
 pipewire-pulse
 pkgconf
 playerctl
-prismlauncher-bin
+prismlauncher-qt5-bin
 python-pip
 python-pyqt5
 qt5-quickcontrols
@@ -143,8 +145,6 @@ radeontop
 ranger
 rbw
 reflector
-revanced-cli
-revanced-integrations
 ripgrep
 rustup
 sddm-git
@@ -153,7 +153,6 @@ sddm-sugar-dark
 slurp
 sof-firmware
 spicetify-cli
-spicetify-themes-git
 spotify
 spotify-tui
 starship
@@ -188,7 +187,7 @@ ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-liberation
 ttf-material-design-icons-git
-ttf-nerd-fonts-symbols-2048-em
+ttf-nerd-fonts-symbols
 ttf-roboto
 ttf-symbola
 typescript
@@ -213,6 +212,7 @@ wqy-zenhei
 xdg-desktop-portal-hyprland-git
 xdg-user-dirs
 xorg-xwininfo
+xxd-standalone
 yarn
 youtube-dl
 yt-dlp
