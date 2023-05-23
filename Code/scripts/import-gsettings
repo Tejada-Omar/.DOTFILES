@@ -1,6 +1,6 @@
 #!/bin/sh
-
-# usage: import-gsettings
+# Grab settings from $XDG_CONFIG_HOME/gtk-3.0/settings.ini and import them into
+# gsettings in order to theme applications running under Wayland
 config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
 if [ ! -f "$config" ]; then exit 1; fi
 
