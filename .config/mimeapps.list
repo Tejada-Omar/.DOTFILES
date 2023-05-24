@@ -14,8 +14,6 @@ application/epub=org.pwmt.zathura.desktop
 x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/discord-694795560288256021=discord-694795560288256021.desktop
 x-scheme-handler/eclipse+command x-scheme-handler/eclipse+mpc=_usr_lib_eclipse_.desktop
-image/jpeg=imv.desktop
-image/png=imv.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
