@@ -33,6 +33,7 @@ alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=revers
 alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
 alias update-ip="curl ident.me > ~/Documents/notes/ssh/desktop.txt"
 alias update-ssh='sed -i "/phone$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/phone.txt)/;}" ~/.ssh/config'
+alias update-ssh2='sed -i "/desktop$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/desktop.txt)/;}" ~/.ssh/config'
 alias temp='cd $(mktemp -d)'
 alias update-grub='sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB'
 alias color-picker='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
