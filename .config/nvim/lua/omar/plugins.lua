@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
   use {
     'folke/noice.nvim',
     config = function() require('omar.plugins.noice') end,
+    disable = true,
     requires = {
       'MunifTanjim/nui.nvim',
     },
@@ -51,7 +52,7 @@ return require('packer').startup(function(use)
       after = 'nvim-treesitter',
     },
     { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' },
-    { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
+    { 'nvim-treesitter/playground',              after = 'nvim-treesitter' },
   }
 
   use {
@@ -85,9 +86,9 @@ return require('packer').startup(function(use)
       },
     },
     { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-path', after = 'nvim-cmp', disable = true },
-    { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path',         after = 'nvim-cmp', disable = true },
+    { 'hrsh7th/cmp-cmdline',      after = 'nvim-cmp' },
     {
       'windwp/nvim-autopairs',
       -- event = 'InsertCharPre',
@@ -98,13 +99,13 @@ return require('packer').startup(function(use)
       'j-hui/fidget.nvim',
       -- event = 'BufWinEnter',
       config = function() require('fidget').setup() end,
-      disable = true,
+      -- disable = true,
     },
   }
 
   use {
     {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
       config = function() require('nvim-web-devicons').setup() end,
     },
     {
@@ -114,7 +115,7 @@ return require('packer').startup(function(use)
     {
       'nvim-lualine/lualine.nvim',
       after = 'tokyonight.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
+      requires = { 'nvim-tree/nvim-web-devicons' },
       config = function() require('omar.plugins.lualine') end,
     },
     {
@@ -194,7 +195,7 @@ return require('packer').startup(function(use)
 
   use {
     'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
+    requires = 'nvim-tree/nvim-web-devicons',
     config = function() require('omar.plugins.trouble') end,
   }
 
@@ -219,10 +220,13 @@ return require('packer').startup(function(use)
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
     requires = {
-      'kyazdani42/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons',
     },
     config = function() require('omar.plugins.neotree') end,
+  }
+
+  use {
+    'MunifTanjim/nui.nvim',
   }
 
   use {
@@ -269,6 +273,44 @@ return require('packer').startup(function(use)
       'nvim-neorg/neorg-telescope',
     },
     config = function() require('omar.plugins.neorg') end,
+  }
+
+  use {
+    'epwalsh/obsidian.nvim',
+    config = function()
+      require('obsidian').setup {
+        dir = '~/Documents/obsidian',
+        use_advanced_uri = true,
+        completion = {
+          nvim_cmp = true,
+        },
+        daily_notes = {
+          folder = 'daily',
+        },
+        note_id_func = function(title)
+          -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+          local suffix = ''
+          if title ~= nil then
+            -- If title is given, transform it into valid file name.
+            suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+          else
+            -- If title is nil, just add 4 random uppercase letters to the suffix.
+            for _ = 1, 4 do
+              suffix = suffix .. string.char(math.random(65, 90))
+            end
+          end
+          return tostring(os.time()) .. '-' .. suffix
+        end,
+      }
+
+      vim.keymap.set('n', 'gf', function()
+        if require('obsidian').util.cursor_on_markdown_link() then
+          return '<cmd>ObsidianFollowLink<cr>'
+        else
+          return 'gf'
+        end
+      end, { expr = true })
+    end,
   }
 
   -- Local plugins
