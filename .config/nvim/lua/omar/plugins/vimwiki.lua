@@ -34,5 +34,8 @@ vim.g['vimwiki_key_mappings'] = {
 }
 
 vim.g.vimwiki_listsyms = ' /x'
+
+vim.g.vimwiki_global_ext = 0
+>>>>>>> 8cc3397 (Update neovim config)
 vim.g.vimwiki_folding = 'custom'
 vim.g.vimwiki_global_ext = 1
