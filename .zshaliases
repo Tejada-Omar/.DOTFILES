@@ -1,6 +1,7 @@
 #!/bin/zsh
 # Dotfiles management
 alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
+alias config-upstream='config config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
 
 # Command shortcuts
 alias ls='exa'
