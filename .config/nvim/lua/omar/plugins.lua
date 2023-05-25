@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
       after = 'nvim-treesitter',
     },
     { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' },
+    { 'nvim-treesitter/playground',              after = 'nvim-treesitter' },
   }
 
   use {
@@ -103,7 +104,7 @@ return require('packer').startup(function(use)
 
   use {
     {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
       config = function() require('nvim-web-devicons').setup() end,
     },
     {
@@ -113,7 +114,7 @@ return require('packer').startup(function(use)
     {
       'nvim-lualine/lualine.nvim',
       after = 'tokyonight.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
+      requires = { 'nvim-tree/nvim-web-devicons' },
       config = function() require('omar.plugins.lualine') end,
     },
     {
@@ -201,7 +202,7 @@ return require('packer').startup(function(use)
 
   use {
     'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
+    requires = 'nvim-tree/nvim-web-devicons',
     config = function() require('omar.plugins.trouble') end,
   }
 
@@ -226,7 +227,7 @@ return require('packer').startup(function(use)
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
     requires = {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
     },
     config = function() require('omar.plugins.neotree') end,
@@ -288,7 +289,7 @@ return require('packer').startup(function(use)
   use {
     'ziontee113/icon-picker.nvim',
     requires = 'stevearc/dressing.nvim',
-    config = function () require('omar.plugins.icon-picker') end
+    config = function() require('omar.plugins.icon-picker') end,
   }
 
   -- use {
