@@ -30,7 +30,8 @@ M.mappings = function(bufnr)
   vim.keymap.set(
     'n',
     'gd',
-    vim.lsp.buf.definition,
+    -- vim.lsp.buf.definition,
+    '<cmd>TroubleToggle lsp_definitions<CR>',
     { desc = 'Jump to function definition', buffer = bufnr }
   )
   vim.keymap.set(
@@ -72,7 +73,8 @@ M.mappings = function(bufnr)
   vim.keymap.set(
     'n',
     '<Space>D',
-    vim.lsp.buf.type_definition,
+    -- vim.lsp.buf.type_definition,
+    '<cmd>TroubleToggle lsp_type_definitions<CR>',
     { desc = 'Jump to type definition', buffer = bufnr }
   )
   vim.keymap.set(

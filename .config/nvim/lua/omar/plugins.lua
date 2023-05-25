@@ -260,11 +260,6 @@ return require('packer').startup(function(use)
       'folke/twilight.nvim',
       config = function() require('twilight').setup() end,
     },
-    {
-      'narutoxy/silicon.lua',
-      requires = { 'nvim-lua/plenary.nvim' },
-      config = function() require('omar.plugins.silicon') end,
-    },
   }
 
   use {
@@ -273,19 +268,26 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'epwalsh/obsidian.nvim',
+    '~/Code/obsidian.nvim',
+    -- 'epwalsh/obsidian.nvim',
+    after = 'vimwiki',
     config = function() require('omar.plugins.obsidian') end,
   }
 
   use {
     'vimwiki/vimwiki',
-    disable = true,
     config = function() require('omar.plugins.vimwiki') end,
   }
 
   use {
     'echasnovski/mini.nvim',
     config = function() require('mini.align').setup() end,
+  }
+
+  use {
+    'ziontee113/icon-picker.nvim',
+    requires = 'stevearc/dressing.nvim',
+    config = function () require('omar.plugins.icon-picker') end
   }
 
   -- use {

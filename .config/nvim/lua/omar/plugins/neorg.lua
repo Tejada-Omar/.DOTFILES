@@ -1,7 +1,7 @@
 require('neorg').setup {
   load = {
     ['core.defaults'] = {},
-    ['core.norg.dirman'] = {
+    ['core.dirman'] = {
       config = {
         workspaces = {
           notes = '~/Documents/neorg',
@@ -10,17 +10,17 @@ require('neorg').setup {
         -- open_last_workspace = true,
       },
     },
-    ['core.norg.journal'] = {
+    ['core.journal'] = {
       config = {
         workspace = '~/Documents/neorg',
       },
     },
-    ['core.norg.completion'] = {
+    ['core.completion'] = {
       config = {
         engine = 'nvim-cmp',
       },
     },
-    ['core.norg.concealer'] = {
+    ['core.concealer'] = {
       config = {
         icon_preset = 'varied',
       },

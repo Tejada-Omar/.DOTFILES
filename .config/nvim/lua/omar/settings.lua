@@ -26,4 +26,4 @@ vim.g.netrw_banner = 0
 
 vim.o.cmdheight = 1
 
-vim.opt.grepprg = 'rg -i --vimgrep $*'
+vim.opt.grepprg = 'rg -Hi --vimgrep $*'
