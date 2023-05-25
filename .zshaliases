@@ -23,20 +23,25 @@ alias ta='tmux attach-session'
 alias tl='tmux list-sessions'
 alias tn='tmux new-session'
 alias tk='tmux kill-session'
-<<<<<<< HEAD
 alias u='sudo ufw'
 
 # One-liner shortcuts
+alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
 alias reflectorupdate='sudo reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 alias keychron='sudo systemctl start keychron'
+alias clipqrcode='xclip -sel clip -o | qrencode -t ansiutf8'
 alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
-alias update-ip="curl ident.me > ~/Documents/notes/ssh/desktop.txt"
+alias update-ip="curl ident.me > ~/Documents/notes/ssh/laptop.txt"
 alias update-ssh='sed -i "/phone$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/phone.txt)/;}" ~/.ssh/config'
 alias update-ssh2='sed -i "/desktop$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/desktop.txt)/;}" ~/.ssh/config'
 alias temp='cd $(mktemp -d)'
 alias update-grub='sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB'
+alias update-monitors='xrandr --output eDP-1 --auto --left-of HDMI-1-0 --output HDMI-1-0 --auto --primary'
 alias color-picker='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
+
+# Tex package manager
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 # cd shortcuts
 alias update-cdd='fd -Ha -td -d1 -E "\.config" -E "\.local" "^\." ~ > ~/.cddignore'

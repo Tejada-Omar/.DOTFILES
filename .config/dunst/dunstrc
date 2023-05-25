@@ -24,16 +24,16 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (350, 600)
+    width = (300, 400)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 500
+    height = 300
 
     # Position the notification in the top right corner
     origin = top-right
 
     # Offset from the origin
-    offset = 20x20
+    offset = 19x55
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -77,17 +77,17 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 14
+    padding = 10
 
     # Horizontal padding.
-    horizontal_padding = 14
+    horizontal_padding = 8
 
     # Padding between text and icon.
     text_icon_padding = 0
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 2
+    frame_width = 3
 
     # Defines color of the frame around the notification window.
     frame_color = "#b2beb5"
@@ -227,7 +227,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/wofi -p dunst:
+    dmenu = /usr/local/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/firefox --new-tab
@@ -246,7 +246,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 25
+    corner_radius = 6
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this

@@ -8,7 +8,7 @@ export EDITOR=nvim
 export PAGER=bat
 export READER=zathura
 export BROWSER=firefox
-export MANGOHUD=0
+export MANGOHUD=1
 
 # CPU
 export AMD_VULKAN_ICD=RADV

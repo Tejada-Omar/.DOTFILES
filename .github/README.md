@@ -1,15 +1,13 @@
 # .DOTFILES
 
-![Setup Picture](https://i.imgur.com/yv5y38P.png)
+![Setup Picture](https://i.imgur.com/x7O1Jwx.png)
 
 ## Details
 
-- WM: Hyprland
-- Bar: Waybar
-- Locker: swaylock
+- WM: Qtile
 - Shell: zsh
 - Editor: Neovim
 - Terminal: Alacritty
 - File Manager: ranger
-- Launcher: wofi
+- Launcher: dmenu
 - Video Player: mpv

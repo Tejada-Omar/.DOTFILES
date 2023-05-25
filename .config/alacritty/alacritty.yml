@@ -1,8 +1,8 @@
 # Terminal Emulator Settings
 window:
   padding:
-    x: 20
-    y: 20
+    x: 17
+    y: 17
   dynamic_title: true
 
 # Font
@@ -23,7 +23,7 @@ font:
     family: Jetbrains Mono Nerd Font
     style: Bold Italic
 
-  size: 14
+  size: 7
 
 # Bell
 bell:

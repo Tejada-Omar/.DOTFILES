@@ -239,8 +239,8 @@ return require('packer').startup(function(use)
 
   use {
     {
-      '~/Code/eyeliner.nvim',
-      -- 'jinh0/eyeliner.nvim',
+      -- '~/Code/eyeliner.nvim',
+      'jinh0/eyeliner.nvim',
       config = function() require('omar.plugins.eyeliner') end,
       disable = true,
     },
@@ -274,8 +274,8 @@ return require('packer').startup(function(use)
   }
 
   use {
-    '~/Code/obsidian.nvim',
-    -- 'epwalsh/obsidian.nvim',
+    -- '~/Code/obsidian.nvim',
+    'epwalsh/obsidian.nvim',
     after = 'vimwiki',
     config = function() require('omar.plugins.obsidian') end,
   }
@@ -293,7 +293,8 @@ return require('packer').startup(function(use)
   use {
     'ziontee113/icon-picker.nvim',
     requires = 'stevearc/dressing.nvim',
-    config = function () require('omar.plugins.icon-picker') end
+    config = function () require('omar.plugins.icon-picker') end,
+    disable = true
   }
 
   -- use {
