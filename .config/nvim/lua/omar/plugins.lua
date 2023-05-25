@@ -229,6 +229,7 @@ return require('packer').startup(function(use)
     branch = 'v2.x',
     requires = {
       'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
     },
     config = function() require('omar.plugins.neotree') end,
   }
