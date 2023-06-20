@@ -25,7 +25,7 @@ require('telescope').setup {
   },
   pickers = {
     live_grep = {
-      grep_open_files = true,
+      grep_open_files = false,
     },
   },
 }
