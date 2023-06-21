@@ -54,6 +54,10 @@ setopt HIST_IGNORE_SPACE
 change_window_title() {echo -ne "\033]0;$(history | tail -n1 | cut -c 8-)\007";}
 add-zsh-hook precmd change_window_title
 
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+  tmux attach || tmux >/dev/null 2>&1
+fi
+
 # Starship prompt
 eval "$(starship init zsh)"
 
