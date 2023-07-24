@@ -22,6 +22,7 @@ fi
 
 # Use bat as a colorizing pager for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always'"
+export MANROFFOPT="-c"
 
 # fzf settings
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
