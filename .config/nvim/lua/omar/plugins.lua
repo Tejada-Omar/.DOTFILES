@@ -164,19 +164,6 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'nvim-neorg/neorg',
-    -- tag = '*',
-    run = ':Neorg sync-parsers',
-    -- ft = 'norg',
-    after = 'nvim-treesitter',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-neorg/neorg-telescope',
-    },
-    config = function() require('omar.plugins.neorg') end,
-  }
-
-  use {
     'iamcco/markdown-preview.nvim',
     ft = { 'markdown', 'vimwiki' },
     run = function() vim.fn['mkdp#util#install']() end,
