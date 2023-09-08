@@ -24,6 +24,7 @@ alias tl='tmux list-sessions'
 alias tn='tmux new-session'
 alias tk='tmux kill-session'
 alias u='sudo ufw'
+alias todo='todoist-cli'
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
