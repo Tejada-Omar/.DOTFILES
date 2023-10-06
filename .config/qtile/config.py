@@ -67,27 +67,27 @@ keys = [
     Key([mod, mod1, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "r", lazy.spawn("dmenu_run -x 5 -y 5 -z 1910")),
-    Key([mod], "r", lazy.spawn("rofi -show drun")),
+    Key([mod], "r", lazy.spawn("wofi -show drun")),
     Key([mod], "m", lazy.spawn(["sh", "-c", "xclip -sel clip -o | xargs -r mpv"])),
 
     # Volume controls
-    Key([mod], "F10", lazy.spawn("amixer -q set Master toggle")),
-    Key([mod], "F11", lazy.spawn("amixer -q set Master 1%-")),
-    Key([mod], "F12", lazy.spawn("amixer -q set Master 1%+")),
+    Key([], "XF86MonAudioMute", lazy.spawn("pamixer -t")),
+    Key([], "XF86MonAudioLowerVolume", lazy.spawn("pamixer -d 5")),
+    Key([], "XF86MonAudioRaiseVolume", lazy.spawn("pamixer -i 5")),
 
     # Backlight
-    Key([mod], "F1", lazy.spawn("xbacklight -5")),
-    Key([mod], "F2", lazy.spawn("xbacklight +5")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -5")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight +5")),
 
     # Player Manager
-    Key([mod], "F7", lazy.spawn("playerctl previous")),
-    Key([mod], "F8", lazy.spawn("playerctl play-pause")),
-    Key([mod], "F9", lazy.spawn("playerctl next")),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
 
     # Visual
     Key([mod], "F3", lazy.spawn("picom-trans -ct")),
-    Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
-    Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
+    Key([], "Print", lazy.spawn("grim \"$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')\"")),
+    Key([mod], "Print", lazy.spawn("grim -g \"$(slurp)\" \"$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')\"")),
 ]
 
 @hook.subscribe.client_new
@@ -118,7 +118,7 @@ palette = {
 
 layout_theme = {
         "border_width": 2,
-        "margin": 5,
+        "margin": 12,
         "border_focus": "#b2beb5",
         "border_normal": palette["DARK"]
     }
@@ -146,8 +146,8 @@ layouts = [
 
 widget_defaults = dict(
     font='Jetbrains Mono',
-    fontsize=13,
-    padding=7,
+    fontsize=18,
+    padding=14,
     foreground = palette["WHITE"],
     background = palette["DARK"]
 )
@@ -158,7 +158,7 @@ screens = [
         top = bar.Bar(
             [
                 widget.GroupBox(
-                    padding_x = 6,
+                    padding_x = 10,
                     margin_x = 0,
                     borderwidth = 0,
                     active = palette["WHITE"],
@@ -173,7 +173,7 @@ screens = [
                 widget.Sep(
                     size_percent = 60,
                     foreground = '#a1a1a1',
-                    padding = 3,
+                    padding = 6,
                 ),
                 widget.TaskList(
                     parse_text = lambda x: "",
@@ -183,8 +183,8 @@ screens = [
                     icon_size = 16,
                     margin_x = 1,
                     margin_y = 2,
-                    padding_x = 7.3,
-                    padding_y = 5
+                    padding_x = 14.6,
+                    padding_y = 10
                 ),
                 widget.Spacer(),
                 widget.WindowName(
@@ -197,12 +197,12 @@ screens = [
                     active_color = '#9ece6a',
                     inactive_color = '#e15555'
                 ),
-                widget.Battery(
-                    format = '{char} {percent:2.0%}',
-                    low_percentage = 0.3,
-                    low_foreground = '#e15555',
-                    padding = 7
-                ),
+                # widget.Battery(
+                #     format = '{char} {percent:2.0%}',
+                #     low_percentage = 0.3,
+                #     low_foreground = '#e15555',
+                #     padding = 7
+                # ),
                 widget.Volume(
                     cardid = 1,
                     theme_path = '/usr/share/icons/Tela-dark/22@2x/panel/',
@@ -210,79 +210,14 @@ screens = [
                 ),
                 widget.Clock(
                     format='%m/%d %a %-I:%M %p',
-                    padding = 10
+                    padding = 20
                 )
             ],
-            26,
-            margin = [5, 5, 0, 5],
+            36,
+            margin = [12, 12, 0, 12],
             opacity = 1
         ),
-        wallpaper = "~/Pictures/Wallpapers/japanese-city-wispy.jpg",
-        wallpaper_mode = "fill",
-    ),
-    Screen(
-        top = bar.Bar(
-            [
-                widget.GroupBox(
-                    padding_x = 6,
-                    margin_x = 0,
-                    borderwidth = 0,
-                    active = palette["WHITE"],
-                    inactive = palette["WHITE"],
-                    rounded = True,
-                    highlight_color = palette["DARK"],
-                    highlight_method = "block",
-                    this_current_screen_border = palette["SECONDARY"],
-                    block_highlight_text_color = palette["WHITE"],
-                    hide_unused = True
-                ),
-                widget.Sep(
-                    size_percent = 60,
-                    foreground = '#a1a1a1',
-                    padding = 3,
-                ),
-                widget.TaskList(
-                    parse_text = lambda x: "",
-                    borderwidth = 0,
-                    title_width_method = 'uniform',
-                    max_title_width = 25,
-                    icon_size = 16,
-                    margin_x = 1,
-                    margin_y = 2,
-                    padding_x = 7.3,
-                    padding_y = 5
-                ),
-                widget.Spacer(),
-                widget.WindowName(
-                    format = '{name}',
-                    width = bar.CALCULATED
-                ),
-                widget.Spacer(),
-                widget.CurrentScreen(
-                    active_color = '#9ece6a',
-                    inactive_color = '#e15555'
-                ),
-                widget.Battery(
-                    format = '{char} {percent:2.0%}',
-                    low_percentage = 0.3,
-                    low_foreground = '#e15555',
-                    padding = 7
-                ),
-                widget.Volume(
-                    cardid = 1,
-                    theme_path = '/usr/share/icons/Tela-dark/22@2x/panel/',
-                    padding = 0,
-                ),
-                widget.Clock(
-                    format='%m/%d %a %-I:%M %p',
-                    padding = 10
-                )
-            ],
-            26,
-            margin = [5, 5, 0, 5],
-            opacity = 1
-        ),
-        wallpaper = "~/Pictures/Wallpapers/japanese-city-wispy.jpg",
+        wallpaper = "~/Pictures/wallpapers/aesthetic-tokyo.jpg",
         wallpaper_mode = "fill",
     ),
 ]
