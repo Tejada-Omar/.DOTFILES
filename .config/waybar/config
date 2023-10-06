@@ -1,10 +1,10 @@
 {
   "layer": "top",
   "modules-left": [
-    "wlr/workspaces"
+    "sway/workspaces"
   ],
   "modules-center": [
-    "hyprland/window"
+    "sway/window"
   ],
   "modules-right": [
     "network",
@@ -12,12 +12,12 @@
     "pulseaudio",
     "clock"
   ],
-  "hyprland/window": {
+  "sway/window": {
     "format": "{}"
   },
-  "wlr/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+  "sway/workspaces": {
+    "on-scroll-up": "workspace next",
+    "on-scroll-down": "workspace prev",
     "on-click": "activate"
   },
   "clock": {

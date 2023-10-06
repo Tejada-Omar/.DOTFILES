@@ -27,3 +27,7 @@ export MANROFFOPT="-c"
 # fzf settings
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
 export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize -r 40: --color=always {}' --border=none"
+
+# sockets
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+# export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock

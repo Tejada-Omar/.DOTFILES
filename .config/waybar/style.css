@@ -14,7 +14,7 @@ window#waybar {
 
 tooltip {
   background: #15151e;
-  border-radius: 10px;
+  border-radius: 0px;
   border-width: 2px;
   border-style: solid;
   border-color: #b2beb5;
@@ -31,21 +31,21 @@ tooltip {
 }
 
 #workspaces button.focused {
-  color: #c0caf5;
-  background: #9ece6a;
-  border-radius: 10px;
+  color: #9ece6a;
+  /* background: #9ece6a; */
+  border-radius: 0px;
 }
 
 #workspaces button.urgent {
   color: #15161e;
   background: #f7768e;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 #workspaces button:hover {
   background: #15161e;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 #window,
@@ -55,7 +55,7 @@ tooltip {
 #bluetooth,
 #workspaces {
   background: #1a1b26;
-  border-radius: 30px;
+  border-radius: 0px;
   padding: 5px 15px;
   margin: 3px 0px;
   margin-top: 10px;
@@ -63,7 +63,7 @@ tooltip {
 }
 
 #workspaces {
-  margin-left: 23px;
+  margin-left: 13px;
   padding-right: 10px;
   padding-left: 10px;
 }
@@ -92,5 +92,5 @@ tooltip {
 
 #clock {
   color: #9ece6a;
-  margin-right: 23px;
+  margin-right: 13px;
 }
