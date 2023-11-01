@@ -185,6 +185,5 @@ focus_wrapping workspace
 include /etc/sway/config.d/*
 
 exec export _JAVA_AWT_WM_NONREPARENTING=1
-exec export MANGOHUD=0
 exec_always import-gsettings
 exec_always dunst
