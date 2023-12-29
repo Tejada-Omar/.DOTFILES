@@ -1,14 +1,6 @@
 vim.o.spell = true
 vim.bo.textwidth = 0
 
-vim.keymap.set('n', 'gf', function()
-  if require('obsidian').util.cursor_on_markdown_link() then
-    return '<cmd>ObsidianFollowLink<cr>'
-  else
-    return 'gf'
-  end
-end, { buffer = 0, expr = true })
-
 vim.keymap.set('n', '<leader>wb', '<cmd>ObsidianBacklinks<cr>', { buffer = 0 })
 
 vim.keymap.set(
