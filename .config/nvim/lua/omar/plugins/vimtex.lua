@@ -2,6 +2,7 @@ vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_view_use_temp_files = 1
 
 vim.g['vimtex_compiler_latexmk'] = {
+  aux_dir = 'latex-aux',
   out_dir = 'latex-bin',
 }
 
