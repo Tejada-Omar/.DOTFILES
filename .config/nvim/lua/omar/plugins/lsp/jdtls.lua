@@ -2,7 +2,7 @@ local jdtls = require('jdtls')
 local utils = require('omar.plugins.lsp.utils')
 
 local on_attach = function(client, bufnr)
-  jdtls.setup.add_commands()
+  -- jdtls.setup.add_commands()
   utils.mappings(bufnr)
   vim.keymap.set(
     'n',
@@ -84,8 +84,8 @@ local cmd = {
 }
 
 local config = {
-  -- cmd = { '/home/omar/.local/share/nvim/mason/bin/jdtls', workspace_folder },
-  cmd = cmd,
+  cmd = { '/home/omar/.local/share/nvim/mason/bin/jdtls', workspace_folder },
+  -- cmd = cmd,
   root_dir = root_dir,
   on_attach = on_attach,
   capabilities = capabilities,
