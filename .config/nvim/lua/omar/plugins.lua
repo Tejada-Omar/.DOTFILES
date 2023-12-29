@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
       'nvim-treesitter/nvim-treesitter-textobjects',
       after = 'nvim-treesitter',
     },
-    { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' },
+    -- { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' },
     { 'nvim-treesitter/playground',              after = 'nvim-treesitter' },
   }
 
@@ -97,6 +97,7 @@ return require('packer').startup(function(use)
     },
     {
       'j-hui/fidget.nvim',
+      tag = 'legacy',
       -- event = 'BufWinEnter',
       config = function() require('fidget').setup() end,
       -- disable = true,
