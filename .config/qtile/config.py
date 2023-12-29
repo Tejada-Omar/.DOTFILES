@@ -86,8 +86,8 @@ keys = [
 
     # Visual
     Key([mod], "F3", lazy.spawn("picom-trans -ct")),
-    Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
-    Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")),
+    Key([], "Print", lazy.spawn("scrot '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots'")),
+    Key([mod], "Print", lazy.spawn("scrot -s '%Y%m%d-%H%M%S.png' -l mode=edge -e 'mv $f $$(xdg-user-dir PICTURES)/screenshots'")),
 ]
 
 @hook.subscribe.client_new
