@@ -44,6 +44,16 @@ vim.keymap.set(
 )
 vim.keymap.set(
   'n',
+  '<leader>fj',
+  function()
+    builtin.live_grep {
+      grep_open_files = true,
+    }
+  end,
+  { desc = 'Live-grep files' }
+)
+vim.keymap.set(
+  'n',
   '<leader>fb',
   builtin.buffers,
   { desc = 'Fuzzy-find buffers' }
