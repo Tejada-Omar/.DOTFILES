@@ -186,6 +186,7 @@ gaps outer 3
 title_align center
 
 seat seat0 xcursor_theme default 26
+seat seat0 hide_cursor 5000
 
 font pango:Jetbrains Mono Nerd Font 14px
 client.focused #b2beb5 #b2beb5 #000000
@@ -194,6 +195,12 @@ client.unfocused #1a1b26 #1a1b26 #ffffff
 
 focus_wrapping workspace
 
+for_window {
+  [shell="xwayland"] title_format "%title [XWayland]"
+  [app_id="^firefox" title="^Picture-in-Picture"] floating enable, resize set width 800 height 450
+  [shell=".*"] inhibit_idle fullscreen
+}
+
 include /etc/sway/config.d/*
 
 exec export _JAVA_AWT_WM_NONREPARENTING=1
@@ -201,3 +208,4 @@ exec export QT_AUTO_SCREEN_SCALE_FACTOR=1
 exec export QT_ENABLE_HIGHDPI_SCALING=1
 exec_always import-gsettings
 exec_always dunst
+exec swayidle -w
