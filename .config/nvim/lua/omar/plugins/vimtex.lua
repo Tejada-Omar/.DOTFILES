@@ -3,6 +3,7 @@ vim.g.vimtex_view_use_temp_files = 1
 
 vim.g['vimtex_compiler_latexmk'] = {
   build_dir = 'latex-bin',
+  out_dir = 'latex-bin',
 }
 
 vim.g['vimtex_syntax_conceal'] = {
