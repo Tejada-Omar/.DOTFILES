@@ -1,3 +1,3 @@
 require('notes-compile').setup {
-  pandoc_integration = true,
+  zathura_integration = true,
 }
