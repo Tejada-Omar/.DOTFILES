@@ -42,7 +42,8 @@ output DP-3 scale 1.35
 # Key bindings
 # Basics:
   # Start a terminal
-  bindsym $mod+Return exec $term
+  bindsym $mod+Return exec $term -e sh -c 'echo -n "Input session name: " && read -r session && [ -n "$session" ] && tmux new-session -s "$session" || tmux new-session'
+  bindsym $mod+backslash exec $term -e tmux attach -t $(tmux list-sessions -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" | wofi -dp "Select tmux session" | cut -d':' -f1)
 
   # Kill focused window
   bindsym $mod+w kill
