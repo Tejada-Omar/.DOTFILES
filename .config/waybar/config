@@ -1,7 +1,9 @@
 {
   "layer": "top",
+  "output": "DP-3",
   "modules-left": [
-    "sway/workspaces"
+    "sway/workspaces",
+    "sway/scratchpad"
   ],
   "modules-center": [
     "sway/window"
@@ -13,12 +15,16 @@
     "clock"
   ],
   "sway/window": {
-    "format": "{}"
+    "format": "{}",
+    "all-outputs": true
   },
   "sway/workspaces": {
-    "on-scroll-up": "workspace next",
-    "on-scroll-down": "workspace prev",
-    "on-click": "activate"
+    "on-click": "activate",
+    "all-outputs": true
+  },
+  "sway/scratchpad": {
+    "show-empty": true,
+    "tooltip": true
   },
   "clock": {
     "format": "{:%R   %m/%d  }",
@@ -35,9 +41,9 @@
     // "format-bluetooth": "<b>{volume}%</b> <big>{icon}</big>",
     // "format-bluetooth-muted": "<b>0%</b> <big></big>",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
+      // "headphone": "",
+      // "hands-free": "",
+      // "headset": "",
       "phone": "",
       "portable": "",
       "car": "",

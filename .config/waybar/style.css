@@ -30,6 +30,10 @@ tooltip {
   color: #c0caf5;
 }
 
+#workspaces button.current_output {
+  color: #7aa2f7;
+}
+
 #workspaces button.focused {
   color: #9ece6a;
   /* background: #9ece6a; */
@@ -49,6 +53,7 @@ tooltip {
 }
 
 #window,
+#scratchpad,
 #clock,
 #pulseaudio,
 #network,
@@ -60,6 +65,15 @@ tooltip {
   margin: 3px 0px;
   margin-top: 10px;
   border: 0px solid #7aa2f7;
+}
+
+#scratchpad {
+  margin-left: 10px;
+  padding-left: 5px;
+}
+
+#scratchpad.empty {
+  color: #545c7e;
 }
 
 #workspaces {
