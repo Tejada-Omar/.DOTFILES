@@ -36,6 +36,17 @@ vim.fn['vimtex#imaps#add_map'] {
   leader = '#',
 }
 
+-- Because flop
+vim.cmd([[
+call vimtex#imaps#add_map({
+      \ 'lhs' : '<M-i>',
+      \ 'rhs' : '\item ',
+      \ 'leader'  : '',
+      \ 'wrapper' : 'vimtex#imaps#wrap_environment',
+      \ 'context' : [ 'itemize', 'enumerate' ],
+      \})
+]])
+
 --  " Add custom mapping: #rX -> \mathrm{X}
 --  call vimtex#imaps#add_map({
 --        \ 'lhs' : 'r',
