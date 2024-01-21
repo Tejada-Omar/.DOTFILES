@@ -92,15 +92,19 @@ ls.add_snippets('markdown', {
       trig = 'startnotes',
       dscr = 'Create notes header',
     },
-    fmt('# {}\n\n> {}\n\n> {date}\n\n\n', {
+    fmt('# {}\n\n> Lecture {}\n\n> {date}\n\n\n', {
       i(1, 'CLASS'),
-      i(2, 'TOPIC'),
+      i(2, 'NUMBER'),
       date = f(function() return os.date('%A, %B %-d, %Y') end),
     })
   ),
 })
 
 ls.filetype_extend('vimwiki', { 'markdown' })
+
+local tex = {}
+tex.in_mathzone = function() return vim.fn['vimtex#syntax#in_mathzone']() == 1 end
+tex.in_text = function() return not tex.in_mathzone() end
 
 ls.add_snippets('tex', {
   s(
@@ -119,4 +123,34 @@ ls.add_snippets('tex', {
   --   t({ "", "\\[", "", "\\]" }),
   -- })
   ),
+
+  s(
+    {
+      trig = 'todo',
+      desc = 'Enter an inline TODO',
+    },
+    sn(1, {
+      t { '\\todo[inline]{' },
+      i(1, ''),
+      t { '}' },
+    })
+  ),
+
+  s({
+    trig = 'set',
+    desc = 'Enter set',
+  }, {
+    t { '\\{' },
+    i(1, ''),
+    t { '\\}' },
+  }, { condition = tex.in_mathzone }),
+
+  s({
+    trig = 'ordered pair',
+    desc = 'Enter ordered pair',
+  }, {
+    t { '\\langle ' },
+    i(1, ''),
+    t { '\\rangle' },
+  }, { condition = tex.in_mathzone }),
 })
