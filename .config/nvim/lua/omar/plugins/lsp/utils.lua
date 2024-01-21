@@ -1,7 +1,7 @@
 local M = {}
 
 local format_augroup =
-vim.api.nvim_create_augroup('FORMATTING', { clear = true })
+    vim.api.nvim_create_augroup('FORMATTING', { clear = true })
 
 M.format_on_save = function(client, bufnr)
   if client.supports_method('textDocument/formatting') then
@@ -93,12 +93,11 @@ M.mappings = function(bufnr)
     desc = 'List all references to symbol in quickfix window',
     buffer = bufnr,
   })
-  vim.keymap.set(
-    'n',
-    '<Space>f',
-    function() vim.lsp.buf.format { async = true } end,
-    { desc = 'Format a buffer using attached LSP', buffer = bufnr }
-  )
+  vim.keymap.set('n', '<Space>f', function()
+    vim.lsp.buf.format {
+      async = true,
+    }
+  end, { desc = 'Format a buffer using attached LSP', buffer = bufnr })
 end
 
 return M

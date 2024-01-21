@@ -48,6 +48,7 @@ lsp.lua_ls.setup {
         checkThirdParty = false,
       },
       telemetry = { enable = false },
+      format = { enable = false },
     },
   },
 }
