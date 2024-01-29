@@ -155,7 +155,16 @@ return require('packer').startup(function(use)
       'numToStr/Comment.nvim',
       -- event = 'BufWinEnter',
       config = function() require('omar.plugins.comment') end,
-      requires = 'JoosepAlviste/nvim-ts-context-commentstring',
+      requires = {
+        {
+          'JoosepAlviste/nvim-ts-context-commentstring',
+          config = function ()
+            vim.g.skip_ts_context_commentstring_module = true
+            ---@diagnostic disable-next-line: missing-fields
+            require('ts_context_commentstring').setup {}
+          end
+        }
+      }
     },
     {
       'kylechui/nvim-surround',
