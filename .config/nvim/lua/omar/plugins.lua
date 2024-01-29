@@ -148,7 +148,6 @@ return require('packer').startup(function(use)
       'protex/better-digraphs.nvim',
       after = 'telescope.nvim',
       config = function() require('omar.plugins.digraphs') end,
-      disable = true,
     },
   }
 
