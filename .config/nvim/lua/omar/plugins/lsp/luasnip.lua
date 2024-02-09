@@ -126,6 +126,18 @@ ls.add_snippets('tex', {
 
   s(
     {
+      trig = 'subfile',
+      desc = 'Add subfile preamble',
+    },
+    {
+      t {'\\documentclass[master.tex]{subfiles}', '\\begin{document}', ''},
+      i(0, ''),
+      t {'', '\\end{document}'}
+    }
+  ),
+
+  s(
+    {
       trig = 'todo',
       desc = 'Enter an inline TODO',
     },
