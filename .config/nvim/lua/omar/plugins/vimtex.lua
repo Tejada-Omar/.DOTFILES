@@ -43,7 +43,7 @@ call vimtex#imaps#add_map({
       \ 'rhs' : '\item ',
       \ 'leader'  : '',
       \ 'wrapper' : 'vimtex#imaps#wrap_environment',
-      \ 'context' : [ 'itemize', 'enumerate' ],
+      \ 'context' : [ 'itemize', 'enumerate', 'description' ],
       \})
 ]])
 
