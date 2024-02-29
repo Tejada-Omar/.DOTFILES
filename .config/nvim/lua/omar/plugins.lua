@@ -90,6 +90,11 @@ return require('packer').startup(function(use)
     { 'hrsh7th/cmp-path', after = 'nvim-cmp', disable = true },
     { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
     {
+      'rcarriga/cmp-dap',
+      after = 'nvim-cmp',
+      requires = { 'mfussenegger/nvim-dap', 'rcarriga/nvim-dap-ui' },
+    },
+    {
       'windwp/nvim-autopairs',
       -- event = 'InsertCharPre',
       after = 'nvim-cmp',
@@ -99,6 +104,31 @@ return require('packer').startup(function(use)
       'j-hui/fidget.nvim',
       -- event = 'BufWinEnter',
       config = function() require('fidget').setup() end,
+    },
+  }
+
+  use {
+    {
+      'mfussenegger/nvim-dap',
+      run = ':helptags ALL',
+    },
+    {
+      'mrcjkb/rustaceanvim',
+      tag = '*',
+      run = ':helptags ALL',
+      requires = 'mfussenegger/nvim-dap',
+      ft = 'rust',
+      setup = function() require('omar.plugins.lsp.rustace') end,
+    },
+    {
+      'rcarriga/nvim-dap-ui',
+      requires = 'mfussenegger/nvim-dap',
+      config = function() require('omar.plugins.lsp.dap') end,
+    },
+    {
+      'LiadOz/nvim-dap-repl-highlights',
+      requires = 'mfussenegger/nvim-dap',
+      config = function() require('nvim-dap-repl-highlights') end,
     },
   }
 
@@ -285,11 +315,6 @@ return require('packer').startup(function(use)
     requires = 'stevearc/dressing.nvim',
     config = function() require('omar.plugins.icon-picker') end,
   }
-
-  -- use {
-  --   'mfussenegger/nvim-dap',
-  --   run = ':helptags ALL'
-  -- }
 
   -- Local plugins
   use {
