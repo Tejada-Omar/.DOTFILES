@@ -37,13 +37,14 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
 local extendedClientCapabilities = require('jdtls').extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-local root_dir = vim.fs.dirname(
-  vim.fs.find({ '.gradlew', '.git', 'mvnw' }, { upward = true })[1]
-)
+-- local root_dir = vim.fs.dirname(
+--   vim.fs.find({ '.gradlew', '.git', 'mvnw' }, { upward = true })[1]
+-- )
+local root_dir = require('jdtls.setup').find_root { '.gradlew', '.git', 'mvnw' }
 
 local workspace_folder = os.getenv('HOME')
-    .. '/.workspace'
-    .. vim.fn.fnamemodify(root_dir, ':p:h:t')
+  .. '/.workspace'
+  .. vim.fn.fnamemodify(root_dir or vim.fn.getcwd(), ':p:h:t')
 
 local settings = {
   java = {
@@ -76,7 +77,7 @@ local cmd = {
   'java.base/java.lang=ALL-UNNAMED',
   '-jar',
   jdtls_root_dir
-      .. '/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+    .. '/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar',
   '-configuration',
   jdtls_root_dir .. '/config_linux',
   '-data',
@@ -112,10 +113,10 @@ local config = {
 --   extendedClientCapabilities = extendedClientCapabilities,
 -- }
 
--- require('jdtls').start_or_attach(config)
+-- jdtls.start_or_attach(config)
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = 'java',
-  callback = function() require('jdtls').start_or_attach(config) end,
+  callback = function() jdtls.start_or_attach(config) end,
   desc = 'Start jdtls',
 })
