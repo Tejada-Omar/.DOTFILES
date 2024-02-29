@@ -1,7 +1,7 @@
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')
-      .. '/site/pack/packer/start/packer.nvim'
+    .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system {
       'git',
@@ -32,13 +32,14 @@ return require('packer').startup(function(use)
     disable = true,
   }
 
-  use {
-    'folke/noice.nvim',
-    config = function() require('omar.plugins.noice') end,
-    requires = {
-      'MunifTanjim/nui.nvim',
-    },
-  }
+  -- use {
+  --   'folke/noice.nvim',
+  --   disable = true,
+  --   config = function() require('omar.plugins.noice') end,
+  --   requires = {
+  --     'MunifTanjim/nui.nvim',
+  --   },
+  -- }
 
   use {
     {
@@ -51,7 +52,7 @@ return require('packer').startup(function(use)
       after = 'nvim-treesitter',
     },
     { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' },
-    { 'nvim-treesitter/playground',              after = 'nvim-treesitter' },
+    { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
   }
 
   use {
@@ -85,9 +86,9 @@ return require('packer').startup(function(use)
       },
     },
     { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-path',         after = 'nvim-cmp', disable = true },
-    { 'hrsh7th/cmp-cmdline',      after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path', after = 'nvim-cmp', disable = true },
+    { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
     {
       'windwp/nvim-autopairs',
       -- event = 'InsertCharPre',
@@ -98,7 +99,6 @@ return require('packer').startup(function(use)
       'j-hui/fidget.nvim',
       -- event = 'BufWinEnter',
       config = function() require('fidget').setup() end,
-      disable = true,
     },
   }
 
@@ -157,13 +157,13 @@ return require('packer').startup(function(use)
       requires = {
         {
           'JoosepAlviste/nvim-ts-context-commentstring',
-          config = function ()
+          config = function()
             vim.g.skip_ts_context_commentstring_module = true
             ---@diagnostic disable-next-line: missing-fields
             require('ts_context_commentstring').setup {}
-          end
-        }
-      }
+          end,
+        },
+      },
     },
     {
       'kylechui/nvim-surround',
