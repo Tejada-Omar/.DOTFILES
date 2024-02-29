@@ -115,6 +115,31 @@ return require('packer').startup(function(use)
 
   use {
     {
+      'mfussenegger/nvim-dap',
+      run = ':helptags ALL',
+    },
+    {
+      'mrcjkb/rustaceanvim',
+      tag = '*',
+      run = ':helptags ALL',
+      requires = 'mfussenegger/nvim-dap',
+      ft = 'rust',
+      setup = function() require('omar.plugins.lsp.rustace') end,
+    },
+    {
+      'rcarriga/nvim-dap-ui',
+      requires = 'mfussenegger/nvim-dap',
+      config = function() require('omar.plugins.lsp.dap') end,
+    },
+    {
+      'LiadOz/nvim-dap-repl-highlights',
+      requires = 'mfussenegger/nvim-dap',
+      config = function() require('nvim-dap-repl-highlights') end,
+    },
+  }
+
+  use {
+    {
       'nvim-tree/nvim-web-devicons',
       config = function() require('nvim-web-devicons').setup() end,
     },
@@ -306,11 +331,6 @@ return require('packer').startup(function(use)
     config = function() require('omar.plugins.icon-picker') end,
     disable = true,
   }
-
-  -- use {
-  --   'mfussenegger/nvim-dap',
-  --   run = ':helptags ALL'
-  -- }
 
   -- Local plugins
   use {

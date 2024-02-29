@@ -18,9 +18,9 @@ require('null-ls').setup {
     diagnostics.actionlint,
     -- diagnostics.commitlint,
     -- diagnostics.shellcheck,
-    -- diagnostics.luacheck.with({
-    --   extra_args = { "--globals", "vim", "--std", "luajit" },
-    -- }),
+    diagnostics.luacheck.with({
+      extra_args = { "--globals", "vim", "--std", "luajit" },
+    }),
     code_actions.eslint_d,
     code_actions.shellcheck,
     hover.dictionary.with {
