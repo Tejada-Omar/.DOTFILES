@@ -103,7 +103,9 @@ return require('packer').startup(function(use)
     {
       'j-hui/fidget.nvim',
       -- event = 'BufWinEnter',
-      config = function() require('fidget').setup() end,
+      config = function() require('fidget').setup {
+        supress_on_insert = true
+      } end,
     },
   }
 
