@@ -1,4 +1,5 @@
 local jdtls = require('jdtls')
+local jdtlsdap = require('jdtls.dap')
 local utils = require('omar.plugins.lsp.utils')
 
 local on_attach = function(client, bufnr)
@@ -6,27 +7,45 @@ local on_attach = function(client, bufnr)
   utils.mappings(bufnr)
   vim.keymap.set(
     'n',
-    '<leader>di',
+    '<Space>di',
     jdtls.organize_imports,
     { desc = 'Organize imports', buffer = bufnr }
   )
   vim.keymap.set(
     'n',
-    '<leader>de',
+    '<Space>de',
     jdtls.extract_variable,
     { desc = 'Extract variables', buffer = bufnr }
   )
   vim.keymap.set(
     'n',
-    '<leader>dn',
+    '<Space>dn',
     jdtls.extract_method,
     { desc = 'Extract method', buffer = bufnr }
   )
   vim.keymap.set(
     'n',
-    '<leader>dc',
+    '<Space>dc',
     jdtls.extract_constant,
     { desc = 'Extract constant', buffer = bufnr }
+  )
+  vim.keymap.set(
+    'n',
+    '<Space>dt',
+    jdtls.test_class,
+    { desc = 'Test java class', buffer = bufnr }
+  )
+  vim.keymap.set(
+    'n',
+    '<Space>dy',
+    jdtls.test_nearest_method,
+    { desc = 'Test nearest java method', buffer = bufnr }
+  )
+  vim.keymap.set(
+    'n',
+    '<Space>dd',
+    jdtlsdap.setup_dap_main_class_configs,
+    { desc = 'Setup dap', buffer = bufnr }
   )
 end
 
@@ -59,6 +78,9 @@ local settings = {
 }
 
 local jdtls_root_dir = '/home/omar/.local/share/nvim/mason/packages/jdtls'
+local dap_root_dir =
+  '/home/omar/.local/share/nvim/mason/packages/java-debug-adapter'
+local test_root_dir = '/home/omar/.local/share/nvim/mason/packages/java-test'
 
 local cmd = {
   'java',
@@ -83,6 +105,18 @@ local cmd = {
   workspace_folder,
 }
 
+local bundles = {
+  vim.fn.glob(
+    '/home/omar/Code/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar',
+    true
+  ),
+}
+
+vim.list_extend(
+  bundles,
+  vim.split(vim.fn.glob('/home/omar/Code/vscode-java-test/server/*.jar', true), '\n')
+)
+
 local config = {
   cmd = { '/home/omar/.local/share/nvim/mason/bin/jdtls', workspace_folder },
   -- cmd = cmd,
@@ -90,7 +124,10 @@ local config = {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = settings,
-  init_options = { extendedClientCapabilities = extendedClientCapabilities },
+  init_options = {
+    extendedClientCapabilities = extendedClientCapabilities,
+    bundles = bundles,
+  },
   -- capabilities = {
   --   workspace = {
   --     configuration = true,
