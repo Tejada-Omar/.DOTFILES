@@ -23,9 +23,8 @@ set notification-warning-fg "#e0ad68"
 set statusbar-bg "#16161e"
 set statusbar-fg "#a9b1d6"
 
-set highlight-color "#3d59a1"
-set highlight-active-color "#ff9e64"
-set highlight-transparency 0.4
+set highlight-color rgba(61,89,161,0.4)
+set highlight-active-color rgba(255,158,100,0.4)
 
 set index-bg "#1a1b26"
 set index-fg "#c0caf5"
