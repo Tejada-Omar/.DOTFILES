@@ -241,6 +241,7 @@ return require('packer').startup(function(use)
 
   use {
     'mfussenegger/nvim-jdtls',
+    requires = 'mfussenegger/nvim-dap',
     config = function() require('omar.plugins.lsp.jdtls') end,
   }
 
