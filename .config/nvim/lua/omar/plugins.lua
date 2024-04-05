@@ -92,7 +92,7 @@ return require('packer').startup(function(use)
     {
       'rcarriga/cmp-dap',
       after = 'nvim-cmp',
-      requires = { 'mfussenegger/nvim-dap', 'rcarriga/nvim-dap-ui' },
+      requires = { 'mfussenegger/nvim-dap','nvim-neotest/nvim-nio',  'rcarriga/nvim-dap-ui' },
     },
     {
       'windwp/nvim-autopairs',
