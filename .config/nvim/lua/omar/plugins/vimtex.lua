@@ -1,5 +1,7 @@
 vim.g.vimtex_view_method = 'zathura'
 vim.g.vimtex_view_use_temp_files = 1
+vim.g.vimtex_quickfix_open_on_warning = 0
+vim.g.vimtex_indent_on_ampersands = 0
 
 vim.g['vimtex_compiler_latexmk'] = {
   build_dir = 'latex-bin',
