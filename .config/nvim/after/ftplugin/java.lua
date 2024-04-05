@@ -1,6 +1,6 @@
 vim.bo.textwidth = 120
-vim.bo.tabstop = 4
-vim.bo.shiftwidth = 4
+-- vim.bo.tabstop = 4
+-- vim.bo.shiftwidth = 4
 
 local run_maven = function()
   local root_dir = vim.fs.dirname(
