@@ -26,4 +26,4 @@ export MANROFFOPT="-c"
 
 # fzf settings
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
-export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize -r 40: --color=always {}' --border=none"
+export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize -r 40: --color=always {}' --color=dark --scheme=path --keep-right --tiebreak=length,end,begin --filepath-word --border=none --ansi --preview-window=up,20%"
