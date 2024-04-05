@@ -1,7 +1,7 @@
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')
-      .. '/site/pack/packer/start/packer.nvim'
+    .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system {
       'git',
@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
       after = 'nvim-treesitter',
     },
     -- { 'nvim-treesitter/nvim-treesitter-context', after = 'nvim-treesitter' },
-    { 'nvim-treesitter/playground',              after = 'nvim-treesitter' },
+    { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
   }
 
   use {
@@ -86,9 +86,18 @@ return require('packer').startup(function(use)
       },
     },
     { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-path',         after = 'nvim-cmp', disable = true },
-    { 'hrsh7th/cmp-cmdline',      after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path', after = 'nvim-cmp', disable = true },
+    { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' },
+    {
+      'rcarriga/cmp-dap',
+      after = 'nvim-cmp',
+      requires = {
+        'mfussenegger/nvim-dap',
+        'nvim-neotest/nvim-nio',
+        'rcarriga/nvim-dap-ui',
+      },
+    },
     {
       'windwp/nvim-autopairs',
       -- event = 'InsertCharPre',
@@ -294,8 +303,8 @@ return require('packer').startup(function(use)
   use {
     'ziontee113/icon-picker.nvim',
     requires = 'stevearc/dressing.nvim',
-    config = function () require('omar.plugins.icon-picker') end,
-    disable = true
+    config = function() require('omar.plugins.icon-picker') end,
+    disable = true,
   }
 
   -- use {
