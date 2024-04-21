@@ -8,21 +8,28 @@ local hover = null_ls.builtins.hover
 require('null-ls').setup {
   sources = {
     formatting.prettierd,
-    formatting.eslint_d,
+    -- formatting.eslint_d,
     formatting.stylua,
     formatting.shfmt.with {
       extra_args = { '-i', 2, '-ci', '-sr' },
     },
-    -- formatting.latexindent,
-    diagnostics.eslint_d,
+    diagnostics.textidote.with {
+      '--read-all',
+      '--output',
+      'singleline',
+      '--no-color',
+      '--quiet',
+      '$FILENAME',
+    },
+    -- diagnostics.eslint_d,
     diagnostics.actionlint,
     -- diagnostics.commitlint,
     -- diagnostics.shellcheck,
-    diagnostics.luacheck.with({
-      extra_args = { "--globals", "vim", "--std", "luajit" },
-    }),
-    code_actions.eslint_d,
-    code_actions.shellcheck,
+    -- diagnostics.luacheck.with({
+    --   extra_args = { "--globals", "vim", "--std", "luajit" },
+    -- }),
+    -- code_actions.eslint_d,
+    -- code_actions.shellcheck,
     hover.dictionary.with {
       extra_filetypes = { 'vimwiki' },
     },
