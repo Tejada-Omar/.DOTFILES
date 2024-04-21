@@ -73,7 +73,7 @@ return require('packer').startup(function(use)
       after = 'mason-lspconfig.nvim',
     },
     {
-      'jose-elias-alvarez/null-ls.nvim',
+      'nvimtools/none-ls.nvim',
       config = function() require('omar.plugins.lsp.null-ls') end,
     },
     {
