@@ -75,6 +75,8 @@ local language_servers = {
   'vimls',
   'lemminx',
   'clangd',
+  'tailwindcss',
+  'ansiblels',
 }
 
 for _, server in pairs(language_servers) do

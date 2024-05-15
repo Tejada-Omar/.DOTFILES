@@ -11,6 +11,7 @@ M.format_on_save = function(client, bufnr)
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format {
+          filter = function(inner_client) return inner_client.name ~= "tsserver" end,
           buffer = bufnr,
         }
       end,
@@ -95,6 +96,7 @@ M.mappings = function(bufnr)
   })
   vim.keymap.set('n', '<Space>f', function()
     vim.lsp.buf.format {
+      filter = function(client) return client.name ~= "tsserver" end,
       async = true,
     }
   end, { desc = 'Format a buffer using attached LSP', buffer = bufnr })
