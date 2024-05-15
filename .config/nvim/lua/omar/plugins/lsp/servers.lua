@@ -66,7 +66,7 @@ lsp.marksman.setup {
 local language_servers = {
   'pyright',
   'texlab',
-  'cssls',
+  -- 'cssls',
   'html',
   'jsonls',
   'bashls',

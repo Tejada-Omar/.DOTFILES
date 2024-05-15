@@ -24,16 +24,17 @@ require('null-ls').setup {
     },
     require('none-ls.diagnostics.eslint_d'),
     diagnostics.actionlint,
-    diagnostics.commitlint,
+    -- diagnostics.commitlint,
     require('none-ls-shellcheck.diagnostics'),
-    require('none-ls-luacheck.diagnostics.luacheck').with({
-      extra_args = { "--globals", "vim", "--std", "luajit" },
-    }),
+    require('none-ls-luacheck.diagnostics.luacheck').with {
+      extra_args = { '--globals', 'vim', '--std', 'luajit' },
+    },
     require('none-ls.code_actions.eslint_d'),
     require('none-ls-shellcheck.code_actions'),
     hover.dictionary.with {
       extra_filetypes = { 'vimwiki' },
     },
+    diagnostics.ansiblelint,
   },
   on_attach = function(client, bufnr)
     -- utils.format_on_save(client, bufnr)
