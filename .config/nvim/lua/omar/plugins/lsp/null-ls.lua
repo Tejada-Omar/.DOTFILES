@@ -21,6 +21,7 @@ require('null-ls').setup {
     diagnostics.luacheck.with({
       extra_args = { "--globals", "vim", "--std", "luajit" },
     }),
+    diagnostics.golangci_lint,
     code_actions.eslint_d,
     code_actions.shellcheck,
     hover.dictionary.with {

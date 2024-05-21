@@ -61,6 +61,16 @@ lsp.marksman.setup {
   },
 }
 
+lsp.gopls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    gopls = {
+      gofumpt = true
+    }
+  }
+}
+
 -- Look into .get_mappings()
 local language_servers = {
   'pyright',
