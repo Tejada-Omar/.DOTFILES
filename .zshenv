@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Path
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$HOME/go/bin"
 
 # Preferences
 export VISUAL=nvim
