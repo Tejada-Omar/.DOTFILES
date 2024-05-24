@@ -68,7 +68,11 @@ return require('packer').startup(function(use)
     },
     {
       'nvimtools/none-ls.nvim',
-      requires = { 'nvimtools/none-ls-extras.nvim', 'gbprod/none-ls-shellcheck.nvim', 'gbprod/none-ls-luacheck.nvim' },
+      requires = {
+        'nvimtools/none-ls-extras.nvim',
+        'gbprod/none-ls-shellcheck.nvim',
+        'gbprod/none-ls-luacheck.nvim',
+      },
       config = function() require('omar.plugins.lsp.null-ls') end,
     },
     {
@@ -87,7 +91,11 @@ return require('packer').startup(function(use)
     {
       'rcarriga/cmp-dap',
       after = 'nvim-cmp',
-      requires = { 'mfussenegger/nvim-dap','nvim-neotest/nvim-nio',  'rcarriga/nvim-dap-ui' },
+      requires = {
+        'mfussenegger/nvim-dap',
+        'nvim-neotest/nvim-nio',
+        'rcarriga/nvim-dap-ui',
+      },
     },
     {
       'windwp/nvim-autopairs',
@@ -98,11 +106,13 @@ return require('packer').startup(function(use)
     {
       'j-hui/fidget.nvim',
       -- event = 'BufWinEnter',
-      config = function() require('fidget').setup {
-        progress = {
-          suppress_on_insert = true
+      config = function()
+        require('fidget').setup {
+          progress = {
+            suppress_on_insert = true,
+          },
         }
-      } end,
+      end,
     },
   }
 
