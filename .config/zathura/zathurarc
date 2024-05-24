@@ -1,1 +1,37 @@
 set selection-clipboard clipboard
+set vertical-center true
+set window-title-home-tilde
+set statusbar-basename true
+set statusbar-h-padding 16
+set statusbar-v-padding 4
+
+set font "Jetbrains Mono"
+
+set default-bg "#1a1b26"
+set default-fg "#c0caf5"
+
+set inputbar-bg "#1a1b26"
+set inputbar-fg "#c0caf5"
+
+set notification-bg "#1a1b26"
+set notification-fg "#c0caf5"
+set notification-error-bg "#1a1b26"
+set notification-error-fg "#db4b4b"
+set notification-warning-bg "#1a1b26"
+set notification-warning-fg "#e0ad68"
+
+set statusbar-bg "#16161e"
+set statusbar-fg "#a9b1d6"
+
+set highlight-color rgba(61,89,161,0.4)
+set highlight-active-color rgba(255,158,100,0.4)
+
+set index-bg "#1a1b26"
+set index-fg "#c0caf5"
+set index-active-bg "#33467c"
+set index-active-fg "#c0caf5"
+
+set recolor
+set recolor-lightcolor "#1a1b26"
+set recolor-darkcolor "#c0caf5"
+set recolor-keephue true

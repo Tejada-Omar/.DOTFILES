@@ -1,0 +1,15 @@
+width=700
+height=1000
+location=center
+show=drun
+prompt=Search...
+filter_rate=100
+allow_markup=true
+parse-search=true
+no_actions=true
+halign=fill
+orientation=vertical
+content_halign=fill
+insensitive=true
+allow_images=true
+dmenu-parse_action=true

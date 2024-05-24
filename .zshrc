@@ -47,13 +47,41 @@ zle -N down-line-or-beginning-search
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+
 # Change window title based on last command
 change_window_title() {echo -ne "\033]0;$(history | tail -n1 | cut -c 8-)\007";}
 add-zsh-hook precmd change_window_title
+
+# if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+#   tmux attach || tmux >/dev/null 2>&1
+# fi
+
+#compdef wampy
+###-begin-wampy-completions-###
+#
+# yargs command completion script
+#
+# Installation: /home/omar/.local/bin/wampy completion >> ~/.zshrc
+#    or /home/omar/.local/bin/wampy completion >> ~/.zprofile on OSX.
+#
+_wampy_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" /home/omar/.local/bin/wampy --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _wampy_yargs_completions wampy
+###-end-wampy-completions-###
 
 # Starship prompt
 eval "$(starship init zsh)"
 
 source ~/.zshaliases
+source ~/.zshfunctions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

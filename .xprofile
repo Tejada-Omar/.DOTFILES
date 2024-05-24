@@ -1,3 +1,4 @@
 #!/bin/bash
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+xbanish -i all &
 picom -b
