@@ -330,6 +330,10 @@ return require('packer').startup(function(use)
     config = function() require('omar.plugins.icon-picker') end,
   }
 
+  use {
+    'mfussenegger/nvim-ansible',
+  }
+
   -- Local plugins
   use {
     '~/Code/notes-compile.nvim',
