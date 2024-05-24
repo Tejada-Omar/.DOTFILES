@@ -1,10 +1,24 @@
-local load = function(mod)
-  package.loaded[mod] = nil
-  return require(mod)
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  }
 end
 
-load("omar/settings")
-load("omar/keymaps")
-load("omar/autocmd")
-load("omar/plugins")
-load("omar/global")
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup({ import = 'omar/plugins' }, {
+  dev = {
+    path = '~/Code/projects/neovim',
+    fallback = true,
+  },
+  change_detection = {
+    notify = false
+  },
+})
