@@ -58,6 +58,26 @@ add-zsh-hook precmd change_window_title
 #   tmux attach || tmux >/dev/null 2>&1
 # fi
 
+#compdef wampy
+###-begin-wampy-completions-###
+#
+# yargs command completion script
+#
+# Installation: /home/omar/.local/bin/wampy completion >> ~/.zshrc
+#    or /home/omar/.local/bin/wampy completion >> ~/.zprofile on OSX.
+#
+_wampy_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" /home/omar/.local/bin/wampy --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _wampy_yargs_completions wampy
+###-end-wampy-completions-###
+
 # Starship prompt
 eval "$(starship init zsh)"
 
