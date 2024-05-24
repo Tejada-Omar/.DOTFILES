@@ -30,3 +30,5 @@ export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize 
 # sockets
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 # export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
+
+export npm_config_prefix="$HOME/.local"
