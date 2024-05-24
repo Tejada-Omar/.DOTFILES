@@ -14,6 +14,11 @@ require('null-ls').setup {
       extra_args = { '-i', 2, '-ci', '-sr' },
     },
     require('none-ls.formatting.latexindent'),
+    formatting.goimports,
+    formatting.goimports_reviser,
+    formatting.golines.with {
+      '--shorten-comments',
+    },
     diagnostics.textidote.with {
       '--read-all',
       '--output',
@@ -24,6 +29,7 @@ require('null-ls').setup {
     },
     require('none-ls.diagnostics.eslint_d'),
     diagnostics.actionlint,
+    diagnostics.golangci_lint,
     -- diagnostics.commitlint,
     require('none-ls-shellcheck.diagnostics'),
     require('none-ls-luacheck.diagnostics.luacheck').with {

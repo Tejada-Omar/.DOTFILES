@@ -77,6 +77,7 @@ local language_servers = {
   'clangd',
   'tailwindcss',
   'ansiblels',
+  'gopls',
 }
 
 for _, server in pairs(language_servers) do
