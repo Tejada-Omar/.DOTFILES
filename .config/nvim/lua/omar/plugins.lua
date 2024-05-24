@@ -61,16 +61,10 @@ return require('packer').startup(function(use)
       config = function() require('mason').setup() end,
     },
     {
-      'williamboman/mason-lspconfig.nvim',
-      config = function() require('mason-lspconfig').setup() end,
-      after = 'mason.nvim',
-    },
-    {
       'neovim/nvim-lspconfig',
       -- event = 'BufRead',
       config = function() require('omar.plugins.lsp.servers') end,
       requires = { 'hrsh7th/cmp-nvim-lsp' },
-      after = 'mason-lspconfig.nvim',
     },
     {
       'nvimtools/none-ls.nvim',
