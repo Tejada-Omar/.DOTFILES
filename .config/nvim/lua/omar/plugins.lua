@@ -139,6 +139,10 @@ return require('packer').startup(function(use)
       requires = 'mfussenegger/nvim-dap',
       config = function() require('nvim-dap-repl-highlights') end,
     },
+    {
+      'leoluz/nvim-dap-go',
+      config = function() require('dap-go').setup() end,
+    },
   }
 
   use {
