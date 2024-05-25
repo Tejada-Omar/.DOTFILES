@@ -5,21 +5,19 @@ return {
   },
   {
     'folke/tokyonight.nvim',
+    lazy = false,
     priority = 1000,
-    init = function() vim.cmd([[colorscheme tokyonight-night]]) end,
-    opts = function()
-      vim.api.nvim_create_autocmd('ColorScheme', {
-        pattern = '*',
-        callback = function()
-          vim.api.nvim_set_hl(0, 'Folded', { bg = 'bg', fg = '#565f89' })
-        end,
-      })
-
-      return {
-        style = 'night',
-        terminal_colors = false,
-        lualine_bold = true,
-      }
+    opts = {
+      style = 'night',
+      terminal_colors = false,
+      lualine_bold = true,
+      on_highlights = function(highlights, _)
+        highlights.Folded = highlights.Conceal
+      end,
+    },
+    config = function(_, opts)
+      require('tokyonight').setup(opts)
+      vim.cmd.colorscheme('tokyonight')
     end,
   },
   {
