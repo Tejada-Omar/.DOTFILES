@@ -28,7 +28,7 @@ return {
 
       local on_attach = function(_, bufnr) utils.mappings(bufnr) end
 
-      vim.lsp.set_log_level(vim.lsp.log_levels.OFF)
+      vim.lsp.set_log_level(vim.lsp.log_levels.WARN)
 
       vim.diagnostic.config {
         virtual_text = { spacing = 1 },
