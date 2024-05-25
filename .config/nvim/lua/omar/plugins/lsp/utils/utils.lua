@@ -73,7 +73,7 @@ M.mappings = function(bufnr)
   vim.keymap.set(
     'n',
     '<Space>wl',
-    function() vim.pretty_print(vim.lsp.buf.list_workspace_folders()) end,
+    function() vim.print(vim.lsp.buf.list_workspace_folders()) end,
     { desc = 'List workspace windows', buffer = bufnr }
   )
 
