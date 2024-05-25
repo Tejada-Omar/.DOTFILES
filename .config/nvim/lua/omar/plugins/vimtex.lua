@@ -1,7 +1,7 @@
 return {
   {
     'lervag/vimtex',
-    config = function()
+    init = function()
       vim.g.vimtex_view_method = 'zathura'
       vim.g.vimtex_view_use_temp_files = 1
       vim.g.vimtex_quickfix_open_on_warning = 0
@@ -34,7 +34,8 @@ return {
         split_pos = 'leftabove',
         split_width = 10,
       }
-
+    end,
+    config = function()
       vim.fn['vimtex#imaps#add_map'] {
         lhs = 't',
         rhs = "vimtex#imaps#style_math('text')",
