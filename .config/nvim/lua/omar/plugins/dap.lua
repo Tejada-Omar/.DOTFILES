@@ -12,28 +12,28 @@ return {
         },
         {
           '<leader>dl',
-          function () require('dap').run_last() end,
+          function() require('dap').run_last() end,
           desc = 'Run last dap command',
         },
         {
           '<F5>',
           '<CMD>DapContinue<CR>',
-          desc = 'Continue dap debugging'
+          desc = 'Continue dap debugging',
         },
         {
           '<F10>',
           '<CMD>DapStepOver<CR>',
-          desc = 'Step over next line for DAP'
+          desc = 'Step over next line for DAP',
         },
         {
           '<F11>',
           '<CMD>DapStepInto<CR>',
-          desc = 'Step into inner context for DAP'
+          desc = 'Step into inner context for DAP',
         },
         {
           '<F12>',
           '<CMD>DapStepOut<CR>',
-          desc = 'Step out of context for DAP'
+          desc = 'Step out of context for DAP',
         },
       },
     },

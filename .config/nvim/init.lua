@@ -19,6 +19,6 @@ require('lazy').setup({ import = 'omar/plugins' }, {
     fallback = true,
   },
   change_detection = {
-    notify = false
+    notify = false,
   },
 })

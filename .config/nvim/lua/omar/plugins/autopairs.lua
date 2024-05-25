@@ -4,7 +4,7 @@ return {
     opts = {
       disable_in_macro = true,
     },
-    config = function (_, opts)
+    config = function(_, opts)
       require('nvim-autopairs').setup(opts)
 
       local rule = require('nvim-autopairs.rule')
@@ -23,6 +23,6 @@ return {
         'confirm_done',
         require('nvim-autopairs.completion.cmp').on_confirm_done()
       )
-    end
+    end,
   },
 }
