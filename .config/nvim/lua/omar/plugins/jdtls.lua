@@ -11,42 +11,49 @@ return {
       local on_attach = function(_, bufnr)
         jdtls.setup.add_commands()
         utils.mappings(bufnr)
+
         vim.keymap.set(
           'n',
           '<Space>di',
           jdtls.organize_imports,
           { desc = 'Organize imports', buffer = bufnr }
         )
+
         vim.keymap.set(
           'n',
           '<Space>de',
           jdtls.extract_variable,
           { desc = 'Extract variables', buffer = bufnr }
         )
+
         vim.keymap.set(
           'n',
           '<Space>dn',
           jdtls.extract_method,
           { desc = 'Extract method', buffer = bufnr }
         )
+
         vim.keymap.set(
           'n',
           '<Space>dc',
           jdtls.extract_constant,
           { desc = 'Extract constant', buffer = bufnr }
         )
+
         vim.keymap.set(
           'n',
           '<Space>dt',
           jdtls.test_class,
           { desc = 'Test java class', buffer = bufnr }
         )
+
         vim.keymap.set(
           'n',
           '<Space>dy',
           jdtls.test_nearest_method,
           { desc = 'Test nearest java method', buffer = bufnr }
         )
+
         vim.keymap.set(
           'n',
           '<Space>dd',

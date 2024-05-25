@@ -12,30 +12,36 @@ return {
       vim.keymap.set({ 'i', 's' }, '<C-l>', function()
         if ls.choice_active() then ls.change_choice(1) end
       end)
+
       vim.keymap.set('i', '<C-h>', function()
         if ls.choice_active() then ls.change_choice(-1) end
       end)
+
       vim.keymap.set(
         'i',
         '<C-u>',
         function() require('luasnip.extras.select_choice')() end
       )
+
       vim.keymap.set(
         'n',
         '<leader><leader>s',
         '<CMD>source ~/.config/nvim/lua/omar/plugins/lsp/luasnip.lua<CR>',
         { desc = 'Source luasnips file' }
       )
+
       vim.keymap.set(
         { 'i', 'n' },
         '<C-f>',
         "<CMD>lua require('luasnip.extras.otf').on_the_fly()<CR>"
       )
+
       vim.keymap.set(
         { 'i', 'n' },
         '<C-f>q',
         "<CMD>lua require('luasnip.extras.otf').on_the_fly('q')<CR>"
       )
+
       vim.keymap.set(
         { 'i', 'n' },
         '<C-f>w',
