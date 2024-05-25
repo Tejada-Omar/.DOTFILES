@@ -4,23 +4,6 @@ return {
     config = true,
   },
   {
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      style = 'night',
-      terminal_colors = false,
-      lualine_bold = true,
-      on_highlights = function(highlights, _)
-        highlights.Folded = highlights.Conceal
-      end,
-    },
-    config = function(_, opts)
-      require('tokyonight').setup(opts)
-      vim.cmd.colorscheme('tokyonight')
-    end,
-  },
-  {
     'nvim-lualine/lualine.nvim',
     event = 'UIEnter',
     init = function() vim.o.showmode = false end,
@@ -28,7 +11,7 @@ return {
       options = {
         icons_enabled = false,
         globalstatus = true,
-        theme = 'tokyonight',
+        theme = 'rose-pine',
       },
       sections = {
         lualine_a = { 'mode' },

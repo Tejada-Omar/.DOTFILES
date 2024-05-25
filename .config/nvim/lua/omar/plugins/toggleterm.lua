@@ -4,6 +4,7 @@ return {
     opts = {
       open_mapping = '<leader>tt',
       insert_mappings = false,
+      highlights = require('rose-pine.plugins.toggleterm')
     },
     config = true,
     keys = {
