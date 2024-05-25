@@ -5,12 +5,6 @@ return {
     dependencies = { 'hrsh7th/cmp-nvim-lsp' },
     keys = {
       { '<SPACE>e', vim.diagnostic.open_float, desc = 'Open diagnostic' },
-      { '<C-n>', vim.diagnostic.goto_next, desc = 'Move to next diagnostic' },
-      {
-        '<C-p>',
-        vim.diagnostic.goto_prev,
-        desc = 'Move to previous diagnostic',
-      },
       {
         '<SPACE>q',
         vim.diagnostic.setqflist,
@@ -32,7 +26,7 @@ return {
       vim.diagnostic.config {
         virtual_text = { spacing = 1 },
         signs = false,
-        underline = true,
+        severity_sort = true,
       }
 
       lsp.lua_ls.setup {

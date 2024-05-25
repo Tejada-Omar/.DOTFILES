@@ -44,13 +44,6 @@ M.mappings = function(bufnr)
 
   vim.keymap.set(
     'n',
-    'K',
-    vim.lsp.buf.hover,
-    { desc = 'Show hover information in floating window', buffer = bufnr }
-  )
-
-  vim.keymap.set(
-    'n',
     'gi',
     vim.lsp.buf.implementation,
     { desc = 'List all implementations in quickfix window', buffer = bufnr }
