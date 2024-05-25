@@ -6,7 +6,8 @@ vim.o.list = true
 vim.o.conceallevel = 2
 
 vim.o.fillchars = 'fold: '
-vim.o.foldenable = false
+vim.o.foldenable = true
+vim.o.foldlevelstart = 3
 
 vim.o.expandtab = true
 vim.o.tabstop = 2
