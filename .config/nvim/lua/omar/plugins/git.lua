@@ -84,18 +84,6 @@ return {
         buffer = 0,
       },
       {
-        '<leader>hd',
-        '<CMD>Gitsigns diffthis',
-        desc = 'View diff',
-        buffer = 0,
-      },
-      {
-        '<leader>hD',
-        '<CMD>Gitsigns diffthis ~<CR>',
-        desc = 'View diff against last commit',
-        buffer = 0,
-      },
-      {
         '<leader>td',
         '<CMD>Gitsigns toggle_deleted<CR>',
         desc = 'Toggle deleted code',
@@ -108,6 +96,28 @@ return {
         desc = 'Select hunk',
         buffer = 0,
       },
+    },
+  },
+  {
+    'NeogitOrg/neogit',
+    event = 'VeryLazy',
+    keys = { { '<leader>g', '<CMD>Neogit<CR>', desc = 'Open Neogit' } },
+    opts = {
+      commit_editor = {
+        staged_diff_split_kind = 'auto',
+      },
+    },
+    dependencies = {
+      {
+        'sindrets/diffview.nvim',
+        opts = {
+          enhanced_diff_hl = true,
+        },
+        keys = {
+          { '<leader>hd', '<CMD>DiffviewOpen<CR>', desc = 'Open diffview' },
+        },
+      },
+      'nvim-telescope/telescope.nvim',
     },
   },
 }
