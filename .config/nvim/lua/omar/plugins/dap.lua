@@ -66,6 +66,7 @@ return {
         }
       end,
       init = function(_, opts) vim.g.rustacenvim = opts end,
+      config = false,
     },
     {
       'rcarriga/nvim-dap-ui',
