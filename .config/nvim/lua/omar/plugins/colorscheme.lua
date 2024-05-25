@@ -1,7 +1,6 @@
 return {
   {
     'folke/tokyonight.nvim',
-    enabled = false,
     lazy = false,
     priority = 1000,
     opts = {
@@ -12,20 +11,20 @@ return {
         highlights.Folded = highlights.Conceal
       end,
     },
-    config = function(_, opts)
-      require('tokyonight').setup(opts)
-      vim.cmd.colorscheme('tokyonight')
-    end,
+    config = true,
   },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
-    enabled = true,
     lazy = false,
     priority = 1000,
-    config = function(_, opts)
-      require('rose-pine').setup(opts)
-      vim.cmd.colorscheme('rose-pine')
-    end,
+    config = true,
+  },
+  {
+    'Everblush/nvim',
+    name = 'everblush',
+    lazy = false,
+    priority = 1000,
+    config = true,
   },
 }

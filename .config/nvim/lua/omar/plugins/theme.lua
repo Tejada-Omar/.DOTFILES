@@ -11,7 +11,7 @@ return {
       options = {
         icons_enabled = false,
         globalstatus = true,
-        theme = 'rose-pine',
+        theme = vim.g.lualine_theme,
       },
       sections = {
         lualine_a = { 'mode' },
