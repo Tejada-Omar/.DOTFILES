@@ -70,9 +70,6 @@ return {
         require('jdtls').extendedClientCapabilities
       extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-      -- local root_dir = vim.fs.dirname(
-      --   vim.fs.find({ '.gradlew', '.git', 'mvnw' }, { upward = true })[1]
-      -- )
       local root_dir =
         require('jdtls.setup').find_root { '.gradlew', '.git', 'mvnw' }
 
@@ -138,7 +135,6 @@ return {
       )
 
       local config = {
-        -- cmd = { '/home/omar/.local/share/nvim/mason/bin/jdtls', workspace_folder },
         cmd = cmd,
         root_dir = root_dir,
         on_attach = on_attach,
@@ -148,28 +144,7 @@ return {
           extendedClientCapabilities = extendedClientCapabilities,
           bundles = bundles,
         },
-        -- capabilities = {
-        --   workspace = {
-        --     configuration = true,
-        --   },
-        --   textDocument = {
-        --     completion = {
-        --       completionItem = {
-        --         snippetSupport = true,
-        --       },
-        --     },
-        --   },
-        -- },
       }
-
-      -- config.on_attach = on_attach
-      -- config.capabilities = capabilities
-      -- config.settings =
-      -- config.init_options = {
-      --   extendedClientCapabilities = extendedClientCapabilities,
-      -- }
-
-      -- jdtls.start_or_attach(config)
 
       vim.api.nvim_create_autocmd({ 'FileType' }, {
         pattern = 'java',
