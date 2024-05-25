@@ -16,16 +16,16 @@ return {
     opts = {
       disable_legacy_commands = true,
     },
-    config = function()
-      vim.keymap.set('n', '<leader><leader>i', '<cmd>IconPickerNormal<cr>')
-      vim.keymap.set('n', '<leader><leader>y', '<cmd>IconPickerYank<cr>')
-      vim.keymap.set('i', '<C-i>', '<cmd>IconPickerInsert<cr>')
-    end,
+    keys = {
+      { '<leader><leader>i', '<CMD>IconPickerNormal<CR>' },
+      { '<leader><leader>y', '<CMD>IconPickerYank<CR>' },
+      { '<C-i>', '<CMD>IconPickerInsert<CR>', mode = 'i' },
+    },
   },
   {
     'mfussenegger/nvim-ansible',
   },
-   {
+  {
     'Tejada-Omar/notes-compile.nvim',
     dev = false,
     ft = { 'markdown', 'vimwiki' },

@@ -31,13 +31,14 @@ return {
         '<cmd>lua _lazygit_toggle()<cr>',
         { desc = 'Open lazygit' }
       )
-
-      vim.keymap.set(
-        'n',
-        '<leader>tc',
-        '<cmd>ToggleTermToggleAll<cr>',
-        { desc = 'Toggle all terminals' }
-      )
     end,
+    keys = {
+      '<leader>g',
+      {
+        '<leader>tc',
+        '<CMD>ToggleTermToggleAll<CR>',
+        desc = 'Toggle all terminals',
+      },
+    },
   },
 }

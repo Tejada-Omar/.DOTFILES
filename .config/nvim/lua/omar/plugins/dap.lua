@@ -4,51 +4,38 @@ return {
     {
       'mfussenegger/nvim-dap',
       build = ':helptags ALL',
-      config = function()
-        local dap = require('dap')
-
-        vim.keymap.set(
-          'n',
+      keys = {
+        {
           '<leader>db',
-          function() dap.toggle_breakpoint() end,
-          { desc = 'Toggle breakpoint' }
-        )
-
-        vim.keymap.set(
-          'n',
+          '<CMD>DapToggleBreakpoint<CR>',
+          desc = 'Toggle breakpoint',
+        },
+        {
           '<leader>dl',
-          function() dap.run_last() end,
-          { desc = 'Run last dap command' }
-        )
-
-        vim.keymap.set(
-          'n',
+          function () require('dap').run_last() end,
+          desc = 'Run last dap command',
+        },
+        {
           '<F5>',
-          function() dap.continue() end,
-          { desc = 'Continue dap command' }
-        )
-
-        vim.keymap.set(
-          'n',
+          '<CMD>DapContinue<CR>',
+          desc = 'Continue dap debugging'
+        },
+        {
           '<F10>',
-          function() dap.step_over() end,
-          { desc = 'DAP Step over next line' }
-        )
-
-        vim.keymap.set(
-          'n',
+          '<CMD>DapStepOver<CR>',
+          desc = 'Step over next line for DAP'
+        },
+        {
           '<F11>',
-          function() dap.step_into() end,
-          { desc = 'DAP Step into context' }
-        )
-
-        vim.keymap.set(
-          'n',
+          '<CMD>DapStepInto<CR>',
+          desc = 'Step into inner context for DAP'
+        },
+        {
           '<F12>',
-          function() dap.step_out() end,
-          { desc = 'DAP Step out of context' }
-        )
-      end,
+          '<CMD>DapStepOut<CR>',
+          desc = 'Step out of context for DAP'
+        },
+      },
     },
     {
       'mrcjkb/rustaceanvim',
@@ -84,7 +71,7 @@ return {
     {
       'rcarriga/nvim-dap-ui',
       dependencies = {
-        'nvim-neotest/nvim-nio'
+        'nvim-neotest/nvim-nio',
       },
       config = function()
         local dapui = require('dapui')

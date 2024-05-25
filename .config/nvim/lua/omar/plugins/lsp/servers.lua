@@ -4,6 +4,20 @@ return {
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
     },
+    keys = {
+      { '<SPACE>e', vim.diagnostic.open_float, desc = 'Open diagnostic' },
+      { '<C-n>', vim.diagnostic.goto_next, desc = 'Move to next diagnostic' },
+      {
+        '<C-p>',
+        vim.diagnostic.goto_prev,
+        desc = 'Move to previous diagnostic',
+      },
+      {
+        '<SPACE>q',
+        vim.diagnostic.setqflist,
+        desc = 'Add all diagnostics to quickfix list',
+      },
+    },
     config = function()
       local lsp = require('lspconfig')
       local utils = require('omar.plugins.lsp.utils.utils')
@@ -11,26 +25,6 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
       )
-
-      vim.keymap.set(
-        'n',
-        '<Space>e',
-        vim.diagnostic.open_float,
-        { desc = 'Open diagnostic' }
-      )
-      vim.keymap.set(
-        'n',
-        '<C-n>',
-        vim.diagnostic.goto_next,
-        { desc = 'Move to next diagnostic' }
-      )
-      vim.keymap.set(
-        'n',
-        '<C-p>',
-        vim.diagnostic.goto_prev,
-        { desc = 'Move to previous diagnostic' }
-      )
-      -- vim.kepmap.set('n', '<space>q', vim.diagnostic.setloclist)
 
       local on_attach = function(_, bufnr) utils.mappings(bufnr) end
 

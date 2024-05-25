@@ -30,52 +30,43 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      local builtin = require('telescope.builtin')
-
-      require('telescope').setup(opts)
-
-      vim.keymap.set(
-        'n',
+    keys = {
+      {
         '<leader>ff',
-        builtin.find_files,
-        { desc = 'Fuzzy-find files' }
-      )
-      vim.keymap.set(
-        'n',
+        '<CMD>Telescope find_files<CR>',
+        desc = 'Fuzzy-find files',
+      },
+      {
         '<leader>fg',
-        builtin.live_grep,
-        { desc = 'Live-grep files' }
-      )
-      vim.keymap.set(
-        'n',
+        '<CMD>Telescope live_grep<CR>',
+        desc = 'Live-grep files',
+      },
+      {
         '<leader>fj',
         function()
-          builtin.live_grep {
+          require('telescope.builtin').live_grep {
             grep_open_files = true,
           }
         end,
-        { desc = 'Live-grep files' }
-      )
-      vim.keymap.set(
-        'n',
+        desc = 'Live-grep open files',
+      },
+      {
         '<leader>fb',
-        builtin.buffers,
-        { desc = 'Fuzzy-find buffers' }
-      )
-      vim.keymap.set(
-        'n',
+        '<CMD>Telescope buffers<CR>',
+        desc = 'Fuzzy-find buffers',
+      },
+      {
         '<leader>fh',
-        builtin.help_tags,
-        { desc = 'Fuzzy-find help tags' }
-      )
-      vim.keymap.set(
-        'n',
+        '<CMD>Telescope help_tags<CR>',
+        desc = 'Fuzzy-find help tags',
+      },
+      {
         '<leader>fo',
-        builtin.oldfiles,
-        { desc = 'Fuzzy-find old files' }
-      )
-    end,
+        '<CMD>Telescope oldfiles<CR>',
+        desc = 'Fuzzy-find old files',
+      },
+    },
+    config = true,
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
