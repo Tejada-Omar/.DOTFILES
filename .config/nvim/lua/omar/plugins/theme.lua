@@ -23,32 +23,29 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     event = 'UIEnter',
-    opts = function()
-      vim.o.showmode = false
-
-      return {
-        options = {
-          icons_enabled = false,
-          globalstatus = true,
-          theme = 'tokyonight',
+    init = function() vim.o.showmode = false end,
+    opts = {
+      options = {
+        icons_enabled = false,
+        globalstatus = true,
+        theme = 'tokyonight',
+      },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'filename' },
+        lualine_c = { 'branch' },
+        lualine_x = {
+          'filetype',
+          'progress',
         },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'filename' },
-          lualine_c = { 'branch' },
-          lualine_x = {
-            'filetype',
-            'progress',
-          },
-          lualine_y = {
-            'diff',
-            'searchcount',
-          },
-          lualine_z = { 'location' },
+        lualine_y = {
+          'diff',
+          'searchcount',
         },
-        inactive_sections = {},
-      }
-    end,
+        lualine_z = { 'location' },
+      },
+      inactive_sections = {},
+    },
   },
   {
     'mcauley-penney/tidy.nvim',

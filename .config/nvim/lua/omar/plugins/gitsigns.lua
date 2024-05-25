@@ -1,6 +1,13 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
+    opts = {
+      signcolumn = false,
+      numhl = true,
+      current_line_blame_opts = {
+        ignore_whitespace = true,
+      },
+    },
     keys = {
       {
         ']c',
@@ -100,13 +107,6 @@ return {
         mode = { 'o', 'x' },
         desc = 'Select hunk',
         buffer = 0,
-      },
-    },
-    opts = {
-      signcolumn = false,
-      numhl = true,
-      current_line_blame_opts = {
-        ignore_whitespace = true,
       },
     },
   },
