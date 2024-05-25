@@ -41,8 +41,10 @@ return {
               library = vim.api.nvim_get_runtime_file('', true),
               checkThirdParty = false,
             },
-            telemetry = { enable = false },
             format = { enable = false },
+            hint = {
+              enable = true,
+            },
           },
         },
       }
@@ -56,6 +58,36 @@ return {
         },
       }
 
+      lsp.gopls.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          gofumpt = true,
+          usePlaceholders = true,
+          hints = {
+            functionTypeParameters = true,
+            parameterNames = true,
+          },
+        },
+      }
+
+      lsp.tsserver.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          -- includeInlayParameterNameHints: 'none' | 'literals' | 'all';
+          -- includeInlayParameterNameHintsWhenArgumentMatchesName: boolean;
+          -- includeInlayFunctionParameterTypeHints: boolean;
+          -- includeInlayVariableTypeHints: boolean;
+          -- includeInlayVariableTypeHintsWhenTypeMatchesName: boolean;
+          -- includeInlayPropertyDeclarationTypeHints: boolean;
+          -- includeInlayFunctionLikeReturnTypeHints: boolean;
+          -- includeInlayEnumMemberValueHints: boolean;
+        },
+      }
+
       -- Look into .get_mappings()
       local language_servers = {
         'pyright',
@@ -64,14 +96,12 @@ return {
         'html',
         'jsonls',
         'bashls',
-        'tsserver',
         'kotlin_language_server',
         'vimls',
         'lemminx',
         'clangd',
         'tailwindcss',
         'ansiblels',
-        'gopls',
       }
 
       for _, server in pairs(language_servers) do

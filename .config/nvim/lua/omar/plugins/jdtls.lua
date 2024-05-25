@@ -82,6 +82,11 @@ return {
           referenceCodeLens = { enabled = true },
           format = { enabled = true, insertSpaces = true },
           signature_help = { enabled = true },
+          inlayHints = {
+            parameterNames = {
+              enabled = 'all',
+            },
+          },
           codeGeneration = {
             toString = {
               template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
