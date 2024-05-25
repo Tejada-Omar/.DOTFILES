@@ -1,6 +1,5 @@
 return {
   {
-    { import = 'omar/plugins/dap' },
     {
       'mfussenegger/nvim-dap',
       build = ':helptags ALL',
