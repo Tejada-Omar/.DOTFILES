@@ -2,11 +2,16 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    event = 'BufEnter',
+    event = { 'VimEnter', 'BufNew', 'BufEnter' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'nvim-treesitter/nvim-treesitter-context',
+      {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        opts = { enable_autocmd = false },
+      },
     },
+    init = function() vim.g.skip_ts_context_commentstring_module = true end,
     opts = function()
       vim.o.foldmethod = 'expr'
       vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -54,11 +59,8 @@ return {
             },
           },
         },
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false,
-        },
       }
     end,
+    config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
   },
 }
