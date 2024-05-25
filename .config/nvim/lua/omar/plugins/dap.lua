@@ -79,6 +79,6 @@ return {
       end,
     },
     { 'LiadOz/nvim-dap-repl-highlights', config = true },
-    { 'leoluz/nvim-dap-go', config = true },
+    { 'leoluz/nvim-dap-go', ft = 'go', config = true },
   },
 }

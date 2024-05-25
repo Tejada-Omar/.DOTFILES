@@ -14,6 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({ import = 'omar/plugins' }, {
+  lazy = true,
   dev = {
     path = '~/Code/projects/neovim',
     fallback = true,

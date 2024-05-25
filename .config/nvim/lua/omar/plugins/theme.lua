@@ -24,6 +24,7 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
+    event = 'UIEnter',
     opts = function()
       vim.o.showmode = false
 
@@ -53,10 +54,12 @@ return {
   },
   {
     'mcauley-penney/tidy.nvim',
+    event = 'BufWrite',
     config = true,
   },
   {
     'folke/which-key.nvim',
+    event = 'UIEnter',
     opts = {
       plugins = {
         spelling = {
@@ -70,31 +73,31 @@ return {
     },
   },
   {
-    {
-      'folke/zen-mode.nvim',
-      opts = {
-        window = {
-          backdrop = 1,
-          options = {
-            list = true,
-          },
-        },
-        plugins = {
-          options = {
-            ruler = true,
-          },
-          twilight = { enabled = true },
-          gitsigns = { enabled = true },
-          tmux = { enabled = true },
+    'folke/zen-mode.nvim',
+    opts = {
+      window = {
+        backdrop = 1,
+        options = {
+          list = true,
         },
       },
-      keys = {
-        { '<leader>z', '<CMD>ZenMode<CR>', desc = 'Toggle zen mode' },
+      plugins = {
+        options = {
+          ruler = true,
+        },
+        twilight = { enabled = true },
+        gitsigns = { enabled = true },
+        tmux = { enabled = true },
       },
     },
-    {
-      'folke/twilight.nvim',
-      config = true,
+    keys = {
+      { '<leader>z', '<CMD>ZenMode<CR>', desc = 'Toggle zen mode' },
+    },
+    dependencies = {
+      {
+        'folke/twilight.nvim',
+        config = true,
+      },
     },
   },
 }

@@ -1,6 +1,7 @@
 return {
   {
     'vimwiki/vimwiki',
+    ft = { 'markdown', 'vimwiki' },
     init = function()
       vim.g['vimwiki_list'] = {
         {

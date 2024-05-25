@@ -6,9 +6,7 @@ return {
   },
   {
     'andweeb/presence.nvim',
-    opts = {
-      auto_enable = false,
-    },
+    enabled = false,
   },
   {
     'ziontee113/icon-picker.nvim',
@@ -24,6 +22,7 @@ return {
   },
   {
     'mfussenegger/nvim-ansible',
+    ft = 'yaml',
   },
   {
     'Tejada-Omar/notes-compile.nvim',
