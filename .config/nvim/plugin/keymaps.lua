@@ -34,3 +34,5 @@ vim.keymap.set(
   '<C-\\><C-n>',
   { desc = 'Exit terminal mode' }
 )
+
+vim.keymap.set('n', '<Space>l', '<CMD>Lazy<CR>', { desc = 'Open Lazy config' })
