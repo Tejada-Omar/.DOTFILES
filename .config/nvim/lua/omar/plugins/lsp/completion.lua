@@ -52,7 +52,6 @@ return {
         sources = {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
-          { name = 'neorg' },
         },
         {
           { name = 'buffer' },
