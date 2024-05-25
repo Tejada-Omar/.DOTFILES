@@ -6,18 +6,21 @@ vim.keymap.set(
   ':bnext!<CR>',
   { desc = 'Go to next buffer in buffer list' }
 )
+
 vim.keymap.set(
   'n',
   '<leader>bp',
   ':bprevious!<CR>',
   { desc = 'Go to previous buffer in buffer list' }
 )
+
 vim.keymap.set(
   'n',
   '<leader>bsn',
   ':sbnext!<CR>',
   { desc = 'Split window and go to next buffer in buffer list' }
 )
+
 vim.keymap.set(
   'n',
   '<leader>bsp',
