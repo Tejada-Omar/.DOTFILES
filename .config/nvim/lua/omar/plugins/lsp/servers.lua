@@ -1,10 +1,8 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    lazy = false,
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-    },
+    event = { 'VimEnter', 'BufNew' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp' },
     keys = {
       { '<SPACE>e', vim.diagnostic.open_float, desc = 'Open diagnostic' },
       { '<C-n>', vim.diagnostic.goto_next, desc = 'Move to next diagnostic' },
