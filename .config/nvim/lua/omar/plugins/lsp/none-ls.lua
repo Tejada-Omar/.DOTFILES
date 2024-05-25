@@ -2,6 +2,7 @@ return {
   {
     'nvimtools/none-ls.nvim',
     main = 'null-ls',
+    lazy = false,
     dependencies = {
       'nvimtools/none-ls-extras.nvim',
       'gbprod/none-ls-shellcheck.nvim',
