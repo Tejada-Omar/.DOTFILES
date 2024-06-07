@@ -26,11 +26,6 @@ style = "Italic"
 family = "Jetbrains Mono Nerd Font"
 style = "Regular"
 
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "Return"
-mods = "Super|Shift"
-
 [window]
 dynamic_title = true
 opacity = 1.0
