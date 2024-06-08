@@ -2,11 +2,6 @@ live_config_reload = true
 
 import = ["~/.config/alacritty/rose-pine.toml"]
 
-[bell]
-animation = "EaseOutSine"
-color = "#eb6f92"
-duration = 200
-
 [font]
 size = 13
 
