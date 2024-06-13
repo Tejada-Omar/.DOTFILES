@@ -1,6 +1,7 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
+    event = 'UIEnter',
     opts = {
       signcolumn = false,
       numhl = true,
@@ -44,7 +45,7 @@ return {
         '<leader>hr',
         '<CMD>Gitsigns reset_hunk<CR>',
         mode = { 'n', 'v' },
-        desc = 'Stage hunk',
+        desc = 'Reset hunk',
         buffer = 0,
       },
       {

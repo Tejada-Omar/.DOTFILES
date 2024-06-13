@@ -21,8 +21,9 @@ return {
       },
     },
     keys = {
+      { '<leader>ee', '<CMD>Oil<CR>', desc = 'Toggle Oil floating window' },
       {
-        '<leader>ee',
+        '<leader>ef',
         function() require('oil').toggle_float() end,
         desc = 'Toggle Oil floating window',
       },
