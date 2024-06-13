@@ -17,3 +17,19 @@ vim.api.nvim_create_autocmd({ 'LspAttach', 'InsertEnter', 'InsertLeave' }, {
     vim.lsp.inlay_hint.enable(0, enabled)
   end,
 })
+
+vim.api.nvim_create_autocmd('TermEnter', {
+  callback = function (_)
+    vim.cmd('startinsert')
+
+    vim.o.number = false
+    vim.o.relativenumber = false
+  end
+})
+
+vim.api.nvim_create_autocmd('TermLeave', {
+  callback = function (_)
+    vim.o.number = true
+    vim.o.relativenumber = true
+  end
+})
