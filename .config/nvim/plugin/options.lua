@@ -1,14 +1,14 @@
 vim.o.termguicolors = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.scrolloff = 4
+vim.o.scrolloff = 6
 vim.o.smoothscroll = true
 vim.o.list = true
 vim.o.conceallevel = 2
 
 vim.o.fillchars = 'fold: '
 vim.o.foldenable = true
-vim.o.foldlevelstart = 3
+vim.o.foldlevelstart = 5
 
 vim.o.expandtab = true
 vim.o.tabstop = 2
