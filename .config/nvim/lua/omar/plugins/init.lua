@@ -1,5 +1,6 @@
 return {
   'nvim-lua/plenary.nvim',
+  'stevearc/dressing.nvim',
   {
     'AckslD/nvim-FeMaco.lua',
     config = true,
@@ -23,6 +24,10 @@ return {
   {
     'mfussenegger/nvim-ansible',
     ft = 'yaml',
+  },
+  {
+    'wildfunctions/myeyeshurt',
+    config = true,
   },
   {
     'Tejada-Omar/notes-compile.nvim',

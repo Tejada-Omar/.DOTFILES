@@ -99,9 +99,9 @@ return {
         'kotlin_language_server',
         'vimls',
         'lemminx',
-        'clangd',
         'tailwindcss',
         'ansiblels',
+        'docker_compose_language_service',
       }
 
       for _, server in pairs(language_servers) do

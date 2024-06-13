@@ -51,6 +51,7 @@ return {
             extra_filetypes = { 'vimwiki' },
           },
           diagnostics.ansiblelint,
+          diagnostics.protolint,
         },
 
         on_attach = function(_, bufnr)
