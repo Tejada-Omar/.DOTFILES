@@ -1,2 +1,4 @@
-vim.o.expandtab = false
-vim.o.list = false
+vim.bo.expandtab = false
+
+local winid = vim.api.nvim_get_current_win()
+vim.wo[winid][0].list = false
