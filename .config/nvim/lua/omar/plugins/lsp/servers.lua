@@ -27,6 +27,7 @@ return {
         virtual_text = { spacing = 1 },
         signs = false,
         severity_sort = true,
+        float = { source = true },
       }
 
       lsp.lua_ls.setup {
