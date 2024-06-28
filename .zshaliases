@@ -41,6 +41,8 @@ alias update-grub='sudo grub-install --target=x86_64-efi --efi-directory=/efi --
 alias update-monitors='xrandr --output eDP-1 --auto --left-of HDMI-1-0 --output HDMI-1-0 --auto --primary'
 alias color-picker='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 
+alias webs='websocat --close-status-code 1000 -E'
+
 # Tex package manager
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
