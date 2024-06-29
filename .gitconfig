@@ -1,0 +1,28 @@
+[user]
+	name = Omar Tejada
+	email = tejada.omar03@gmail.com
+[init]
+	defaultBranch = master
+[pull]
+	recurseSubmodules = "on-demand"
+[diff]
+	text = 2
+	renames = copy
+	algorithm = histogram
+	colorMoved = true
+[fetch]
+	parallel = 0
+[log]
+	abbrevCommit = true
+	date = relative
+[merge]
+	log = true
+	ff = only
+[rebase]
+	missingCommitsCheck = error
+[push]
+	autoSetupRemote = true
+[alias]
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
