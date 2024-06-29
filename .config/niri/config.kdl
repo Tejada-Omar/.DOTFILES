@@ -121,7 +121,7 @@ layout {
     // You can change the default width of the new windows.
     // default-column-width { proportion 0.5; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
-    default-column-width {}
+    default-column-width { proportion 0.66667; }
 
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
@@ -256,7 +256,7 @@ binds {
     Mod+Return { spawn "sh" "-c" r#"alacritty -e sh -c 'echo -n "Input session name: " && read -r session && [ -n "$session" ] && tmux new-session -s "$session" || tmux new-session'"#; }
     Mod+backslash {spawn "sh" "-c" r##"alacritty -e tmux attach -t $(tmux list-sessions -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M p:session_activity}) #{?session_attached,(attached),}</u>" | wofi -dp "Select tmux session" | cut -d':' -f1)"##; }
     Mod+R { spawn "wofi" "--show" "drun"; }
-    // Super+Alt+L { spawn "swaylock"; }
+    Super+Alt+L { spawn "swaylock"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
