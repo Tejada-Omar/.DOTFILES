@@ -95,7 +95,6 @@ return {
         'texlab',
         -- 'cssls',
         'html',
-        'jsonls',
         'bashls',
         'kotlin_language_server',
         'vimls',
@@ -103,6 +102,7 @@ return {
         'tailwindcss',
         'ansiblels',
         'docker_compose_language_service',
+        'bufls',
       }
 
       for _, server in pairs(language_servers) do
