@@ -18,6 +18,7 @@ return {
       return {
         sources = {
           formatting.prettierd,
+          formatting.black,
           require('none-ls.formatting.eslint_d'),
           formatting.stylua,
           formatting.shfmt.with {
