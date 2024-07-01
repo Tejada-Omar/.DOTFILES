@@ -41,3 +41,12 @@ spot() {
     spt
   fi
 }
+
+mkm() {
+  if [ ! -e $1 ]; then
+    echo "File already exists at that location"
+    exit 1
+  fi
+
+  mkdir -vp "$1" && cd "$1"
+}
