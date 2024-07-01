@@ -4,5 +4,5 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/swayidle -w -C '%h/.config/swaylock/niri-config'
+ExecStart=/usr/bin/swayidle -w -C '%h/.config/swayidle/niri-config'
 Restart=on-failure

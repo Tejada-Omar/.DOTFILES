@@ -1,0 +1,12 @@
+[Unit]
+Description=Writes the current ip to somewhere that syncthing can copy from
+Wants=network-online.target
+After=network-online.target nss-loopup.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=bash -c "/sbin/curl ident.me > /home/omar/Documents/notes/ssh/desktop.txt"
+
+[Install]
+WantedBy=default.target
