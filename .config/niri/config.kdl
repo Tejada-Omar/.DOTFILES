@@ -254,8 +254,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return { spawn "sh" "-c" r#"alacritty -e sh -c 'echo -n "Input session name: " && read -r session && [ -n "$session" ] && tmux new-session -s "$session" || tmux new-session'"#; }
-    Mod+backslash {spawn "sh" "-c" r##"alacritty -e tmux attach -t $(tmux list-sessions -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M p:session_activity}) #{?session_attached,(attached),}</u>" | wofi -dp "Select tmux session" | cut -d':' -f1)"##; }
-    Mod+R { spawn "wofi" "--show" "drun"; }
+    Mod+backslash {spawn "sh" "-c" r##"alacritty -e tmux attach -t $(tmux list-sessions -F "#{session_name}: #{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M p:session_activity}) #{?session_attached,(attached),}" | fuzzel -w 80 -dp "Select tmux session: " | cut -d':' -f1)"##; }
+    Mod+R { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
