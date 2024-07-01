@@ -420,6 +420,7 @@ binds {
     Mod+Ctrl+Space { switch-layout "prev"; }
 
     Print { screenshot; }
+    Mod+Print { spawn "sh" "-c" "grim" "-g" "$(slurp)" "$(xdg-user-dir PICTURES)/screenshots/$(date + '%Y%m%d-%H%M%S.png')"; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
