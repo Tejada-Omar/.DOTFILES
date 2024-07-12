@@ -39,39 +39,51 @@ return {
     {
       'mrcjkb/rustaceanvim',
       build = ':helptags ALL',
-      ft = 'rust',
-      opts = function()
-        local utils = require('omar.plugins.lsp.utils.utils')
-        local on_attach = function(_, bufnr) utils.mappings(bufnr) end
+      init = function()
+        vim.g.rustacenvim = function()
+          local on_attach = function(_, bufnr)
+            local utils = require('omar.plugins.lsp.utils.utils')
+            utils.mappings(bufnr)
+          end
 
-        return {
-          server = {
-            on_attach = on_attach,
-            settings = {
-              ['rust-analyzer'] = {
-                procMacro = {
-                  enable = true,
-                  ignored = {
-                    ['async-trait'] = { 'async_trait' },
-                    ['napi-derive'] = { 'napi' },
-                    ['async-recursion'] = { 'async_recursion' },
+          return {
+            server = {
+              on_attach = on_attach,
+              cmd = function()
+                local mason_reg = require('mason-registry')
+                local ra = mason_reg.is_installed('rust-analyzer')
+                    and mason_reg
+                      .get_package('rust-analyzer')
+                      :get_install_path() .. '/rust-analyzer'
+                  or 'rust-analyzer'
+
+                return { ra }
+              end,
+              default_settings = {
+                ['rust-analyzer'] = {
+                  procMacro = {
+                    enable = true,
+                    ignored = {
+                      ['async-trait'] = { 'async_trait' },
+                      ['napi-derive'] = { 'napi' },
+                      ['async-recursion'] = { 'async_recursion' },
+                    },
                   },
                 },
               },
             },
-          },
-          dap = {
-            auto_generate_source_map = true,
-          },
-        }
+            dap = {
+              auto_generate_source_map = true,
+            },
+          }
+        end
       end,
-      init = function(_, opts) vim.g.rustacenvim = opts end,
-      config = false,
     },
     {
       'rcarriga/nvim-dap-ui',
       event = 'VeryLazy',
       dependencies = {
+        'mfussenegger/nvim-dap',
         'nvim-neotest/nvim-nio',
       },
       config = function()
