@@ -1,0 +1,4 @@
+[submodule "/home/omar/.config/nvim"]
+	path = /home/omar/.config/nvim
+	url = git@github.com:Tejada-Omar/nvim-dots.git
+	ignore = dirty
