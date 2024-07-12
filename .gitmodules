@@ -2,3 +2,7 @@
 	path = /home/omar/.config/nvim
 	url = git@github.com:Tejada-Omar/nvim-dots.git
 	ignore = dirty
+[submodule ".config/tmux"]
+	path = .config/tmux
+	url = git@github.com:Tejada-Omar/tmux-dots.git
+	ignore = dirty
