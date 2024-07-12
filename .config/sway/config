@@ -210,6 +210,3 @@ include /etc/sway/config.d/*
 exec export _JAVA_AWT_WM_NONREPARENTING=1
 exec export QT_AUTO_SCREEN_SCALE_FACTOR=1
 exec export QT_ENABLE_HIGHDPI_SCALING=1
-exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-exec_always import-gsettings
-exec_always dunst
