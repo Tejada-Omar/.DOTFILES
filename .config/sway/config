@@ -16,7 +16,7 @@ set $right l
 set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be
 # opened on the original workspace that the command was run on.
-set $menu wofi --show drun | xargs swaymsg exec --
+set $menu fuzzel | xargs swaymsg exec --
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/omar/Pictures/wallpapers/aesthetic-tokyo.jpg fill
@@ -49,7 +49,7 @@ workspace 10 output HDMI-A-1
 # Basics:
   # Start a terminal
   bindsym $mod+Return exec $term -e sh -c 'echo -n "Input session name: " && read -r session && [ -n "$session" ] && tmux new-session -s "$session" || tmux new-session'
-  bindsym $mod+backslash exec $term -e tmux attach -t $(tmux list-sessions -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" | wofi -dp "Select tmux session" | cut -d':' -f1)
+  bindsym $mod+backslash exec $term -e tmux attach -t $(tmux list-sessions -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" | fuzzel -w 80 -dp "Select tmux session: " | cut -d':' -f1)
 
   # Kill focused window
   bindsym $mod+w kill
@@ -69,6 +69,7 @@ workspace 10 output HDMI-A-1
 
   # Exit sway (logs you out of your Wayland session)
   bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+  bindsym $mod+$alt+L exec swaylock
 
 # Moving around:
   # Move your focus around
