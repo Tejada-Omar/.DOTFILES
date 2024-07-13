@@ -1,110 +1,85 @@
+@import "./rose-pine-colors.css";
+
 * {
-  border: none;
-  border-radius: 0;
   font-family: Jetbrains Mono Nerd Font;
   font-weight: bold;
-  font-size: 16px;
-  min-height: 0;
+  font-size: 15px;
+  min-height: 30px;
 }
 
 window#waybar {
-  background: rgba(21, 18, 27, 0);
-  color: #cdd6f4;
+  color: @text;
+  background: @base;
+}
+
+.modules-right {
+  margin-right: 13px;
+}
+
+.modules-left {
+  margin-left: 10px;
 }
 
 tooltip {
-  background: #15151e;
+  background: @overlay;
+  font-size: 16px;
   border-radius: 0px;
   border-width: 2px;
   border-style: solid;
-  border-color: #b2beb5;
+  border-color: @highlightHigh;
 }
 
 #workspaces button {
-  padding: 5px;
-  color: #545c7e;
-  margin-right: 5px;
-}
-
-#workspaces button.active {
-  color: #c0caf5;
+  color: @muted;
+  padding-left: 0.5em;
+  padding-right: 0.25em;
 }
 
 #workspaces button.current_output {
-  color: #7aa2f7;
+  color: @iris;
 }
 
 #workspaces button.focused {
-  color: #9ece6a;
-  /* background: #9ece6a; */
-  border-radius: 0px;
+  color: @foam;
 }
 
 #workspaces button.urgent {
-  color: #15161e;
-  background: #f7768e;
-  border-radius: 0px;
+  color: @love;
 }
 
 #workspaces button:hover {
-  background: #15161e;
-  color: #ffffff;
-  border-radius: 0px;
-}
-
-#window,
-#scratchpad,
-#clock,
-#pulseaudio,
-#network,
-#bluetooth,
-#workspaces {
-  background: #1a1b26;
-  border-radius: 0px;
-  padding: 5px 15px;
-  margin: 3px 0px;
-  margin-top: 10px;
-  border: 0px solid #7aa2f7;
+  background: @highlightMed;
 }
 
 #scratchpad {
-  margin-left: 10px;
-  padding-left: 5px;
+  padding-left: 0.5em;
 }
 
 #scratchpad.empty {
-  color: #545c7e;
+  color: @muted;
 }
 
-#workspaces {
-  margin-left: 13px;
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-#window {
-  margin-left: 60px;
-  margin-right: 60px;
+#network,
+#bluetooth,
+#pulseaudio,
+#clock {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
 }
 
 #network {
-  color: #e0ad68;
-  margin-right: 10px;
+  color: @gold;
 }
 
 #bluetooth {
-  color: #bb9af7;
-  font-weight: normal;
-  margin-right: 10px;
+  color: @iris;
 }
 
 #pulseaudio {
-  color: #7aa2f7;
-  font-weight: normal;
-  margin-right: 10px;
+  color: @foam;
 }
 
 #clock {
-  color: #9ece6a;
-  margin-right: 13px;
+  color: @rose;
+  padding-right: 0em;
 }
