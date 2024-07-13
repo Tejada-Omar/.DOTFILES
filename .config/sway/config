@@ -180,19 +180,17 @@ bindsym --locked XF86AudioRaiseVolume exec pamixer -i 5
 bindsym Print exec grim "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
 bindsym $mod+Print exec grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
 
-# smart_borders on
-default_border pixel 3
-gaps inner 7
-gaps outer 3
+smart_borders on
+default_border pixel 2
 title_align center
 
 seat seat0 xcursor_theme default 26
 seat seat0 hide_cursor 5000
 
 font pango:Jetbrains Mono Nerd Font 14px
-client.focused #b2beb5 #b2beb5 #000000
-client.focused_inactive #0074e4 #0074e4 #ffffff
-client.unfocused #1a1b26 #1a1b26 #ffffff
+client.focused #9ccfd8 #9ccfd8 #000000 #c4a7e7
+client.focused_inactive #524f67 #524f67 #e0def4
+client.unfocused #21202e #21202e #e0def4
 
 focus_wrapping workspace
 
