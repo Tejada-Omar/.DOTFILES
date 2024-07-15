@@ -1,0 +1,10 @@
+[Unit]
+Description=A spotify playing daemon using librespot
+Wants=sound.target
+After=sound.target
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/spotify_player -d
