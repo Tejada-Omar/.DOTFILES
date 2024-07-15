@@ -9,7 +9,7 @@
     "all-outputs": true,
   },
   "sway/scratchpad": {
-    "format": "{icon} {count} |",
+    "format": "{icon} {count}",
     "format-icons": ["󰧮", "󰈙"],
     "show-empty": true,
     "tooltip": true,
@@ -56,5 +56,10 @@
     "spacing": 10,
     "show-passive-items": true,
     "reverse-direction": true,
+  },
+  "custom/spacer": {
+    "format": "|",
+    "tooltip": false,
+    "escape": true,
   },
 }

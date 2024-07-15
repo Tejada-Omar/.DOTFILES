@@ -31,8 +31,7 @@ tooltip {
 
 #workspaces button {
   color: @muted;
-  padding-left: 0.5em;
-  padding-right: 0.25em;
+  padding-left: 0.6em;
 }
 
 #workspaces button.current_output {
@@ -52,7 +51,8 @@ tooltip {
 }
 
 #scratchpad {
-  padding-left: 0.5em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
 }
 
 #scratchpad.empty {
@@ -83,4 +83,10 @@ tooltip {
 #clock {
   color: @rose;
   padding-right: 0em;
+}
+
+#custom-spacer {
+  color: @muted;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
 }
