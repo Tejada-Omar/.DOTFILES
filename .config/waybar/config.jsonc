@@ -1,58 +1,18 @@
-{
-  "layer": "top",
-  "output": "DP-1",
-  "modules-left": ["sway/scratchpad", "sway/workspaces"],
-  "modules-center": ["sway/window"],
-  "modules-right": ["network", "bluetooth", "pulseaudio", "clock"],
-  "sway/window": {
-    "all-outputs": true,
-    "justify": "center",
+[
+  {
+    "layer": "top",
+    "output": "DP-1",
+    "modules-left": ["sway/scratchpad", "sway/workspaces"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["network", "bluetooth", "pulseaudio", "clock"],
+    "include": ["~/.config/waybar/options.jsonc"],
   },
-  "sway/workspaces": {
-    "on-click": "activate",
-    "all-outputs": true,
+  {
+    "layer": "top",
+    "output": "HDMI-A-1",
+    "modules-left": ["sway/scratchpad", "sway/workspaces"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["network", "bluetooth", "pulseaudio", "clock"],
+    "include": ["~/.config/waybar/options.jsonc"],
   },
-  "sway/scratchpad": {
-    "format": "{icon} {count} |",
-    "format-icons": ["󰧮", "󰈙"],
-    "show-empty": true,
-    "tooltip": true,
-  },
-  "clock": {
-    "format": "{:%H:%M   %m/%d  }",
-    "interval": 30,
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-    "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
-  },
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-muted": "0% ",
-    "format-icons": {
-      "phone": "",
-      "portable": "",
-      "default": ["", ""],
-    },
-    "on-click": "pavucontrol",
-  },
-  "network": {
-    "format": "None",
-    "format-wifi": " ",
-    "format-ethernet": " ",
-    "format-disconnected": "Disconnected",
-    "tooltip-format": "{ifname} via {gwaddr}   ",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
-    "tooltip-format-ethernet": "{ifname} via {ipaddr}/{cidr}  ",
-    "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50,
-  },
-  "bluetooth": {
-    // "format-device-preference": [
-    //   "ATH-M50xBT",
-    //   "Keychron K2"
-    // ],
-    "format-connected": "{num_connections} Connected ",
-    "tooltip-format": "{controller_alias}\t{controller_address}",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-  },
-}
+]
