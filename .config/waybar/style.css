@@ -32,6 +32,7 @@ tooltip {
 #workspaces button {
   color: @muted;
   padding-left: 0.6em;
+  padding-right: 0.25em;
 }
 
 #workspaces button.current_output {
