@@ -9,6 +9,9 @@ export PAGER=bat
 export READER=zathura
 export BROWSER=firefox
 
+# XDG Desktop
+export XDG_CONFIG_HOME=~/.config
+
 # CPU
 export AMD_VULKAN_ICD=RADV
 export RANGER_LOAD_DEFAULT_RC=FALSE

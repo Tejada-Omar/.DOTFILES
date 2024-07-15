@@ -85,3 +85,6 @@ source ~/.zshaliases
 source ~/.zshfunctions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Taken from ohmyzsh completion
+# https://github.com/ohmyzsh/ohmyzsh/tree/fa583cfb87b80e3f7d7577c8b62b7d1385c01337/plugins/taskwarrior
+source "$XDG_CONFIG_HOME"/task/taskwarrior.plugin.zsh
