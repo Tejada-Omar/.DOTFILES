@@ -51,4 +51,10 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
   },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10,
+    "show-passive-items": true,
+    "reverse-direction": true,
+  },
 }

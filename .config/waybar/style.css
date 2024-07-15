@@ -59,6 +59,7 @@ tooltip {
   color: @muted;
 }
 
+#tray,
 #network,
 #bluetooth,
 #pulseaudio,

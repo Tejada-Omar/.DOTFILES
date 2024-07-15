@@ -4,7 +4,7 @@
     "output": "DP-1",
     "modules-left": ["sway/scratchpad", "sway/workspaces"],
     "modules-center": ["sway/window"],
-    "modules-right": ["network", "bluetooth", "pulseaudio", "clock"],
+    "modules-right": ["tray", "network", "bluetooth", "pulseaudio", "clock"],
     "include": ["~/.config/waybar/options.jsonc"],
   },
   {
@@ -12,7 +12,7 @@
     "output": "HDMI-A-1",
     "modules-left": ["sway/scratchpad", "sway/workspaces"],
     "modules-center": ["sway/window"],
-    "modules-right": ["network", "bluetooth", "pulseaudio", "clock"],
+    "modules-right": ["tray", "network", "bluetooth", "pulseaudio", "clock"],
     "include": ["~/.config/waybar/options.jsonc"],
   },
 ]
