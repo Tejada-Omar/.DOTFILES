@@ -38,3 +38,7 @@ hooks.location=~/.config/task/hooks
 #include solarized-dark-256.theme
 #include solarized-light-256.theme
 #include no-color.theme
+context.homelab.read=project:homelab
+context.homelab.write=project:homelab
+context.desktop.read=project:desktop
+context.desktop.write=project:desktop
