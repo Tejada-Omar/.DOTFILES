@@ -6,3 +6,6 @@
 	path = .config/tmux
 	url = git@github.com:Tejada-Omar/tmux-dots.git
 	ignore = dirty
+[submodule "/home/omar/.config/doom"]
+	path = /home/omar/.config/doom
+	url = git@github.com:Tejada-Omar/doom.git

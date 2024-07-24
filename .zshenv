@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Path
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin"
 
 # Preferences
 export VISUAL=nvim
@@ -16,11 +16,6 @@ export XDG_CONFIG_HOME=~/.config
 export AMD_VULKAN_ICD=RADV
 export RANGER_LOAD_DEFAULT_RC=FALSE
 export MOZ_DISABLE_RDD_SANDBOX=1
-
-# Graphical
-if [ "$XDG_SESSION_TYPE"=="wayland" ]; then
-  export MOZ_ENABLE_WAYLAND=1
-fi
 
 # Use bat as a colorizing pager for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always'"
