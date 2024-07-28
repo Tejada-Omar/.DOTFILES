@@ -194,6 +194,7 @@ client.focused_inactive #524f67 #524f67 #e0def4
 client.unfocused #21202e #21202e #e0def4
 
 focus_wrapping workspace
+mouse_warping container
 
 for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
