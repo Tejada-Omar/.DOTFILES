@@ -2,32 +2,64 @@
 # Dotfiles management
 alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
 
-# Redirect to better commands
-alias ls='exa'
-
 # Command shortcuts
+alias ls='exa'
+alias la='ls -a'
 alias n='nvim'
 alias p='pacman'
 alias pa='sudo pacman'
 alias s='systemctl'
 alias sy='sudo systemctl'
+alias su='systemctl --user'
 alias z='zathura --fork'
-alias f="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 alias open='xdg-open'
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gl='git lg'
+alias gd='git diff'
+alias t='tmux'
+alias ta='tmux attach-session'
+alias tl='tmux list-sessions'
+alias tn='tmux new-session'
+alias tk='tmux kill-session'
+alias u='sudo ufw'
+alias todo='todoist-cli'
 
 # One-liner shortcuts
-alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\ time|\ full|to\ empty|percentage"'
-alias notetemplate='pandoc --toc --number-section -V geometry:margin=2cm -V fontsize=12pt'
-alias archive='tar -czvf'
-alias cdf='cd $(fd -H -t f . '/home/omar' | fzf | xargs dirname)'
-alias cdd='cd $(fd -H -t d . '/home/omar' | fzf)'
-alias reflectorupdate='reflector --latest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
+alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
+alias reflectorupdate='sudo reflector -c CA,US --age 12 --fastest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 alias keychron='sudo systemctl start keychron'
+alias clipqrcode='xclip -sel clip -o | qrencode -t ansiutf8'
+alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
+alias update-ip="curl ident.me > ~/Documents/notes/ssh/desktop.txt"
+alias update-ssh='sed -i "/phone$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/phone.txt)/;}" ~/.ssh/config'
+alias update-ssh2='sed -i "/laptop$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/laptop.txt)/;}" ~/.ssh/config'
+alias temp='cd $(mktemp -d)'
+alias update-grub='sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB'
+alias update-monitors='xrandr --output eDP-1 --auto --left-of HDMI-1-0 --output HDMI-1-0 --auto --primary'
+alias color-picker='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 
-# Functions for positional arguments
-startnotes() {
-  head -n 5 "$1/notes.md" > ./notes.md
-}
-wcnopythondocs() {
-  sed 's/^[ \t]*//g' "$1" | rg -v '^#' | wc -l
+alias webs='websocat --close-status-code 1000 -E'
+
+# Tex package manager
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
+
+# cd shortcuts
+alias update-cdd='fd -Ha -td -d1 -E "\.config" "^\." ~ > ~/.cddignore'
+alias cdd='cd "$(fd -H -td --ignore-file ~/.cddignore . ~ | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin --preview-window=up,20%)"'
+alias cdda='cd "$(fd -H -td . ~ /etc | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin --preview-window=up,20%)"'
+alias cdf='cd "$(fd -H -tf --ignore-file ~/.cddignore . ~ | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin --preview-window=up,20% | xargs dirname)"'
+alias cdfa='cd "$(fd -H -tf . ~ /etc | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin --preview-window=up,20% | xargs dirname)"'
+alias cddh='cd "$(fd -H -td -E .git . | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin --preview-window=up,20%)"'
+
+mkm() {
+  if [ ! -e $1 ]; then
+    echo "File already exists at that location"
+    exit 1
+  fi
+
+  mkdir -vp "$1" && cd "$1"
 }
