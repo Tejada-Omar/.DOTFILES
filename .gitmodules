@@ -1,11 +1,12 @@
-[submodule "/home/omar/.config/nvim"]
-	path = /home/omar/.config/nvim
+[submodule "nvim"]
+	path = dot-config/nvim
 	url = git@github.com:Tejada-Omar/nvim-dots.git
 	ignore = dirty
-[submodule ".config/tmux"]
-	path = .config/tmux
+[submodule "tmux"]
+	path = dot-config/tmux
 	url = git@github.com:Tejada-Omar/tmux-dots.git
 	ignore = dirty
-[submodule "/home/omar/.config/doom"]
-	path = /home/omar/.config/doom
+[submodule "doom"]
+	path = dot-config/doom
 	url = git@github.com:Tejada-Omar/doom.git
+	ignore = dirty
