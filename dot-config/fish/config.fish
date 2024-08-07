@@ -47,7 +47,7 @@ if status is-interactive
     alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
     # cd shortcuts
-    alias update-cdd='fd -Ha -td -d1 -E "\.config" "^\." ~ > ~/.cddignore'
+    alias update-cdd='fd -Ha -td -d1 -E "\.config" -E "\.DOTFILES" "^\." ~ > ~/.cddignore'
     alias cdd='cd "$(fd -H -td --ignore-file ~/.cddignore . ~ | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin --preview-window=up,20%)"'
     alias cdda='cd "$(fd -H -td . ~ /etc | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin --preview-window=up,20%)"'
     alias cdf='cd "$(fd -H -tf --ignore-file ~/.cddignore . ~ | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin --preview-window=up,20% | xargs dirname)"'
