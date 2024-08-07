@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 set -g fish_greeting
+fish_add_path "$XDG_CONFIG_DIR"/emacs/bin/
 
 if status is-interactive
     # Basic aliases
