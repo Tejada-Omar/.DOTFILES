@@ -4,8 +4,8 @@ fish_add_path "$XDG_CONFIG_DIR"/emacs/bin/
 
 if status is-interactive
     # Basic aliases
-    abbr -a ls exa
-    abbr -a la ls -a
+    abbr -a ls eza
+    abbr -a la eza -a
     abbr -a n nvim
     abbr -a p pacman
     abbr -a pa sudo pacman
