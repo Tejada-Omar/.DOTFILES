@@ -1,3 +1,6 @@
 \.git
 \.github
 \.gitmodules
+.*/.git
+.*/.github
+.*/.gitmodules
