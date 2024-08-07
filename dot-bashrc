@@ -7,6 +7,10 @@ source ~/.bash_env
 
 PS1='\W \$ '
 
+if [[ -z "${SSH_CONNECTION}" ]]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR"/ssh-agent.socket
+fi
+
 # shellcheck source=/home/omar/.bash_aliases
 source ~/.bash_aliases
 if [ -z "$BASH_EXECUTION_STRING" ]; then exec fish; fi
