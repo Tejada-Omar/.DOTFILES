@@ -1,0 +1,6 @@
+#
+# ~/.bash_profile
+#
+
+# shellcheck source=/home/omar/.bashrc
+[[ -f ~/.bashrc ]] && . ~/.bashrc
