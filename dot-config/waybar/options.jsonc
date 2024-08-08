@@ -20,7 +20,7 @@
     "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
   },
   "pulseaudio": {
-    "format": "{volume}%",
+    "format": "{volume}% V",
     "on-click": "pavucontrol",
   },
   "network": {
@@ -50,6 +50,15 @@
     "spacing": 13,
     "show-passive-items": true,
     "reverse-direction": true,
+  },
+  "battery": {
+    "format": "{capacity}% B",
+    "align": 1,
+    "justify": "center",
+    "states": {
+      "warning": 30,
+      "critical": 15,
+    },
   },
   "custom/spacer": {
     "format": "|",

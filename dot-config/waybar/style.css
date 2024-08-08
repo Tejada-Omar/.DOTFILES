@@ -64,6 +64,7 @@ tooltip {
 #network,
 #bluetooth,
 #pulseaudio,
+#battery,
 #clock {
   padding-right: 0.5em;
   padding-left: 0.5em;
@@ -84,6 +85,18 @@ tooltip {
 #clock {
   color: @rose;
   padding-right: 0em;
+}
+
+#battery {
+  color: @pine
+}
+
+#battery.warning {
+  color: @gold
+}
+
+#battery.critical {
+  color: @love
 }
 
 #custom-spacer {

@@ -10,6 +10,7 @@
       "network",
       "bluetooth",
       "pulseaudio",
+      "battery",
       "clock",
     ],
     "include": ["~/.config/waybar/options.jsonc"],
