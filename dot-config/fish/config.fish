@@ -28,9 +28,6 @@ if status is-interactive
     abbr -a u sudo ufw
     abbr -a todo todoist-cli
 
-    # One-liner shortcuts
-    alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
-
     alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
     alias reflectorupdate='sudo reflector -c CA,US --age 12 --fastest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
     alias clipqrcode='wl-paste | qrencode -t ansiutf8'
