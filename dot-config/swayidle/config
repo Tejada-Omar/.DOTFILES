@@ -1,7 +1,8 @@
-timeout 1200 'swaylock -f'
-timeout 1260 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+timeout 600 'swaylock -f'
+timeout 660 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 lock 'playerctl pause'
 lock 'swaylock -f'
 before-sleep 'playerctl pause'
 before-sleep 'swaylock -f'
 after-resume 'swaymsg "output * power on"'
+idlehint 600

@@ -1,15 +1,11 @@
-grace=10
+color=191724
 ignore-empty-password
 show-failed-attempts
 hide-keyboard-layout
-clock
-screenshots
 indicator-idle-visible
 font=Jetbrains Mono
-timestr=%T
-datestr=%x
-indicator-radius=250
-indicator-thickness=10
+indicator-radius=100
+indicator-thickness=12
 ring-color=3d59a1
 ring-ver-color=1a2b32
 ring-wrong-color=2d202a
@@ -24,4 +20,3 @@ inside-color=1a1b26
 inside-ver-color=e0ad68
 inside-wrong-color=db4b4b
 inside-clear-color=9ece6a
-effect-blur=9x7
