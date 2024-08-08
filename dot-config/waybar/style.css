@@ -1,9 +1,9 @@
 @import "./rose-pine-colors.css";
 
 * {
-  font-family: Jetbrains Mono Nerd Font;
+  font-family: Jetbrains Mono;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
   min-height: 30px;
 }
 
@@ -22,7 +22,7 @@ window#waybar {
 
 tooltip {
   background: @overlay;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 0px;
   border-width: 2px;
   border-style: solid;
@@ -65,8 +65,8 @@ tooltip {
 #bluetooth,
 #pulseaudio,
 #clock {
-  padding-right: 0.6em;
-  padding-left: 0.6em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
 }
 
 #network {
