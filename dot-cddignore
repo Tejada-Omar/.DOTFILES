@@ -1,5 +1,5 @@
-/home/omar/.DOTFILES/
 /home/omar/.android/
+/home/omar/.ansible/
 /home/omar/.cache/
 /home/omar/.cargo/
 /home/omar/.designer/
@@ -16,6 +16,7 @@
 /home/omar/.lazarus/
 /home/omar/.lemminx/
 /home/omar/.local/
+/home/omar/.logseq/
 /home/omar/.m2/
 /home/omar/.mono/
 /home/omar/.mozilla/
@@ -31,10 +32,13 @@
 /home/omar/.wine/
 /home/omar/.workspace.eclipse-workspace/
 /home/omar/.workspace6/
+/home/omar/.workspaceCPSC-331/
 /home/omar/.workspaceSENG300Iter1/
 /home/omar/.workspaceSENG300ProjectIteration3/
 /home/omar/.workspaceVendingMachine/
 /home/omar/.workspaceVendingMachineApproach1/
+/home/omar/.workspaceXChart/
+/home/omar/.workspaceas-maven-project/
 /home/omar/.workspaceassignment-3/
 /home/omar/.workspaceassignments/
 /home/omar/.workspacecom.autovend.hardware.test_0.1rc2/
