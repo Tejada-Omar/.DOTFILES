@@ -13,3 +13,12 @@
 - File Manager: ranger
 - Launcher: fuzzel
 - Video Player: mpv
+
+## Branch Information
+
+Last sync between branches:
+
+| Branch | Commit  |
+|--------|---------|
+| master | 6fa3e46 |
+| laptop | 181adc5 |
