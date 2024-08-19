@@ -155,10 +155,6 @@ mode "resize" {
 bindsym $mod+Shift+r mode "resize"
 
 # Function keys
-bindsym --locked $mod+Shift+F1 output HDMI-A-1 power toggle
-bindsym --locked $mod+Shift+F2 output DP-1 power toggle
-bindsym --locked $mod+F1 exec ddcutil -d 2 setvcp 10 - 5
-bindsym --locked $mod+F2 exec ddcutil -d 2 setvcp 10 + 5
 bindsym --locked XF86MonBrightnessDown exec ddcutil -d 1 setvcp 10 - 5
 bindsym --locked XF86MonBrightnessUp exec ddcutil -d 1 setvcp 10 + 5
 bindsym --locked XF86AudioPrev exec playerctl previous
