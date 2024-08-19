@@ -20,7 +20,10 @@
     "today-format": "<span color='#ff6699'><b><u>{}</u></b></span>",
   },
   "pulseaudio": {
-    "format": "{volume}% V",
+    "format": "{volume}% V {format_source}",
+    "format-muted": "{volume}% VM {format_source}",
+    "format-source": "V",
+    "format-source-muted": "M",
     "on-click": "pavucontrol",
   },
   "network": {
