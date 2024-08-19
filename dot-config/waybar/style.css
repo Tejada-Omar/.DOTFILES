@@ -87,7 +87,9 @@ tooltip {
   padding-right: 0em;
 }
 
-#battery {
+#battery,
+#battery.charging.warning,
+#battery.charging.critical {
   color: @pine
 }
 
