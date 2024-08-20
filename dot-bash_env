@@ -30,3 +30,6 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 # export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
 
 export npm_config_prefix="$HOME/.local"
+
+mapfile -t user_envs < <(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
+export "${user_envs[@]}"
