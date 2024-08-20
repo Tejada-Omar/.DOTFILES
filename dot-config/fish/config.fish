@@ -33,7 +33,6 @@ if status is-interactive
     alias clipqrcode='wl-paste | qrencode -t ansiutf8'
     alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
     alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
-    alias update-ip="curl ident.me > ~/Documents/notes/ssh/desktop.txt"
     alias temp='cd $(mktemp -d)'
     alias update-grub='sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB'
     alias color-picker='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
