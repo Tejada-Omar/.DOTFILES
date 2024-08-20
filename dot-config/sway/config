@@ -148,6 +148,7 @@ workspace 10 output HDMI-A-1
   # If there are multiple scratchpad windows, this command cycles through them.
   bindsym $mod+minus scratchpad show
 
+  bindsym --no-repeat $mod+bracketleft exec firefox
   bindsym --no-repeat $mod+bracketright exec emacsclient -r
 
 # Resizing containers:
