@@ -1,5 +1,8 @@
 #!/bin/bash
 # Path
+mapfile -t user_envs < <(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
+export "${user_envs[@]}"
+
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin"
 
 # Preferences
