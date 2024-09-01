@@ -136,7 +136,8 @@ workspace 10 output HDMI-A-1
   bindsym $mod+minus scratchpad show
 
   bindsym --no-repeat $mod+bracketleft exec firefox
-  bindsym --no-repeat $mod+bracketright exec emacsclient -r
+  bindsym --no-repeat $mod+bracketright exec emacsclient -c
+  bindsym --no-repeat $mod+Ctrl+bracketright exec systemctl --user restart emacs
   bindsym --no-repeat $mod+Shift+bracketright exec org-capture
 
 # Resizing containers:
