@@ -1,3 +1,5 @@
+set database sqlite
+
 set selection-clipboard clipboard
 set vertical-center true
 set window-title-home-tilde
