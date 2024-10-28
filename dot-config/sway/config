@@ -204,6 +204,7 @@ mouse_warping container
 for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
   [app_id="^firefox" title="^Picture-in-Picture"] floating enable, resize set width 800 height 450
+  [class="^CPSC 453"] floating enable
   [shell=".*"] inhibit_idle fullscreen
 }
 
