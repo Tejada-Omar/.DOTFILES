@@ -23,6 +23,12 @@
 data.location=~/.local/share/task
 hooks.location=~/.config/task/hooks
 
+# Set the following variables
+# sync.server.url
+# sync.server.client_id
+# sync.encryption_secret
+include serverrc
+
 # Color theme (uncomment one to use)
 #include light-16.theme
 #include light-256.theme
@@ -42,3 +48,13 @@ context.homelab.read=project:homelab
 context.homelab.write=project:homelab
 context.desktop.read=project:desktop
 context.desktop.write=project:desktop
+news.version=3.1.0
+context.school.read=project:school
+context.school.write=project:school
+report.inbox.description=List of tasks w\/o any metadata
+report.inbox.columns=id,entry.age,description
+report.inbox.labels=ID,Age,Description
+report.inbox.sort=entry-
+report.inbox.filter=-TAGGED -PROJECT -PRIORITY -DELETED
+report.inbox.context=1
+alias.a=add
