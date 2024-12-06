@@ -150,6 +150,8 @@ workspace 10 output HDMI-A-1 DP-1
   bindsym $mod+Shift+minus move scratchpad
   bindsym $mod+Shift+grave move container to output HDMI-A-1
   bindsym $mod+Shift+equal move container to output DP-1
+  bindsym $mod+Ctrl+grave move workspace to output HDMI-A-1
+  bindsym $mod+Ctrl+equal move workspace to output DP-1
 
   # Show the next scratchpad window or hide the focused scratchpad window.
   # If there are multiple scratchpad windows, this command cycles through them.
@@ -191,6 +193,8 @@ bindsym $mod+Shift+m mode "move"
 # Function keys
 bindsym --locked $mod+Shift+F1 output HDMI-A-1 power toggle
 bindsym --locked $mod+Shift+F2 output DP-1 power toggle
+bindsym --locked $mod+Ctrl+F1 output HDMI-A-1 toggle
+bindsym --locked $mod+Ctrl+F2 output DP-1 toggle
 bindsym --locked $mod+F1 exec ddcutil -d 2 setvcp 10 - 5
 bindsym --locked $mod+F2 exec ddcutil -d 2 setvcp 10 + 5
 bindsym --locked XF86MonBrightnessDown exec ddcutil -d 1 setvcp 10 - 5
