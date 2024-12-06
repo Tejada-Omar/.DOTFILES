@@ -9,7 +9,8 @@
 	text = 2
 	renames = copy
 	algorithm = histogram
-	colorMoved = true
+	colormoved = dimmed-zebra
+	colormovedws = allow-indentation-change
 [fetch]
 	parallel = 0
 [log]
