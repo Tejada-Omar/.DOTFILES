@@ -6,7 +6,7 @@ if [ -x /usr/lib/systemd/user-environment-generators/30-systemd-environment-d-ge
 fi
 
 export GOPATH="$HOME/go"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin:.cargo/bin"
 
 # Preferences
 export VISUAL=nvim
