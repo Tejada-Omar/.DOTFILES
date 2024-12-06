@@ -50,9 +50,9 @@ workspace 10 output HDMI-A-1 DP-1
 # Key bindings
 # Basics:
   # Start a terminal
-  bindsym $mod+Return exec $term -e sh -c 'echo -n "Input session name: " && read -r session && [ -n "$session" ] && tmux new-session -s "$session" || tmux new-session'
+  bindsym $mod+Return exec fuzzel -d --prompt-only="Input session name: " | xargs -r -- $term -e tmux new-session -s
   bindsym $mod+Ctrl+Return exec $term -e fish
-  bindsym $mod+backslash exec $term -e tmux attach -t $(tmux list-sessions -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" | fuzzel -w 80 -dp "Select tmux session: " | cut -d':' -f1)
+  bindsym $mod+backslash exec tmux ls -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" | fuzzel -Rdw 80 -p "Select tmux session: " | cut -d':' -f1 | xargs -r -- $term -e tmux attach -t
 
   # Kill focused window
   bindsym $mod+w kill
