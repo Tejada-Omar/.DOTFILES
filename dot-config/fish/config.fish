@@ -1,6 +1,10 @@
 #!/usr/bin/env fish
 set -g fish_greeting
-fish_add_path "$XDG_CONFIG_DIR"/emacs/bin/
+
+function fish_title
+  set -q argv[1]; or set argv fish
+  echo (prompt_pwd -d 1): $argv;
+end
 
 if status is-interactive
     # Basic aliases
