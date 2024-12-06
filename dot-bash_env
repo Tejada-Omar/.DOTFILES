@@ -36,3 +36,6 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 # export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
 
 export npm_config_prefix="$HOME/.local"
+
+export NTFY_TOPIC=ping
+export NTFY_TAGS="$(hostname)"
