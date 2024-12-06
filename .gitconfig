@@ -37,3 +37,5 @@
 [bash]
 	showInformativeStatus = true
 	showFirstState = true
+[commit]
+	verbose = true
