@@ -135,6 +135,7 @@ workspace 10 output HDMI-A-1 DP-1
 
   # Toggle the current focus between tiling and floating mode
   bindsym $mod+Shift+space floating toggle
+  bindsym $mod+m sticky toggle
 
   # Swap focus between the tiling area and the floating area
   bindsym $mod+Ctrl+space focus mode_toggle
@@ -142,6 +143,7 @@ workspace 10 output HDMI-A-1 DP-1
   # Move focus to the parent container
   bindsym $mod+a focus parent
   bindsym $mod+z focus child
+  bindsym $mod+s focus mode_toggle
 
 # Scratchpad:
   # Move the currently focused window to the scratchpad
@@ -174,6 +176,17 @@ mode "resize" {
   bindsym Escape mode "default"
 }
 bindsym $mod+Shift+r mode "resize"
+
+mode "move" {
+  bindsym $left move left 50 px
+  bindsym $down move down 50 px
+  bindsym $up move up 50 px
+  bindsym $right move right 50 px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+m mode "move"
 
 # Function keys
 bindsym --locked $mod+Shift+F1 output HDMI-A-1 power toggle
