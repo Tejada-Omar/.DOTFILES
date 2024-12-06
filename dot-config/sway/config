@@ -28,10 +28,12 @@ output DP-1 {
   scale 1.50
   position 1920 0
   adaptive_sync on
+  allow_tearing yes
 }
 output HDMI-A-1 {
   position 0 0
   adaptive_sync on
+  allow_tearing yes
 }
 
 workspace 1 output DP-1
