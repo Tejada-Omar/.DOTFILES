@@ -19,9 +19,14 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-bindsym $mod+Return exec fuzzel -d --prompt-only="Input session name: " | xargs -r -- $term -e tmux new-session -s
+bindsym $mod+Return exec fuzzel -d --prompt-only="Input session name: " \
+  | xargs -r -- $term -e tmux new-session -s
 bindsym $mod+Ctrl+Return exec $term -e fish
-bindsym $mod+backslash exec tmux ls -F "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" | fuzzel -Rdw 80 -p "Select tmux session: " | cut -d':' -f1 | xargs -r -- $term -e tmux attach -t
+bindsym $mod+backslash exec tmux ls -F \
+  "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" \
+  | fuzzel -Rdw 80 -p "Select tmux session: " \
+  | cut -d':' -f1 \
+  | xargs -r -- $term -e tmux attach -t
 
 # Pass through xargs so new resulting window can be opened on the same workspace
 bindsym $mod+r exec fuzzel | xargs swaymsg exec --
@@ -46,8 +51,17 @@ bindsym $mod+u workspace back_and_forth
 bindsym $mod+p workspace prev_on_output
 bindsym $mod+n workspace next_on_output
 
-bindsym $mod+i exec swaymsg -t get_workspaces | jq -r '.[] | .name | select(test("[0-9]") | not)' | sort -n | fuzzel -Rdp "Select workspace: " | xargs -r swaymsg workspace
-bindsym $mod+Shift+i exec swaymsg -t get_workspaces | jq -r '.[] | .name | select(test("[0-9]") | not)' | sort -n | fuzzel -Rdp "Select workspace: " | tr "[:lower:]" "[:upper:]" | xargs -r swaymsg move container to workspace
+bindsym $mod+i exec swaymsg -t get_workspaces \
+  | jq -r '.[] | .name | select(test("[0-9]") | not)' \
+  | sort -n \
+  | fuzzel -Rdp "Select workspace: " \
+  | xargs -r swaymsg workspace
+bindsym $mod+Shift+i exec swaymsg -t get_workspaces \
+  | jq -r '.[] | .name | select(test("[0-9]") | not)' \
+  | sort -n \
+  | fuzzel -Rdp "Select workspace: " \
+  | tr "[:lower:]" "[:upper:]" \
+  | xargs -r swaymsg move container to workspace
 
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
@@ -123,8 +137,10 @@ bindsym --locked XF86AudioNext exec playerctl next
 bindsym --locked XF86AudioMute exec pamixer -t
 bindsym --locked XF86AudioLowerVolume exec pamixer -d 5
 bindsym --locked XF86AudioRaiseVolume exec pamixer -i 5
-bindsym Print exec grim "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
-bindsym $mod+Print exec grim -g "$(slurp)" "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
+bindsym Print exec grim \
+  "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
+bindsym $mod+Print exec grim -g "$(slurp)" \
+  "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
 
 assign [app_id="spotify"] workspace MUSIC
 assign [class="steam"] workspace STEAM
@@ -132,7 +148,8 @@ assign [class="discord"] workspace DISCORD
 
 for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
-  [app_id="^firefox" title="^Picture-in-Picture"] floating enable, resize set width 525 height 295, move position 1 ppt 1 ppt
+  [app_id="^firefox" title="^Picture-in-Picture"] floating enable, \
+    resize set width 525 height 295, move position 1 ppt 1 ppt
   [app_id="gamescope"] fullscreen enable
   [title="^CPSC 453$"] floating enable
   [shell=".*"] inhibit_idle fullscreen
