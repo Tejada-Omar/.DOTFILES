@@ -227,7 +227,6 @@ assign [class="discord"] workspace DISCORD
 for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
   [app_id="^firefox" title="^Picture-in-Picture"] floating enable, resize set width 525 height 295, move position 1 ppt 1 ppt
-  # [app_id="spotify"] move scratchpad, scratchpad show, move absolute position centered, resize set 80 ppt 80 ppt
   [app_id="gamescope"] fullscreen enable
   [title="^CPSC 453$"] floating enable
   [shell=".*"] inhibit_idle fullscreen
@@ -240,3 +239,5 @@ exec export _JAVA_AWT_WM_NONREPARENTING=1
 exec export QT_AUTO_SCREEN_SCALE_FACTOR=1
 exec export QT_ENABLE_HIGHDPI_SCALING=1
 exec_always systemctl --user start sway-session.target
+
+exec /home/omar/.config/sway/scripts/open-perma-scratchpad
