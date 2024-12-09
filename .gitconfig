@@ -38,4 +38,4 @@
 	showInformativeStatus = true
 	showFirstState = true
 [commit]
-	verbose = true
+	verbose = false
