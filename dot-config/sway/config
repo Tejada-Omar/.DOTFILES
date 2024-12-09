@@ -172,6 +172,8 @@ mode "resize" {
   bindsym $up resize shrink height 10px
   bindsym $right resize grow width 10px
 
+  bindsym i resize set width 85 ppt height 85 ppt
+
   # Return to default mode
   bindsym Return mode "default"
   bindsym Escape mode "default"
