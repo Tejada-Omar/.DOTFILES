@@ -39,6 +39,7 @@ if status is-interactive
     abbr -a tk tmux kill-session
     abbr -a u sudo ufw
     abbr -a todo todoist-cli
+    abbr -a news newsboat
 
     alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
     alias reflectorupdate='sudo reflector -c CA,US --age 12 --fastest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
