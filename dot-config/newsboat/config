@@ -1,0 +1,44 @@
+urls-source "miniflux"
+miniflux-url "https://rss.otejada.com/"
+miniflux-login "omar"
+miniflux-tokenfile "~/.config/newsboat/miniflux-token.txt"
+miniflux-flag-star "b"
+
+auto-reload yes
+reload-threads 4
+suppress-first-reload yes
+show-keymap-hint no
+text-width 80
+scrolloff 4
+
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
+unbind-key D
+bind-key g home
+bind-key G end
+bind-key ^D halfpagedown
+bind-key ^U halfpageup
+bind-key a toggle-show-read-feeds
+bind-key A mark-all-above-as-read
+bind-key ^A mark-feed-read
+bind-key s sort
+bind-key S rev-sort
+
+color background         default default
+color listnormal         default default
+color listnormal_unread  color15 default bold
+color listfocus          green   default reverse
+color listfocus_unread   color10 default reverse bold
+color title              cyan    default reverse
+color info               magenta default reverse
+color hint-description   magenta default
+color article            default default
+color end-of-text-marker color8  default
+
+# Highlight URLs with regex
+highlight article "[a-z]+://[^ ]+" green default underline
+
+bookmark-cmd "~/.newsboat/newsboat-linkding"

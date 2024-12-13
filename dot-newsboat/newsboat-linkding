@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+set -e
+
+url="$1"
+title="$2"
+desc="$3"
+feed="$4"
+
+host='https://pin.otejada.com'
+
+# Exit if bookmark already exists
+curl -s -H "@$HOME/.newsboat/headers.txt" --variable "url=$url" \
+  --expand-url "$host/api/bookmarks/check/?url={{url:trim:url}}" |
+  jq -r 'if .bookmark != null then error("URL is already bookmarked") end' >/dev/null
+
+jq -n -c -j \
+  --arg url "$url" \
+  --arg title "$title" \
+  --arg desc "$desc" \
+  --arg feed "$feed" \
+  '{ $url, $title, notes: $feed, unread: true, is_archived: false, unread: false, shared: false, tag_names: ["newsboat"] } + if ($desc|length > 0) then {description: $desc} end' |\
+  curl -s -L --post301 --post302 --json @- -H "@$HOME/.newsboat/headers.txt" "$host/api/bookmarks" >/dev/null
