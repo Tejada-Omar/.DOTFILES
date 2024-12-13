@@ -39,3 +39,5 @@ export npm_config_prefix="$HOME/.local"
 
 export NTFY_TOPIC=ping
 export NTFY_TAGS="$(hostname)"
+
+export NVIM_LSP_ENABLED=true
