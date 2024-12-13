@@ -105,8 +105,9 @@ mode "resize" {
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
+  bindsym Shift+m mode "move"
 }
-bindsym $mod+Shift+r mode "resize"
+bindsym $mod+Shift+n mode "resize"
 
 mode "move" {
   bindsym $left move left 50 px
@@ -116,6 +117,7 @@ mode "move" {
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
+  bindsym Shift+n mode "resize"
 }
 bindsym $mod+Shift+m mode "move"
 
