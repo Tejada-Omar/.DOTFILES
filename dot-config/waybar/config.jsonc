@@ -7,7 +7,6 @@
       "tray",
       "custom/spacer",
       "network",
-      "bluetooth",
       "pulseaudio",
       "battery",
       "clock",
