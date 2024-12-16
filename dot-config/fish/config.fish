@@ -62,4 +62,5 @@ if status is-interactive
     alias cdf='cd "$(fd -H -tf --ignore-file ~/.cddignore . ~ | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin --preview-window=up,20% | xargs dirname)"'
     alias cdfa='cd "$(fd -H -tf . ~ /etc | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin --preview-window=up,20% | xargs dirname)"'
     alias cddh='cd "$(fd -H -td -E .git . | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin --preview-window=up,20%)"'
+    alias cdt='cd $(tmux display-message -p "#{session_path}")'
 end
