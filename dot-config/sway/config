@@ -19,7 +19,7 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-bindsym $mod+Return exec fuzzel -d --prompt-only="Input session name: " \
+bindsym $mod+Return exec fuzzel -d --prompt="Input session name: " \
   | xargs -r -- $term -e tmux new-session -s
 bindsym $mod+Ctrl+Return exec $term -e fish
 bindsym $mod+backslash exec tmux ls -F \
