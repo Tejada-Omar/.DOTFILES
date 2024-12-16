@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+config="$HOME/.DOTFILES/"
+sess_name="scratchpad"
+class_name="Alacritty-Scratchpad"
+
+if tmux has-session -t "$sess_name" 2>/dev/null; then
+  exit 0
+fi
+
+tmux new -dc "$config" -f "ignore-size" -s "$sess_name"
+alacritty --class "$class_name" -e tmux attach -dt "$sess_name" & disown
+
+swaymsg 'for_window [app_id="^Alacritty-Scratchpad$"] floating enable, move position center'
+swaymsg 'for_window [app_id="^Alacritty-Scratchpad$"] move scratchpad'

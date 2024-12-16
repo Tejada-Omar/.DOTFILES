@@ -1,6 +1,18 @@
 #!/usr/bin/env fish
 set -g fish_greeting
-fish_add_path "$XDG_CONFIG_DIR"/emacs/bin/
+
+function fish_title
+  set -q argv[1]; or set argv fish
+  echo (prompt_pwd -d 1): $argv;
+end
+
+function fish_right_prompt
+  if [ $status != 0 ]
+    return 0
+  end
+
+  task +READY export | jq -r 'max_by(.urgency) | "\(.urgency): \(.description)"'
+end
 
 if status is-interactive
     # Basic aliases
@@ -27,6 +39,7 @@ if status is-interactive
     abbr -a tk tmux kill-session
     abbr -a u sudo ufw
     abbr -a todo todoist-cli
+    abbr -a news newsboat
 
     alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
     alias reflectorupdate='sudo reflector -c CA,US --age 12 --fastest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'

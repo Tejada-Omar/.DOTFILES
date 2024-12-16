@@ -22,8 +22,8 @@ dynamic_title = true
 opacity = 1.0
 
 [window.padding]
-x = 10
-y = 10
+x = 5
+y = 0
 
 [general]
 live_config_reload = true

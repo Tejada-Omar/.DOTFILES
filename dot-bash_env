@@ -5,7 +5,8 @@ if [ -x /usr/lib/systemd/user-environment-generators/30-systemd-environment-d-ge
   export "${user_envs[@]}"
 fi
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin:.cargo/bin"
 
 # Preferences
 export VISUAL=nvim
@@ -35,3 +36,8 @@ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 # export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
 
 export npm_config_prefix="$HOME/.local"
+
+export NTFY_TOPIC=ping
+export NTFY_TAGS="$(hostname)"
+
+export NVIM_LSP_ENABLED=true

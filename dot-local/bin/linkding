@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+help() {
+cat << EOF
+USAGE: $0 [-h | --help] [-t | --title] [-d | --desc] [-n | --note]
+       [--tag] [--read] <URL>
+EOF
+}
+
+declare title
+declare desc
+declare note
+declare -a tags
+unread=true
+
+parse_flags() {
+  temp=$(getopt -o ht:d:n: -l help,title:,desc:,note:,tag:,read -n 'linkding' -- "$@")
+  # shellcheck disable=SC2181
+  if [ $? != 0 ]; then help; exit 1; fi
+  eval set -- "$temp"
+
+  while true; do
+    case "$1" in
+    -h | --help ) help; exit 0 ;;
+    -t | --title ) title="$2"; shift 2 ;;
+    -d | --desc ) desc="$2"; shift 2 ;;
+    -n | --note ) note="$2"; shift 2 ;;
+    --tag ) tags+=("$2"); shift 2 ;;
+    --read ) unread=false; shift ;;
+    --) shift; break ;;
+    *) break ;;
+    esac
+  done
+
+  url="$1"
+}
+
+if [[ "$(basename "$0")" != "newsboat-linkding" ]]; then
+  parse_flags "$@"
+else
+  url="$1"
+  title="$2"
+  desc="$3"
+  note="$4"
+fi
+
+if [[ -z "$url" || "$url" == "" ]]; then
+  printf "No url given... Exiting"
+  exit 1
+fi
+
+headers="$HOME/.env/linkding.txt"
+host="https://pin.otejada.com"
+
+# Exist if bookmark already exists
+curl -s -H "@$headers" --variable "url=$url" \
+  --expand-url "$host/api/bookmarks/check/?url={{url:trim:url}}" |
+  jq -r 'if .bookmark != null then error("URL is already bookmarked") end' >/dev/null
+
+jq -n -c -j \
+  --arg url "$url" \
+  --arg title "$title" \
+  --arg desc "$desc" \
+  --arg note "$note" \
+  --argjson unread "$unread" \
+  --arg tags "${tags[*]}" \
+  '{ $url, $unread, is_archived: false, shared: false }
+    + if ($title | length > 0) then { $title } end
+    + if ($desc | length > 0) then { $desc } end
+    + if ($note | length > 0) then { $note } end
+    + if ($tags | split(" ") | length > 0) then
+        { tag_names: ($tags | split(" ") | unique)}
+      end' |\
+  curl -s -L --post301 --post302 --json @- -H "@$headers" "$host/api/bookmarks" >/dev/null

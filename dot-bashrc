@@ -9,4 +9,3 @@ PS1='\W \$ '
 
 # shellcheck source=/home/omar/.bash_aliases
 source ~/.bash_aliases
-if [ -z "$BASH_EXECUTION_STRING" ]; then exec fish; fi

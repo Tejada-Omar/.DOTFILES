@@ -34,3 +34,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[bash]
+	showInformativeStatus = true
+	showFirstState = true
+[commit]
+	verbose = false

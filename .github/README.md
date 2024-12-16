@@ -19,6 +19,6 @@
 Last sync between branches:
 
 | Branch | Commit  |
-|--------|---------|
-| master | d7ca95c |
-| laptop | bec0603 |
+| ------ | ------- |
+| master | 73c0e04 |
+| laptop | eb11b08 |
