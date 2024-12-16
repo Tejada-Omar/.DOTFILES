@@ -1,6 +1,8 @@
 \.git
 \.github
 \.gitmodules
+\.gitignore
 .*/.git
 .*/.github
 .*/.gitmodules
+.*/.gitignore
