@@ -7,6 +7,7 @@ fi
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin:.cargo/bin"
+export JAVA_HOME=/etc/alternatives/jre
 
 # Preferences
 export VISUAL=nvim
