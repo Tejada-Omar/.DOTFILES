@@ -4,3 +4,4 @@
 
 # shellcheck source=/home/omar/.bashrc
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+source "$HOME/.cargo/env"

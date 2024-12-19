@@ -9,3 +9,4 @@ PS1='\W \$ '
 
 # shellcheck source=/home/omar/.bash_aliases
 source ~/.bash_aliases
+source "$HOME/.cargo/env"
