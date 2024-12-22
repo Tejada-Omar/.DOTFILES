@@ -7,6 +7,10 @@ hooks.location=$XDG_CONFIG_HOME/task/hooks
 # sync.encryption_secret
 include serverrc
 
+# Should set recurrence=[0/1]
+# A different file to make it easy to run git update-index --skip-worktree
+include recurrencerc
+
 news.version=3.2.0
 context.school.read=project:sch
 context.school.write=project:sch
