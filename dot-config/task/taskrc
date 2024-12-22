@@ -1,5 +1,5 @@
-data.location=~/.local/share/task
-hooks.location=~/.config/task/hooks
+data.location=$XDG_DATA_HOME/task
+hooks.location=$XDG_CONFIG_HOME/task/hooks
 
 # Set the following variables
 # sync.server.url
