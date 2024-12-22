@@ -5,39 +5,9 @@ if [ -x /usr/lib/systemd/user-environment-generators/30-systemd-environment-d-ge
   export "${user_envs[@]}"
 fi
 
-export GOPATH="$HOME/go"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/nvim/mason/bin:$(go env GOPATH)/bin:$HOME/.config/emacs/bin:.cargo/bin"
-
-# Preferences
-export VISUAL=nvim
-export EDITOR=nvim
-export PAGER=bat
-export READER=zathura
-export BROWSER=firefox
-
-# XDG Desktop
-export XDG_CONFIG_HOME=~/.config
-
-# CPU
-export AMD_VULKAN_ICD=RADV
-export RANGER_LOAD_DEFAULT_RC=FALSE
-export MOZ_DISABLE_RDD_SANDBOX=1
-
-# Use bat as a colorizing pager for man
-export MANPAGER="sh -c 'col -bx | bat -l man -p --color=always'"
-export MANROFFOPT="-c"
-
-# fzf settings
-export FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
-export FZF_DEFAULT_OPTS="--preview 'bat --style=header-filename,header-filesize -r 40: --color=always {}' --color=dark --scheme=path --keep-right --tiebreak=length,end,begin --filepath-word --border=none --ansi --preview-window=up,20%"
-
-# sockets
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-# export SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock
-
-export npm_config_prefix="$HOME/.local"
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin:$HOME/.config/emacs/bin"
 
 export NTFY_TOPIC=ping
-export NTFY_TAGS="$(hostname)"
+export NTFY_TAGS="$HOSTNAME"
 
 export NVIM_LSP_ENABLED=true
