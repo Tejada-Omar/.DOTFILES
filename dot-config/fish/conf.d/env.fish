@@ -5,7 +5,7 @@ end
 fish_add_path -g "$XDG_DATA_HOME/nvim/mason/bin" "$XDG_CONFIG_HOME/emacs/bin"
 
 # Use bat as a colorizing pager for man
-set -gx MANPAGER "sh -c 'col -bx | bat -l man -p --color=always'"
+set -gx MANPAGER "sh -c 'col -bx | bat -l man -p --color=always --wrap never'"
 set -gx MANROFFOPT "-c"
 
 # fzf settings
