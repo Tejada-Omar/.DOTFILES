@@ -1,6 +1,8 @@
 data.location=$XDG_DATA_HOME/task
 hooks.location=$XDG_CONFIG_HOME/task/hooks
 
+include bubblegum-256.theme
+
 # Set the following variables
 # sync.server.url
 # sync.server.client_id
