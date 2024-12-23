@@ -1,6 +1,4 @@
-if [ -x /usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator ]
-  export (/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
-end
+export (envsubst < $HOME/.config/environment.d/env.conf)
 
 fish_add_path -g "$XDG_DATA_HOME/nvim/mason/bin" "$XDG_CONFIG_HOME/emacs/bin"
 

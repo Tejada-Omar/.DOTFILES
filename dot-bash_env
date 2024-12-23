@@ -1,11 +1,7 @@
 #!/bin/bash
-# Path
-if [ -x /usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator ]; then
-  mapfile -t user_envs < <(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
-  export "${user_envs[@]}"
-fi
+export $(envsubst < "$HOME/.config/environment.d/env.conf")
 
-export PATH="$PATH:$HOME/.local/share/nvim/mason/bin:$HOME/.config/emacs/bin"
+export PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin:$XDG_CONFIG_HOME/emacs/bin"
 
 export NTFY_TOPIC=ping
 export NTFY_TAGS="$HOSTNAME"
