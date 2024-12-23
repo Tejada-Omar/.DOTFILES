@@ -3,11 +3,21 @@
 alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
 
 # Command shortcuts
-alias ls='exa'
+if ! command -v eza &>/dev/null; then
+  alias ls='eza'
+fi
+
+if ! command -v pacman &>/dev/null; then
+  alias p='pacman'
+  alias pa='sudo pacman'
+
+  alias reflectorupdate='sudo reflector -c CA,US --age 12 --fastest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
+  alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+  alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
+fi
+
 alias la='ls -a'
 alias n='nvim'
-alias p='pacman'
-alias pa='sudo pacman'
 alias s='systemctl'
 alias sy='sudo systemctl'
 alias su='systemctl --user'
@@ -29,11 +39,8 @@ alias todo='todoist-cli'
 
 # One-liner shortcuts
 alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
-alias reflectorupdate='sudo reflector -c CA,US --age 12 --fastest 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 alias keychron='sudo systemctl start keychron'
 alias clipqrcode='xclip -sel clip -o | qrencode -t ansiutf8'
-alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-alias browse-pacman-online="pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse"
 alias update-ip="curl ident.me > ~/Documents/notes/ssh/desktop.txt"
 alias update-ssh='sed -i "/phone$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/phone.txt)/;}" ~/.ssh/config'
 alias update-ssh2='sed -i "/laptop$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/laptop.txt)/;}" ~/.ssh/config'
