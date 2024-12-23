@@ -1,13 +1,10 @@
 #!/bin/bash
-# Dotfiles management
-alias config='git --git-dir=$HOME/.DOTFILES/ --work-tree=$HOME'
 
-# Command shortcuts
-if ! command -v eza &>/dev/null; then
+if command -v eza &>/dev/null; then
   alias ls='eza'
 fi
 
-if ! command -v pacman &>/dev/null; then
+if command -v pacman &>/dev/null; then
   alias p='pacman'
   alias pa='sudo pacman'
 
@@ -21,7 +18,6 @@ alias n='nvim'
 alias s='systemctl'
 alias sy='sudo systemctl'
 alias su='systemctl --user'
-alias z='zathura --fork'
 alias open='xdg-open'
 alias g='git'
 alias gs='git status'
@@ -34,21 +30,10 @@ alias ta='tmux attach-session'
 alias tl='tmux list-sessions'
 alias tn='tmux new-session'
 alias tk='tmux kill-session'
-alias u='sudo ufw'
-alias todo='todoist-cli'
 
 # One-liner shortcuts
-alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
-alias keychron='sudo systemctl start keychron'
-alias clipqrcode='xclip -sel clip -o | qrencode -t ansiutf8'
-alias update-ip="curl ident.me > ~/Documents/notes/ssh/desktop.txt"
-alias update-ssh='sed -i "/phone$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/phone.txt)/;}" ~/.ssh/config'
-alias update-ssh2='sed -i "/laptop$/{n;s/[[:digit:]]\+:.\+/$(head -n1 ~/Documents/notes/ssh/laptop.txt)/;}" ~/.ssh/config'
 alias temp='cd $(mktemp -d)'
 alias update-grub='sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB'
-alias update-monitors='xrandr --output eDP-1 --auto --left-of HDMI-1-0 --output HDMI-1-0 --auto --primary'
-alias color-picker='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
-
 alias webs='websocat --close-status-code 1000 -E'
 
 # Tex package manager
@@ -61,12 +46,3 @@ alias cdda='cd "$(fd -H -td . ~ /etc | fzf --preview "exa -lF --no-permissions {
 alias cdf='cd "$(fd -H -tf --ignore-file ~/.cddignore . ~ | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin --preview-window=up,20% | xargs dirname)"'
 alias cdfa='cd "$(fd -H -tf . ~ /etc | fzf --preview "bat --style=header-filename,header-filesize -r 40: --color=always {}" --tiebreak=length,end,begin --preview-window=up,20% | xargs dirname)"'
 alias cddh='cd "$(fd -H -td -E .git . | fzf --preview "exa -lF --no-permissions {}" --tiebreak=length,end,begin --preview-window=up,20%)"'
-
-mkm() {
-  if [ ! -e $1 ]; then
-    echo "File already exists at that location"
-    exit 1
-  fi
-
-  mkdir -vp "$1" && cd "$1"
-}
