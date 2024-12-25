@@ -27,6 +27,11 @@ bindsym $mod+backslash exec tmux ls -F \
   | fuzzel -Rdw 80 -p "Select tmux session: " \
   | cut -d':' -f1 \
   | xargs -r -- $term -e tmux attach -t
+bindsym $mod+Shift+backslash exec tmux ls -F \
+  "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" \
+  | fuzzel -Rdw 80 -p "Select tmux session: " \
+  | cut -d':' -f1 \
+  | xargs -r -- $term -e tmux new -t
 
 # Pass through xargs so new resulting window can be opened on the same workspace
 bindsym $mod+r exec fuzzel | xargs swaymsg exec --
