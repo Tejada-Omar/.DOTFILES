@@ -10,6 +10,7 @@ timestr=%T
 datestr=%x
 indicator-radius=250
 indicator-thickness=10
+color=191724
 ring-color=3d59a1
 ring-ver-color=1a2b32
 ring-wrong-color=2d202a
