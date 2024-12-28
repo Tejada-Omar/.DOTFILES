@@ -162,8 +162,6 @@ for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
   [app_id="^firefox" title="^Picture-in-Picture"] floating enable, \
     resize set width 525 height 295, move position 1 ppt 1 ppt
-  [app_id="gamescope"] fullscreen enable
-  [title="^CPSC 453$"] floating enable
   [shell=".*"] inhibit_idle fullscreen
 }
 
