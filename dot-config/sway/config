@@ -155,8 +155,10 @@ bindsym $mod+Print exec grim -g "$(slurp)" \
   "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
 
 assign [app_id="spotify"] workspace MUSIC
-assign [class="steam"] workspace STEAM
 assign [class="discord"] workspace DISCORD
+assign [class="steam"] workspace STEAM
+assign [class="heroic"] workspace STEAM
+assign [app_id="net.lutris.Lutris"] workspace STEAM
 
 for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
