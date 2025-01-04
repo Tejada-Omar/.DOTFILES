@@ -106,7 +106,9 @@ mode "resize" {
   bindsym Shift+$up resize shrink height 5 ppt
   bindsym Shift+$right resize grow width 5 ppt
 
-  bindsym i resize set width 85 ppt height 85 ppt
+  # 85% of 1920x1080
+  # No ppt for consistent size between multiple monitors
+  bindsym i resize set width 1632 px height 918 px
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
