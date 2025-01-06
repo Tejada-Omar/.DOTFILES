@@ -54,8 +54,4 @@ if status is-interactive
 
     # cd shortcuts
     alias cdt='cd (tmux display-message -p "#{session_path}")'
-
-    fish_default_key_bindings -M insert
-    fish_vi_key_bindings --no-erase
-    bind -M insert -m default jk repaint-mode
 end
