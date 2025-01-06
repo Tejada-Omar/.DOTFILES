@@ -15,19 +15,24 @@ include serverrc
 include recurrencerc
 
 news.version=3.2.0
+
+dateformat=MD-HN
+dateformat.report=b d H:N
+dateformat.annotation=YMD H:N
+
+# Contexts
 context.school.read=project:sch
 context.school.write=project:sch
+
+# Unprocessed tasks report
 report.inbox.description=List of tasks w\/o any metadata
 report.inbox.columns=id,entry.age,description
 report.inbox.labels=ID,Age,Description
 report.inbox.sort=entry-
 report.inbox.filter=-TAGGED -PROJECT -PRIORITY -DELETED
 report.inbox.context=1
-alias.a=add
-alias.mod=modify
-dateformat=MD-HN
-dateformat.report=b d H:N
-dateformat.annotation=YMD H:N
+
+# Tasksh review report
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
 report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
