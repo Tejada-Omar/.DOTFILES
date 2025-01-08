@@ -54,4 +54,8 @@ if status is-interactive
 
     # cd shortcuts
     alias cdt='cd (tmux display-message -p "#{session_path}")'
+
+    if command -q rfc
+      abbr rfc PAGER="'nvim -R'" rfc
+    end
 end
