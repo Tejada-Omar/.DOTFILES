@@ -1,0 +1,9 @@
+gui:
+  showDivergenceFromBaseBranch: onlyArrow
+  border: single
+os:
+  editPreset: nvim-remote
+keybindings:
+  universal:
+    quit: <c-c>
+    return: q

@@ -15,22 +15,35 @@ include serverrc
 include recurrencerc
 
 news.version=3.2.0
+
+dateformat=MD-HN
+dateformat.report=b d H:N
+dateformat.annotation=YMD H:N
+
+calendar.details=full
+
+# Contexts
 context.school.read=project:sch
 context.school.write=project:sch
+
+context.code.read=(project:pr or project:droidwarrior)
+context.code.write=project:droidwarrior priority:L
+
+context.conf.read=(project:conf or project:lab)
+context.conf.write=project:conf
+
+# Unprocessed tasks report
 report.inbox.description=List of tasks w\/o any metadata
 report.inbox.columns=id,entry.age,description
 report.inbox.labels=ID,Age,Description
 report.inbox.sort=entry-
 report.inbox.filter=-TAGGED -PROJECT -PRIORITY -DELETED
 report.inbox.context=1
-alias.a=add
-alias.mod=modify
-dateformat=MD-HN
-dateformat.report=b d H:N
-dateformat.annotation=YMD H:N
+
+# Tasksh review report
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
-report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.description=Tasksh review report. Adjust the filter to your needs.
 report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )

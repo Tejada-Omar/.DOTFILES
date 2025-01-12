@@ -106,7 +106,9 @@ mode "resize" {
   bindsym Shift+$up resize shrink height 5 ppt
   bindsym Shift+$right resize grow width 5 ppt
 
-  bindsym i resize set width 85 ppt height 85 ppt
+  # 85% of 1920x1080
+  # No ppt for consistent size between multiple monitors
+  bindsym i resize set width 1632 px height 918 px
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -119,6 +121,13 @@ mode "move" {
   bindsym $down move down 50 px
   bindsym $up move up 50 px
   bindsym $right move right 50 px
+
+  bindsym Shift+$left move left 150 ppt
+  bindsym Shift+$down move down 150 ppt
+  bindsym Shift+$up move up 150 ppt
+  bindsym Shift+$right move right 150 ppt
+
+  bindsym i move position center
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -155,16 +164,15 @@ bindsym $mod+Print exec grim -g "$(slurp)" \
   "$(xdg-user-dir PICTURES)/screenshots/$(date +'%Y%m%d-%H%M%S.png')"
 
 assign [app_id="spotify"] workspace MUSIC
-assign [class="Spotify"] workspace MUSIC
-assign [class="steam"] workspace STEAM
 assign [class="discord"] workspace DISCORD
+assign [class="steam"] workspace STEAM
+assign [class="heroic"] workspace STEAM
+assign [app_id="net.lutris.Lutris"] workspace STEAM
 
 for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
   [app_id="^firefox" title="^Picture-in-Picture"] floating enable, \
     resize set width 525 height 295, move position 1 ppt 1 ppt
-  [app_id="gamescope"] fullscreen enable
-  [title="^CPSC 453$"] floating enable
   [shell=".*"] inhibit_idle fullscreen
 }
 
