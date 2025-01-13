@@ -64,7 +64,7 @@ bindsym $mod+i exec swaymsg -t get_workspaces \
 bindsym $mod+Shift+i exec swaymsg -t get_workspaces \
   | jq -r '.[] | .name | select(test("[0-9]") | not)' \
   | sort -n \
-  | fuzzel -Rdp "Select workspace: " \
+  | fuzzel -dp "Select workspace: " \
   | tr "[:lower:]" "[:upper:]" \
   | xargs -r swaymsg move container to workspace
 
