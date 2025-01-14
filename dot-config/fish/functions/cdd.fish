@@ -13,7 +13,7 @@ function cdd
     echo 'OPTIONS:'
     set -l options '-h, --help' 'print this help information' \
       '-t, --type' 'may be one of [f, d]' \
-      '-i' 'disable interpretation of .cddignore' \
+      '-i, --noignore' 'disable interpretation of .cddignore' \
       'paths...' 'paths to include in the search query'
 
     for i in (seq 1 2 (count $options))
