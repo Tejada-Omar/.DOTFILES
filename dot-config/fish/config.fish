@@ -6,14 +6,6 @@ function fish_title
   echo (prompt_pwd -d 1): $argv;
 end
 
-function fish_right_prompt
-  if [ $status != 0 ]
-    return 0
-  end
-
-  task +READY export | jq -r 'max_by(.urgency) | "\(.urgency): \(.description)"'
-end
-
 if status is-interactive
     # Basic aliases
     abbr -a ls eza
