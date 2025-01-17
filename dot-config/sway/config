@@ -139,8 +139,11 @@ smart_borders on
 default_border pixel 2
 title_align center
 
-seat seat0 xcursor_theme default 26
-seat seat0 hide_cursor 5000
+seat seat0 {
+  xcursor_theme default 26
+  hide_cursor 5000
+  hide_cursor when-typing enable
+}
 
 font pango:Jetbrains Mono Nerd Font 14px
 client.focused #9ccfd8 #9ccfd8 #000000 #c4a7e7
