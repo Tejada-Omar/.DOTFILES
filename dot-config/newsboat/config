@@ -11,6 +11,8 @@ show-keymap-hint no
 text-width 80
 scrolloff 4
 
+article-sort-order date
+
 bind-key j down
 bind-key k up
 bind-key l open
