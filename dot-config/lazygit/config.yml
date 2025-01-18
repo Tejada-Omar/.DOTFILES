@@ -1,9 +1,7 @@
 gui:
   showDivergenceFromBaseBranch: onlyArrow
   border: single
+  enlargedSideViewLocation: top
+  expandFocusedSidePanel: true
 os:
   editPreset: nvim-remote
-keybindings:
-  universal:
-    quit: <c-c>
-    return: q
