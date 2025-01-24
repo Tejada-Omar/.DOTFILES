@@ -31,7 +31,7 @@ if status is-interactive
     abbr -a news newsboat
     abbr -a bel echo -e '\\a'
 
-    alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state|\time|\ full|to| empty|precentage"'
+    alias battery='upower -i $(upower -e | grep '/battery') | grep -E "state| time| full| to| empty|precentage"'
     alias reflectorupdate='sudo reflector -c CA,US --age 12 --fastest 20 --sort rate --protocol https,http --save /etc/pacman.d/mirrorlist'
     alias clipqrcode='wl-paste | qrencode -t ansiutf8'
     alias browse-pacman="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
