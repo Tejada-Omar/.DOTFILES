@@ -71,7 +71,12 @@ function cdd
   set -a fd_cmd . $paths
 
   set sel ($fd_cmd | $fzf_cmd)
-  if test -n "$sel"
+
+  if test -z "$sel"
+    return 1
+  else if test -d "$sel"
     cd $sel
+  else if test -f "$sel"
+    cd (dirname $sel)
   end
 end
