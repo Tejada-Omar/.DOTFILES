@@ -176,7 +176,7 @@ assign [app_id="net.lutris.Lutris"] workspace STEAM
 
 for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
-  [app_id="^firefox" title="^Picture-in-Picture"] floating enable, \
+  [app_id="firefox" title="^Picture-in-Picture"] floating enable, \
     resize set width 525 height 295, move position 1 ppt 1 ppt
   [shell=".*"] inhibit_idle fullscreen
 }
