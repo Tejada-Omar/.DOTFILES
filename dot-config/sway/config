@@ -40,6 +40,8 @@ bindsym $mod+w kill
 bindsym $mod+$alt+Shift+r reload
 bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 bindsym $mod+$alt+L exec loginctl lock-session
+bindsym $mod+Ctrl+L inhibit_idle open
+bindsym $mod+Ctrl+Shift+L inhibit_idle fullscreen
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -178,7 +180,7 @@ for_window {
   [shell="xwayland"] title_format "%title [XWayland]"
   [app_id="firefox" title="^Picture-in-Picture"] floating enable, \
     resize set width 525 height 295, move position 1 ppt 1 ppt
-  [shell=".*"] inhibit_idle fullscreen
+  [all] inhibit_idle fullscreen
 }
 
 include /etc/sway/config.d/*
