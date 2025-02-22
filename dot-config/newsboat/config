@@ -1,8 +1,8 @@
-urls-source "miniflux"
-miniflux-url "https://rss.otejada.com/"
-miniflux-login "omar"
-miniflux-tokenfile "~/.config/newsboat/miniflux-token.txt"
-miniflux-flag-star "b"
+urls-source "freshrss"
+freshrss-url "https://rss.otejada.com/api/greader.php"
+freshrss-login "omar"
+freshrss-passwordfile "~/.config/newsboat/freshrss-pass.txt"
+freshrss-flag-star "b"
 
 auto-reload yes
 reload-threads 4
