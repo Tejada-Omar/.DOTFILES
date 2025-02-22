@@ -14,7 +14,7 @@ include serverrc
 # A different file to make it easy to run git update-index --skip-worktree
 include recurrencerc
 
-news.version=3.2.0
+news.version=3.3.0
 
 dateformat=MD-HN
 dateformat.report=b d H:N
