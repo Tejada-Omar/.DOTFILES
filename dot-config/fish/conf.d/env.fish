@@ -1,6 +1,16 @@
 export (envsubst < $HOME/.config/environment.d/env.conf)
 
-fish_add_path -g "$XDG_DATA_HOME/nvim/mason/bin" "$XDG_CONFIG_HOME/emacs/bin"
+set -gx PAGER "bat -p"
+set -gx READER "zathura"
+set -gx BROWSER "firefox"
+set -gx GOPATH "$HOME/go"
+
+fish_add_path -g \
+  "$HOME/.local/bin" \
+  "$XDG_DATA_HOME/nvim/mason/bin" \
+  "$XDG_CONFIG_HOME/emacs/bin" \
+  "$GOPATH/bin" \
+  "$HOME/.cargo/bin"
 
 # Use bat as a colorizing pager for man
 set -gx MANPAGER "sh -c 'col -bx | bat -l man -p --color=always --wrap never'"
