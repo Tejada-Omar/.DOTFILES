@@ -1,6 +1,7 @@
 function __fzf_shortcut -S
   set -l __opts \
     't/type=!test "$_flag_value" = "f" -o "$_flag_value" = "d"' \
+    'r/relative=?!test -z "$_flag_value" -o -d "$_flag_value"' \
     'i/noignore' 'h/help'
 
   # Avoid using argparse for same reason this is undocumented
@@ -22,6 +23,7 @@ function __fzf_shortcut -S
     set -l options '-h, --help' 'print this help information' \
       '-t, --type' 'may be one of [f, d]' \
       '-i, --noignore' 'disable interpretation of .cddignore' \
+      '-r, --relative' 'resolve paths resolve to passed dir [default: cwd]' \
       'paths...' 'paths to include in the search query'
 
     for i in (seq 1 2 (count $options))
@@ -33,6 +35,10 @@ function __fzf_shortcut -S
     return 0
   end
 
+  if set -q _flag_relative && test -z "$_flag_relative"
+    set _flag_relative '.'
+  end
+
   # Only include arguments in non-empty, otherwise use home dir
   if string trim $argv | string length -q
     set paths $argv
@@ -42,9 +48,12 @@ function __fzf_shortcut -S
 
   # Resolve each symlink in paths and get the directory component
   for i in (seq (count $paths))
-    if ! set paths[$i] (realpath -e "$paths[$i]")
-      return 1
-    end
+    set -l realpath_cmd "realpath -e \"$paths[$i]\""
+    set -q _flag_relative
+    and set -a realpath_cmd "--relative-base=$_flag_relative"
+
+    set paths[$i] (eval $realpath_cmd)
+    or return 1
 
     # NOOP if the path is already a directory
     test ! -f "$paths[$i]" && continue
