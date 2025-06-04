@@ -84,8 +84,14 @@ function __fzf_shortcut -S
     return 1
   end
 
+  set -a fzf_cmd --bind \
+    "tab:reload<test -d {} && $fd_cmd . {} || dirname -z {} | xargs -0 -- $fd_cmd .>"
+
   # Append search terms at the end for easier debugging
   set -a fd_cmd . $paths
+
+  set -a fzf_cmd --bind \
+    "shift-tab:reload<$fd_cmd>"
 
   $fd_cmd | $fzf_cmd
 end
