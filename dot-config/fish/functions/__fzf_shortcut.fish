@@ -64,7 +64,7 @@ function __fzf_shortcut -S
   or set _flag_type d
 
   # Base fd command
-  set fd_cmd fd --print0 -H -L -E 'node_modules' -E '.git*' --no-require-git -tl
+  set fd_cmd fd --print0 -H -L -E 'node_modules' -E "'.git*'" --no-require-git -tl
 
   set -q _flag_i
   or set -a fd_cmd --ignore-file ~/.cddignore
