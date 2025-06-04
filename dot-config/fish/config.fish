@@ -1,11 +1,6 @@
 #!/usr/bin/env fish
 set -g fish_greeting
 
-function fish_title
-  set -q argv[1]; or set argv fish
-  echo (prompt_pwd -d 1): $argv;
-end
-
 if status is-interactive
     # Basic aliases
     abbr -a ls eza
