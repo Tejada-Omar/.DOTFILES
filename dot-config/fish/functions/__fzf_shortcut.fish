@@ -1,3 +1,20 @@
+function __fzf_shortcut_help -V _cmd_name
+  # Use $_cmd_name to allow overriding the name by wrappers
+  echo "USAGE: $_cmd_name [options...] [paths...]"
+  echo 'OPTIONS:'
+  set -l options '-h, --help' 'print this help information' \
+    '-t, --type' 'may be one of [f, d]' \
+    '-i, --noignore' 'disable interpretation of .cddignore' \
+    '-r, --relative' 'resolve paths resolve to passed dir [default: cwd]' \
+    'paths...' 'paths to include in the search query'
+
+  for i in (seq 1 2 (count $options))
+    set -l option $options[$i]
+    set -l desc $options[(math $i + 1)]
+    printf '\t%s \033[33m%s\033[0m\n' "$option" "$desc"
+  end
+end
+
 function __fzf_shortcut -S
   set -l __opts \
     't/type=!test "$_flag_value" = "f" -o "$_flag_value" = "d"' \
@@ -11,28 +28,15 @@ function __fzf_shortcut -S
     return
   end
 
-  set -q _cmd_name
-  or set _cmd_name (status function)
-
   argparse $__opts -- $argv
   or return
 
   if set -q _flag_help
-    echo "USAGE: $_cmd_name [options...] [paths...]"
-    echo 'OPTIONS:'
-    set -l options '-h, --help' 'print this help information' \
-      '-t, --type' 'may be one of [f, d]' \
-      '-i, --noignore' 'disable interpretation of .cddignore' \
-      '-r, --relative' 'resolve paths resolve to passed dir [default: cwd]' \
-      'paths...' 'paths to include in the search query'
+    set -q _cmd_name
+    or set _cmd_name (status function)
 
-    for i in (seq 1 2 (count $options))
-      set -l option $options[$i]
-      set -l desc $options[(math $i + 1)]
-      printf '\t%s \033[33m%s\033[0m\n' "$option" "$desc"
-    end
-
-    return 0
+    __fzf_shortcut_help
+    return
   end
 
   if set -q _flag_relative && test -z "$_flag_relative"
