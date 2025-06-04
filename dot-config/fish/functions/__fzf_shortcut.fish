@@ -74,7 +74,7 @@ function __fzf_shortcut -S
   or set -a fd_cmd --ignore-file ~/.cddignore
 
   # Base fzf command
-  set fzf_cmd fzf +m --read0 --scheme=path --filepath-word -d '/' --preview-window=up,20%
+  set fzf_cmd fzf +m --read0 --scheme=path --filepath-word -d '/' --preview-window=up,20% --header "$paths"
 
   switch $_flag_type
   case f
@@ -88,14 +88,17 @@ function __fzf_shortcut -S
     return 1
   end
 
-  set -a fzf_cmd --bind \
-    "tab:reload<test -d {} && $fd_cmd . {} || dirname -z {} | xargs -0 -- $fd_cmd .>"
+  set _fd_cmd $fd_cmd .
+  set -a fd_cmd . $paths # Append search terms at the end for easier debugging
 
-  # Append search terms at the end for easier debugging
-  set -a fd_cmd . $paths
+  set binds "load:bell"
+  set -a binds "tab:transform:set -l __tmp (test -d {} && echo -- {} || echo -- {..-2}); echo -- \"reload<$_fd_cmd \$__tmp>+change-header<\$__tmp>\""
+  set -a binds "ctrl-space:transform:set -l __tmp (test -d {} && echo -- {..-4} || echo -- {..-3}); echo -- \"reload<$_fd_cmd \$__tmp>+change-header<\$__tmp>\""
+  set -a binds "shift-tab:reload<$fd_cmd>+change-header<$paths>"
 
-  set -a fzf_cmd --bind \
-    "shift-tab:reload<$fd_cmd>"
+  for bind in $binds
+    set -a fzf_cmd --bind $bind
+  end
 
   $fd_cmd | $fzf_cmd
 end
