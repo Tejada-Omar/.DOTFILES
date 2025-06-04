@@ -12,8 +12,8 @@ function cdu
     end
 
     set sel (pwd | cut -d'/' -f-(math 1 + $n - $argv))
-    cd "$sel/"; or return 1
-    return 0
+    cd "$sel/"
+    return
   end
 
   for i in (seq 2 $n)
