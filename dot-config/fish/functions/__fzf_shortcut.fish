@@ -74,7 +74,7 @@ function __fzf_shortcut -S
   or set -a fd_cmd --ignore-file ~/.cddignore
 
   # Base fzf command
-  set fzf_cmd fzf +m --read0 --tiebreak=length,begin --preview-window=up,20%
+  set fzf_cmd fzf +m --read0 --scheme=path --filepath-word -d '/' --preview-window=up,20%
 
   switch $_flag_type
   case f
