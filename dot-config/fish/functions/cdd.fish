@@ -11,11 +11,6 @@ function cdd -w __fzf_shortcut
   set sel (__fzf_shortcut $argv)
   or return
 
-  if test -z "$sel"
-    return 1
-  else if test -d "$sel"
-    cd $sel
-  else if test -f "$sel"
-    cd (dirname $sel)
-  end
+  test -z "$sel" && return 1
+  test -d "$sel" && cd $sel || cd (dirname $sel)
 end
