@@ -1,6 +1,6 @@
 export (envsubst < $HOME/.config/environment.d/env.conf)
 
-set -gx PAGER "bat -p"
+set -gx PAGER bat -p
 set -gx READER "zathura"
 set -gx BROWSER "firefox"
 set -gx GOPATH "$HOME/go"
