@@ -5,6 +5,7 @@ if status is-interactive
     abbr -a ls eza
     abbr -a la eza -a
     abbr -a n nvim
+    abbr -a nn NVIM_LSP_ENABLED=false nvim
     abbr -a p pacman
     abbr -a pa sudo pacman
     abbr -a s systemctl
