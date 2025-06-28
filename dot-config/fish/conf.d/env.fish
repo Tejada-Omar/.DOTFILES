@@ -27,3 +27,4 @@ set -gx NTFY_TAGS "$hostname"
 
 # Enable LSP support for nvim config
 set -gx NVIM_LSP_ENABLED "true"
+set -gx NVIM_AUTOFORMAT_ENABLED "true"
