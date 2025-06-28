@@ -4,6 +4,7 @@ set -gx PAGER bat -p
 set -gx READER "zathura"
 set -gx BROWSER "firefox"
 set -gx GOPATH "$HOME/go"
+set -gx USB_AUTOSUSPEND 1
 
 fish_add_path -g \
   "$HOME/.local/bin" \
