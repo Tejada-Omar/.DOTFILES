@@ -21,7 +21,6 @@
 [merge]
 	log = true
 	ff = only
-	tool = fugitive
 [rebase]
 	missingCommitsCheck = error
 [push]
@@ -42,12 +41,8 @@
 	showFirstState = true
 [commit]
 	verbose = false
-[mergetool "fugitive"]
-	cmd = nvim -c \"Gdiffsplit!\" -- \"$MERGED\"
 [mergetool "neovim"]
 	cmd = nvim -d -c \"wincmd l\" -- \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
-[difftool "fugitive"]
-	cmd = nvim -c \"Gdiffsplit!\" -- \"$MERGED\"
 [difftool "neovim"]
 	cmd = nvim -d -c \"wincmd l\" -- \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 [mergetool]
