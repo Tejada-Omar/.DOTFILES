@@ -1,6 +1,6 @@
 export (envsubst < $HOME/.config/environment.d/env.conf)
 
-set -gx PAGER bat -p
+set -gx PAGER bat
 set -gx READER "zathura"
 set -gx BROWSER "firefox"
 set -gx GOPATH "$HOME/go"
@@ -13,8 +13,8 @@ fish_add_path -g \
   "$HOME/.cargo/bin"
 
 # Use bat as a colorizing pager for man
-set -gx MANPAGER "sh -c 'col -bx | bat -l man -p --color=always --wrap never'"
-set -gx MANROFFOPT "-c"
+set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
+set -gx BAT_STYLE "plain"
 
 # fzf settings
 set -gx FZF_DEFAULT_COMMAND "fd --type file --hidden --exclude .git"
