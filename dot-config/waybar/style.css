@@ -1,7 +1,7 @@
 @import "./rose-pine-colors.css";
 
 * {
-  font-family: Jetbrains Mono;
+  font-family: Jetbrains Mono Nerd Font;
   font-weight: bold;
   font-size: 16px;
   min-height: 30px;
@@ -90,15 +90,15 @@ tooltip {
 #battery,
 #battery.charging.warning,
 #battery.charging.critical {
-  color: @pine
+  color: @pine;
 }
 
 #battery.warning {
-  color: @gold
+  color: @gold;
 }
 
 #battery.critical {
-  color: @love
+  color: @love;
 }
 
 #custom-spacer {
