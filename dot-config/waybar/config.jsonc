@@ -11,6 +11,8 @@
       "pulseaudio",
       "battery",
       "clock",
+      "custom/spacer",
+      "idle_inhibitor",
     ],
     "include": ["~/.config/waybar/options.jsonc"],
   },

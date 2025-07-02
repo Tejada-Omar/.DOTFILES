@@ -84,7 +84,7 @@ tooltip {
 
 #clock {
   color: @rose;
-  padding-right: 0em;
+  padding-right: 0.3em;
 }
 
 #battery,
@@ -99,6 +99,19 @@ tooltip {
 
 #battery.critical {
   color: @love;
+}
+
+#idle_inhibitor {
+  padding-left: 0.25em;
+  padding-right: 0.6em;
+}
+
+#idle_inhibitor.activated {
+  color: @text;
+}
+
+#idle_inhibitor.deactivated {
+  color: @muted;
 }
 
 #custom-spacer {

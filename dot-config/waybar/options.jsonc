@@ -69,6 +69,14 @@
     },
     "format-icons": ["󰁺", "󰁻", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
   },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " ",
+    },
+    "timeout": 60,
+  },
   "custom/spacer": {
     "format": "|",
     "tooltip": false,
