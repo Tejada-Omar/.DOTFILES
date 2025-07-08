@@ -46,7 +46,9 @@
     //   "ATH-M50xBT",
     //   "Keychron K2"
     // ],
-    "format-connected": "{num_connections} Connected ",
+    "format": "<big>󰂲</big>",
+    "format-on": "<big>󰂱</big>",
+    "format-connected": "{num_connections} ",
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
