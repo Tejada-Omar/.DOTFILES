@@ -21,6 +21,7 @@
 [merge]
 	log = true
 	ff = only
+	conflictstyle = zdiff3
 [rebase]
 	missingCommitsCheck = error
 [push]
