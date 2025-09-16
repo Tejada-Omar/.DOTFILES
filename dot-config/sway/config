@@ -171,8 +171,11 @@ bindsym $mod+Print exec grim -g "$(slurp)" \
 
 assign [app_id="spotify"] workspace MUSIC
 assign [class="Spotify"] workspace MUSIC
+
 assign [class="discord"] workspace DISCORD
 assign [app_id="discord"] workspace DISCORD
+assign [class="vesktop"] workspace DISCORD
+
 assign [class="steam"] workspace STEAM
 assign [class="heroic"] workspace STEAM
 assign [app_id="net.lutris.Lutris"] workspace STEAM
