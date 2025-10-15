@@ -3,6 +3,7 @@ freshrss-url "https://rss.otejada.com/api/greader.php"
 freshrss-login "omar"
 freshrss-passwordfile "~/.config/newsboat/freshrss-pass.txt"
 freshrss-flag-star "b"
+freshrss-min-items 500
 
 auto-reload yes
 reload-threads 4
