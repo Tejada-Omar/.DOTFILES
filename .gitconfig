@@ -24,6 +24,7 @@
 	conflictstyle = zdiff3
 [rebase]
 	missingCommitsCheck = error
+	autoSquash = true
 [push]
 	autoSetupRemote = true
 [alias]
