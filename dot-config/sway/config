@@ -98,15 +98,20 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 mode "resize" {
-  bindsym $left resize shrink width 10 px
-  bindsym $down resize grow height 10 px
-  bindsym $up resize shrink height 10 px
-  bindsym $right resize grow width 10 px
+  bindsym $left resize shrink width 10
+  bindsym $down resize grow height 10
+  bindsym $up resize shrink height 10
+  bindsym $right resize grow width 10
 
-  bindsym Shift+$left resize shrink width 5 ppt
-  bindsym Shift+$down resize grow height 5 ppt
-  bindsym Shift+$up resize shrink height 5 ppt
-  bindsym Shift+$right resize grow width 5 ppt
+  bindsym Shift+$left resize shrink width 5
+  bindsym Shift+$down resize grow height 5
+  bindsym Shift+$up resize shrink height 5
+  bindsym Shift+$right resize grow width 5
+
+  bindsym Ctrl+$left resize shrink width 50
+  bindsym Ctrl+$down resize grow height 50
+  bindsym Ctrl+$up resize shrink height 50
+  bindsym Ctrl+$right resize grow width 50
 
   # 85% of 1920x1080
   # No ppt for consistent size between multiple monitors
