@@ -150,8 +150,8 @@ title_align center
 seat seat0 {
   xcursor_theme default 26
   # NOTE: Causes issues when mouse is captured & continually polled (eg. games)
-  # hide_cursor 5000
-  # hide_cursor when-typing enable
+  hide_cursor 5000
+  hide_cursor when-typing enable
 }
 
 font pango:Jetbrains Mono Nerd Font 14px
