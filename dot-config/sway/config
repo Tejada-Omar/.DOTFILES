@@ -143,6 +143,7 @@ mode "move" {
 bindsym $mod+Shift+m mode "move"
 
 smart_borders on
+hide_edge_borders both
 default_border pixel 2
 title_align center
 
