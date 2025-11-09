@@ -49,7 +49,7 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-bindsym $mod+t exec $script/query mark | xargs -I {} -r '[con_mark={}] focus'
+bindsym $mod+t exec $script/query mark | xargs -I {} -r swaymsg [con_mark='{}'] focus
 
 bindsym $mod+u workspace back_and_forth
 bindsym $mod+p workspace prev_on_output
