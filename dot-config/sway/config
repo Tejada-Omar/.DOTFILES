@@ -22,12 +22,12 @@ bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
 bindsym $mod+Return exec fuzzel -d --prompt-only="Input session name: " \
-  | xargs -r -- $term -e tmux new -s
-bindsym $mod+Ctrl+Return exec $term -e fish
+  | xargs -r -- $$term -e tmux new -s
+bindsym $mod+Ctrl+Return exec $$term -e fish
 bindsym $mod+backslash exec $script/query -r tmux \
-  | xargs -r -- $term -e tmux attach -t
+  | xargs -r -- $$term -e tmux attach -t
 bindsym $mod+Shift+backslash exec $script/query -r tmux \
-  | xargs -r -- $term -e tmux new -t
+  | xargs -r -- $$term -e tmux new -t
 
 # Pass through xargs so new resulting window can be opened on the same workspace
 bindsym $mod+r exec fuzzel | xargs swaymsg exec --
