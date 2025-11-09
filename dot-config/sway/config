@@ -1,3 +1,5 @@
+set $script /home/omar/.config/sway/scripts
+
 set $mod Mod4
 set $alt Mod1
 set $term footclient
@@ -53,21 +55,14 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+bindsym $mod+t exec $script/query mark | xargs -I {} -r '[con_mark={}] focus'
 
 bindsym $mod+u workspace back_and_forth
 bindsym $mod+p workspace prev_on_output
 bindsym $mod+n workspace next_on_output
 
-bindsym $mod+i exec swaymsg -t get_workspaces \
-  | jq -r '.[] | .name | select(test("[0-9]") | not)' \
-  | sort -n \
-  | fuzzel -Rdp "Select workspace: " \
-  | xargs -r swaymsg workspace
-bindsym $mod+Shift+i exec swaymsg -t get_workspaces \
-  | jq -r '.[] | .name | select(test("[0-9]") | not)' \
-  | sort -n \
-  | fuzzel -dp "Select workspace: " \
-  | tr "[:lower:]" "[:upper:]" \
+bindsym $mod+i exec $script/query workspace | xargs -r swaymsg workspace
+bindsym $mod+Shift+i exec $script/query workspace \
   | xargs -r swaymsg move container to workspace
 
 bindsym $mod+Shift+1 move container to workspace number 1
@@ -80,6 +75,10 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+t exec $script/query mark \
+  | xargs -r swaymsg move container to mark
+bindsym $mod+Ctrl+t exec $script/query mark \
+  | xargs -r swaymsg swap container with mark
 
 bindsym $mod+f fullscreen
 bindsym $mod+d layout tabbed
@@ -93,6 +92,10 @@ bindsym $mod+m sticky toggle
 bindsym $mod+s focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+z focus child
+
+bindsym $mod+y exec $script/query mark | xargs -r swaymsg -- mark --add
+bindsym $mod+Ctrl+y exec $script/query mark | xargs -r swaymsg -- mark --replace
+bindsym $mod+Shift+y exec $script/query mark | xargs swaymsg unmark
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show

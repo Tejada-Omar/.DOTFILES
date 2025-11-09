@@ -1,0 +1,58 @@
+#!/usr/bin/env sh
+
+help() {
+  cat <<EOF
+NAME
+	sway-choose - Query and select information from a running sway instance
+	(whether pre-existing or not)
+
+SYNOPSIS
+	sway-choose [-hr] MODE
+
+OPTIONS
+	-h, --help
+		Display help text and exit
+	-r, --no-run-if-empty
+		Exit immediately if no marks currently exist
+
+MODES
+	mark - Select a mark
+	workspace - Select a workspace
+EOF
+}
+
+temp=$(getopt -o 'hr' -l 'help,no-run-if-empty' -s sh -n "$0" -- "$@")
+# shellcheck disable=SC2181
+if [ $? -ne 0 ]; then help >&2; echo 'Invalid option selected' >&2; exit 1; fi
+
+eval set -- "$temp"
+unset temp
+
+empty_check=0
+while true; do
+  case "$1" in
+  -h | --help) help; exit 0 ;; -r | --no-run-if-empty) empty_check=1; shift ;;
+  --) shift; break ;;
+  *) break ;;
+  esac
+done
+
+fzf_cmd='fuzzel -d --minimal-lines'
+[ "$empty_check" -eq 1 ] && fzf_cmd="$fzf_cmd -R"
+
+mode="$1"
+case "$mode" in
+  mark )
+    fzf_cmd="$fzf_cmd -p 'Select mark: ' -w35"
+    swaymsg -t get_marks | jq -r 'sort | .[]' |
+      eval "$fzf_cmd"
+    ;;
+  workspace )
+    fzf_cmd="$fzf_cmd -p 'Select workspace: '"
+    swaymsg -t get_workspaces |
+      jq -r 'sort | .[] | .name | select(test("[0-9]") | not)' |
+      eval "$fzf_cmd" |
+      tr '[:lower:]' '[:upper:]'
+    ;;
+  *) echo 'Invalid mode selected' >&2; exit 1 ;;
+esac
