@@ -21,18 +21,12 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-bindsym $mod+Return exec fuzzel -d --prompt="Input session name: " \
-  | xargs -r -- $term -e tmux new-session -s
+bindsym $mod+Return exec fuzzel -d --prompt-only="Input session name: " \
+  | xargs -r -- $term -e tmux new -s
 bindsym $mod+Ctrl+Return exec $term -e fish
-bindsym $mod+backslash exec tmux ls -F \
-  "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" \
-  | fuzzel -Rdw 80 -p "Select tmux session: " \
-  | cut -d':' -f1 \
+bindsym $mod+backslash exec $script/query -r tmux \
   | xargs -r -- $term -e tmux attach -t
-bindsym $mod+Shift+backslash exec tmux ls -F \
-  "#{session_name}: <u>#{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}</u>" \
-  | fuzzel -Rdw 80 -p "Select tmux session: " \
-  | cut -d':' -f1 \
+bindsym $mod+Shift+backslash exec $script/query -r tmux \
   | xargs -r -- $term -e tmux new -t
 
 # Pass through xargs so new resulting window can be opened on the same workspace

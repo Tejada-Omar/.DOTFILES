@@ -18,6 +18,7 @@ OPTIONS
 MODES
 	mark - Select a mark
 	workspace - Select a workspace
+	tmux - Select a tmux session
 EOF
 }
 
@@ -53,6 +54,14 @@ case "$mode" in
       jq -r 'sort | .[] | .name | select(test("[0-9]") | not)' |
       eval "$fzf_cmd" |
       tr '[:lower:]' '[:upper:]'
+    ;;
+  tmux )
+    tmux_format="#{session_name}: #{session_windows} windows (#{pane_current_command} in #{pane_current_path}) (#{t/f/%I#:%M %p:session_activity}) #{?session_attached,(attached),}"
+
+    fzf_cmd="$fzf_cmd -p 'Select a tmux session: ' -w80"
+    tmux ls -F "$tmux_format" |
+      eval "$fzf_cmd" |
+      cut -d':' -f1 # NOTE: Since fuzzel accept-nth breaks here for some reason
     ;;
   *) echo 'Invalid mode selected' >&2; exit 1 ;;
 esac
