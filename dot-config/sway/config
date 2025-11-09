@@ -52,6 +52,7 @@ bindsym $mod+0 workspace number 10
 bindsym $mod+t exec $script/query mark -r | xargs -I {} -r swaymsg [con_mark='{}'] focus
 
 bindsym $mod+u workspace back_and_forth
+bindsym $mod+Shift+u [urgent=recent] focus
 bindsym $mod+p workspace prev_on_output
 bindsym $mod+n workspace next_on_output
 
