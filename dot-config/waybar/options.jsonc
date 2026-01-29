@@ -1,8 +1,12 @@
 {
   "reload_style_on_change": true,
   "sway/window": {
+    "format": "[{marks}] {title}",
     "all-outputs": true,
     "justify": "center",
+    "rewrite": {
+      "\\[\\] (.*)": "$1",
+    },
   },
   "sway/workspaces": {
     "on-click": "activate",
