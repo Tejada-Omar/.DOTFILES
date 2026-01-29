@@ -4,6 +4,8 @@
     "format": "[{marks}] {title}",
     "all-outputs": true,
     "justify": "center",
+    "max-length": 80,
+    "expand": true,
     "rewrite": {
       "(.*) — Mozilla Firefox": "$1",
       "\\[\\] (.*)": "$1",
