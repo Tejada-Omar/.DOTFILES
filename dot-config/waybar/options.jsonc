@@ -5,6 +5,7 @@
     "all-outputs": true,
     "justify": "center",
     "rewrite": {
+      "(.*) — Mozilla Firefox": "$1",
       "\\[\\] (.*)": "$1",
     },
   },
